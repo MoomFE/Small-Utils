@@ -1,0 +1,24 @@
+{
+  "name": "@moomfe/small-utils",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Wei Zhang",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MoomFE/Small-Utils.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MoomFE/Small-Utils/issues"
+  },
+  "homepage": "https://github.com/MoomFE/Small-Utils#readme",
+  "scripts": {
+
+  },
+  "dependencies": {
+
+  },
+  "devDependencies": {
+
+  }
+}
