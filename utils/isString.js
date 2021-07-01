@@ -4,5 +4,5 @@
  * @returns {Boolean}
  */
 export default function isString(obj) {
-  return typeof obj === 'string'
+  return typeof obj === 'string' || Object.prototype.toString.call(obj) === '[object String]'
 }
