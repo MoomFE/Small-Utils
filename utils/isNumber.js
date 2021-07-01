@@ -6,9 +6,10 @@
  * @example
  * 
  * isNumber(666); // -> true
+ * isNumber(new Number(666)); // -> true
  * isNumber(NaN); // -> false
  * isNumber('666'); // -> false
  */
 export default function isNumber(obj) {
-  return typeof obj === 'number' && obj === obj; // eslint-disable-line no-self-compare
+  return (typeof obj === 'number' || Object.prototype.toString.call(obj) === '[object Number]') && obj === obj; // eslint-disable-line no-self-compare
 }
