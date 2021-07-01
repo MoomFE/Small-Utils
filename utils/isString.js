@@ -3,6 +3,7 @@
  * 
  * @param {any} obj 需要判断的对象
  * @returns {Boolean}
+ * @example
  * 
  * isString('666'); // -> true
  * isString(new String('666')); // -> true
