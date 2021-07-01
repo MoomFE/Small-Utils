@@ -34,6 +34,7 @@
 >   import isString from '@moomfe/small-utils/utils/isString';
 >
 >   isString('666'); // -> true
+>   isString(new String('666')); // -> true
 >   isString(666); // -> false
 > ```
 
