@@ -6,11 +6,10 @@
   ],
   "settings": {
     "files.exclude": {
-      ".gitignore": true,
-      "LICENSE": true,
       "node_modules": true,
       "package-lock.json": true,
-      "Small-Utils.code-workspace": true
+      "Small-Utils.code-workspace": true,
+      "yarn.lock": true
     },
     "editor.tabSize": 2,
     "editor.detectIndentation": false
