@@ -29,6 +29,17 @@
 >   isNumber('666'); // -> false
 > ```
 
+> ### isNumeric
+>   - 判断传入参数是否是数字, 支持判断数字字符串
+> ```js
+>   import isNumeric from '@moomfe/small-utils/utils/isNumeric';
+>
+>   isNumeric(666); // -> true
+>   isNumeric('666'); // -> true
+>   isNumeric(new Number(666)); // -> true
+>   isNumeric(NaN); // -> false
+> ```
+
 > ### isString
 >   - 判断传入对象是否是 String 类型
 > ```js
