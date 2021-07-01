@@ -24,6 +24,7 @@
 >   import isNumber from '@moomfe/small-utils/utils/isNumber';
 >
 >   isNumber(666); // -> true
+>   isNumber(new Number(666)); // -> true
 >   isNumber(NaN); // -> false
 >   isNumber('666'); // -> false
 > ```
