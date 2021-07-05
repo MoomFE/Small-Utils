@@ -17,5 +17,5 @@ import isNumber from './isNumber';
  * isNumeric(NaN); // -> false
  */
 export default function isNumeric(value) {
-  return (isNumber(value) || typeof value === 'string') && !isNaN(value - parseFloat(value));
+  return isNumber(value) || (typeof value === 'string' && !isNaN(value - parseFloat(value)));
 }
