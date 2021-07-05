@@ -50,6 +50,16 @@
 >   isString(666); // -> false
 > ```
 
+> ### isFunction
+>   - 判断传入参数是否是 Function 类型
+> ```js
+>   import isFunction from '@moomfe/small-utils/utils/isFunction';
+>
+>   isFunction(() => {}); // -> true
+>   isFunction(function() {}); // -> true
+>   isFunction(666); // -> false
+> ```
+
 
 
 ## Overview ( Styles )
