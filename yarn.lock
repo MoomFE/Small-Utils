@@ -136,9 +136,9 @@
   integrity sha512-wdppn25U8z/2yiaT6YGquE6X8sSv7hNMWSXYSSU1jGv/yd6XqjXgTDJ8KP4NgjTXfJ3GbRjeeb8RTV7a/VpM+w==
 
 "@moomfe/eslint-config@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@moomfe/eslint-config/-/eslint-config-1.2.0.tgz#a2b160c0c2a7ef1de5133e9fdff839fdaff798af"
-  integrity sha512-yfPzQcOMr9rAc62z1O4SvBn5RCMS7Qf74NFAnAAaEoT4BTs966kQOyCzhN14MfnQBkPchupwvbQd/eJzKZ9f2w==
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@moomfe/eslint-config/-/eslint-config-1.3.0.tgz#1b798c2ed808ecc607167798b59f211a84d4185c"
+  integrity sha512-Gq+Zy7Jzl9B3TLtBU2mHx2MnpgdbIUebJ4CLE+d0Ja8FFxV1rBkFXB8VkZA+O9mnlfvJis0LdsIYxVE5Cx5iOQ==
 
 "@types/json5@^0.0.29":
   version "0.0.29"
