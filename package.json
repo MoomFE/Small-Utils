@@ -12,13 +12,14 @@
     "url": "https://github.com/MoomFE/Small-Utils/issues"
   },
   "homepage": "https://github.com/MoomFE/Small-Utils#readme",
-  "scripts": {
-
-  },
-  "dependencies": {
-
-  },
+  "scripts": {},
+  "dependencies": {},
   "devDependencies": {
-
+    "@moomfe/eslint-config": "^1.2.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.30.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-vue": "^7.12.1"
   }
 }
