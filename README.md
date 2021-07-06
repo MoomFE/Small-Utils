@@ -9,7 +9,7 @@
 
 ## Overview ( Utils )
 
-> #### isPlainObject <small>( 判断传入对象是否是纯粹的对象 )</small>
+> #### isPlainObject ( 判断传入对象是否是纯粹的对象 )
 <details>
 
 ```js
@@ -22,7 +22,7 @@
 </details>
 
 
-> #### isNumber <small>( 判断传入对象是否是 Number 类型, 并且不为 NaN )</small>
+> #### isNumber ( 判断传入对象是否是 Number 类型, 并且不为 NaN )
 <details>
 
 ```js
@@ -36,7 +36,7 @@
 </details>
 
 
-> #### isNumeric <small>( 判断传入参数是否是数字, 支持判断数字字符串 )</small>
+> #### isNumeric ( 判断传入参数是否是数字, 支持判断数字字符串 )
 <details>
 
 ```js
@@ -50,7 +50,7 @@
 </details>
 
 
-> #### isString <small>( 判断传入对象是否是 String 类型 )</small>
+> #### isString ( 判断传入对象是否是 String 类型 )
 <details>
 
 ```js
@@ -63,7 +63,7 @@
 </details>
 
 
-> #### isFunction <small>( 判断传入参数是否是 Function 类型 )</small>
+> #### isFunction ( 判断传入参数是否是 Function 类型 )
 <details>
 
 ```js
