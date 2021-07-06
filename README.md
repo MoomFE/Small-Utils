@@ -22,7 +22,6 @@
 ```
 </details>
 
-<br>
 
 > #### isNumber
 >   - 判断传入对象是否是 Number 类型, 并且不为 NaN
@@ -38,7 +37,6 @@
 ```
 </details>
 
-<br>
 
 > #### isNumeric
 >   - 判断传入参数是否是数字, 支持判断数字字符串
@@ -54,7 +52,6 @@
 ```
 </details>
 
-<br>
 
 > #### isString
 >   - 判断传入对象是否是 String 类型
@@ -69,7 +66,6 @@
 ```
 </details>
 
-<br>
 
 > #### isFunction
 >   - 判断传入参数是否是 Function 类型
