@@ -2,13 +2,14 @@
 前端自用代码片段
 
 
+
 <br>
 
 
 
 ## Overview ( Utils )
 
-> ### isPlainObject
+> #### isPlainObject
 >   - 判断传入对象是否是纯粹的对象
 <details>
 
@@ -21,7 +22,9 @@
 ```
 </details>
 
-> ### isNumber
+<br>
+
+> #### isNumber
 >   - 判断传入对象是否是 Number 类型, 并且不为 NaN
 <details>
 
@@ -35,7 +38,9 @@
 ```
 </details>
 
-> ### isNumeric
+<br>
+
+> #### isNumeric
 >   - 判断传入参数是否是数字, 支持判断数字字符串
 <details>
 
@@ -49,7 +54,9 @@
 ```
 </details>
 
-> ### isString
+<br>
+
+> #### isString
 >   - 判断传入对象是否是 String 类型
 <details>
 
@@ -62,7 +69,9 @@
 ```
 </details>
 
-> ### isFunction
+<br>
+
+> #### isFunction
 >   - 判断传入参数是否是 Function 类型
 <details>
 
@@ -79,7 +88,7 @@
 
 ## Overview ( Styles )
 
-> ### Vuetify 的 Elevation ( 海拔 ) 的减淡效果样式
+> #### Vuetify 的 Elevation ( 海拔 ) 的减淡效果样式
 >  - 和 Vuetify 一样, 有 25 个高度
 >  - 可以通过 `elevation-{n}--fade` 使用, 其中 `n` 是 0~24 之间与所需海拔对应的整数
 <details>
