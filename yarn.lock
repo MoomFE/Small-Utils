@@ -135,10 +135,10 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.0.tgz#87de7af9c231826fdd68ac7258f77c429e0e5fcf"
   integrity sha512-wdppn25U8z/2yiaT6YGquE6X8sSv7hNMWSXYSSU1jGv/yd6XqjXgTDJ8KP4NgjTXfJ3GbRjeeb8RTV7a/VpM+w==
 
-"@moomfe/eslint-config@^1.2.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@moomfe/eslint-config/-/eslint-config-1.3.0.tgz#1b798c2ed808ecc607167798b59f211a84d4185c"
-  integrity sha512-Gq+Zy7Jzl9B3TLtBU2mHx2MnpgdbIUebJ4CLE+d0Ja8FFxV1rBkFXB8VkZA+O9mnlfvJis0LdsIYxVE5Cx5iOQ==
+"@moomfe/eslint-config@^1.3.0":
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/@moomfe/eslint-config/-/eslint-config-1.3.1.tgz#1eede842ebe733ba968cec1267a02f504175b6d7"
+  integrity sha512-XIHspNu+2Ekjmmh6nyULNckexVuFInikQGwQejmtC1oezumu6QAhVZTS/6mIV1V423GArnP413fcClnXI9kcaw==
 
 "@types/json5@^0.0.29":
   version "0.0.29"
@@ -1063,6 +1063,16 @@ optionator@^0.9.1:
     type-check "^0.4.0"
     word-wrap "^1.2.3"
 
+overlayscrollbars-vue@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/overlayscrollbars-vue/-/overlayscrollbars-vue-0.2.2.tgz#4a3d4eaf09dbbaae8c52ff0e9219909075eb920e"
+  integrity sha512-JpDkM+fkNp7YbZxZNf9cbSWCa1tylaSUkmdhux+qtVFekH4zpZpM8+GRtOgs7YDDWyVNPkUBQ8FnMRMoBNfoJw==
+
+overlayscrollbars@^1.13.1:
+  version "1.13.1"
+  resolved "https://registry.yarnpkg.com/overlayscrollbars/-/overlayscrollbars-1.13.1.tgz#0b840a88737f43a946b9d87875a2f9e421d0338a"
+  integrity sha512-gIQfzgGgu1wy80EB4/6DaJGHMEGmizq27xHIESrzXq0Y/J0Ay1P3DWk6tuVmEPIZH15zaBlxeEJOqdJKmowHCQ==
+
 p-limit@^1.1.0:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/p-limit/-/p-limit-1.3.0.tgz#b86bd5f0c25690911c7590fcbfc2010d54b3ccb8"
@@ -1421,6 +1431,11 @@ vue-eslint-parser@^7.6.0:
     esquery "^1.4.0"
     lodash "^4.17.21"
     semver "^6.3.0"
+
+vuetify@^2.5.6:
+  version "2.5.6"
+  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-2.5.6.tgz#9cbb1eacece6c42028216312b9be23e35a7f5cf4"
+  integrity sha512-2T8ML5PYuJ/AdMVH3ZIvzHnsM0nX8t4Xzj+0HFFGfLT7jLlptCFpG+JE8+kyrgGZlbUgulyOwCUu8hJkVsReFA==
 
 which-boxed-primitive@^1.0.2:
   version "1.0.2"
