@@ -1,24 +1,18 @@
 <script>
-  import VTextField from 'vuetify/lib/components/VTextField'; // eslint-disable-line import/no-extraneous-dependencies
-  import { omit } from 'lodash'; // eslint-disable-line import/no-extraneous-dependencies
+  import VTextField from 'vuetify/lib/components/VTextField';
+  import { omit } from 'lodash';
+  import Value from '../../mixins/value/index';
 
-  export default {
+
+  export default Value.extend({
     inheritAttrs: false,
     props: {
-      /** 输入框的值 ( 父组件传入 ) */
-      value: null,
       /** 输入框标签 */
       label: { type: String, default: '' },
       /** 将输入框标签显示到输入框外部的前面 */
       labelPrepend: { type: Boolean, default: false },
       /** 是否必填 */
       required: { type: Boolean, default: false }
-    },
-    data() {
-      return {
-        /** 输入框的值 */
-        currentValue: this.value
-      };
     },
     render(create) {
       const listeners = omit(this.$listeners, ['input']);
@@ -43,11 +37,6 @@
       ));
     },
     methods: {
-      /** 设置输入框值 */
-      setValue(value) {
-        this.currentValue = value;
-      },
-
       /** 生成输入框的 label 插槽 */
       genLabelScopedSlot() {
         const label = this.label;
@@ -75,16 +64,6 @@
           content
         ]);
       }
-    },
-    watch: {
-      // 父组件值更改后, 更改输入框的值
-      value(value) {
-        this.currentValue = value;
-      },
-      // 输入框的值更改后, 通知父组件更新值
-      currentValue(value) {
-        this.$emit('input', value);
-      }
     }
-  };
+  });
 </script>

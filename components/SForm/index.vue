@@ -1,5 +1,5 @@
 <script>
-  import VForm from 'vuetify/lib/components/VForm'; // eslint-disable-line import/no-extraneous-dependencies
+  import VForm from 'vuetify/lib/components/VForm';
   import isFunction from '../../utils/isFunction';
 
 
