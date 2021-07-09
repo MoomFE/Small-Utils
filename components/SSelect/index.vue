@@ -5,7 +5,10 @@
   import InputGenerate from '../../mixins/input-generate/index';
 
 
-  export default mixins(Value, InputGenerate).extend({
+  const baseMixins = mixins(Value, InputGenerate);
+
+
+  export default baseMixins.extend({
     inheritAttrs: false,
     props: {
       /** 是否必填 */
@@ -13,10 +16,16 @@
       /** 输入框标签 */
       label: { type: String, default: '' },
       /** 将输入框标签显示到输入框外部的前面 */
-      labelPrepend: { type: Boolean, default: false }
+      labelPrepend: { type: Boolean, default: false },
+      /** 设置 'items' 属性的文本值 */
+      itemText: { type: String, default: 'label' }
     },
     render(create) {
-      return create(VSelect, this.getRootNodeData(), this.getRootNodeChildren());
+      const data = baseMixins.options.methods.getRootNodeData.call(this);
+
+      data.props.itemText = this.itemText;
+
+      return create(VSelect, data, this.getRootNodeChildren());
     }
   });
 </script>
