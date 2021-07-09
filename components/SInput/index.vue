@@ -1,37 +1,22 @@
 <script>
-  import { omit } from 'lodash';
   import VTextField from 'vuetify/lib/components/VTextField';
   import mixins from 'vuetify/lib/util/mixins';
   import Value from '../../mixins/value/index';
-  import InputLabel from '../../mixins/input-label/index';
+  import InputGenerate from '../../mixins/input-generate/index';
 
-  export default mixins(Value, InputLabel).extend({
+
+  export default mixins(Value, InputGenerate).extend({
     inheritAttrs: false,
     props: {
       /** 是否必填 */
-      required: { type: Boolean, default: false }
+      required: { type: Boolean, default: false },
+      /** 输入框标签 */
+      label: { type: String, default: '' },
+      /** 将输入框标签显示到输入框外部的前面 */
+      labelPrepend: { type: Boolean, default: false }
     },
     render(create) {
-      const listeners = omit(this.$listeners, ['input']);
-      const data = {
-        ref: 'input',
-        props: {
-          ...this.$attrs,
-          value: this.currentValue
-        },
-        on: {
-          ...listeners,
-          input: this.setValue
-        }
-      };
-
-      const labelSlot = this.genLabelScopedSlot();
-      const prependSlot = this.genPrependScopedSlot();
-
-      return create(VTextField, data, [].concat(
-        labelSlot && create('template', { slot: 'label' }, [].concat(labelSlot)),
-        prependSlot && create('template', { slot: 'prepend' }, [].concat(prependSlot))
-      ));
+      return create(VTextField, this.getRootNodeData(), this.getRootNodeChildren());
     }
   });
 </script>

@@ -1,14 +1,36 @@
 import Vue from 'vue';
+import { omit } from 'lodash';
 
 
 export default Vue.extend({
-  props: {
-    /** 输入框标签 */
-    label: { type: String, default: '' },
-    /** 将输入框标签显示到输入框外部的前面 */
-    labelPrepend: { type: Boolean, default: false }
-  },
   methods: {
+    /** 根节点 VNode 选项 */
+    getRootNodeData() {
+      const listeners = omit(this.$listeners, ['input']);
+
+      return {
+        ref: 'input',
+        props: {
+          ...this.$attrs,
+          value: this.currentValue
+        },
+        on: {
+          ...listeners,
+          input: this.setValue
+        }
+      };
+    },
+    /** 根节点 children 选项 */
+    getRootNodeChildren() {
+      const labelSlot = this.genLabelScopedSlot();
+      const prependSlot = this.genPrependScopedSlot();
+
+      return [].concat(
+        labelSlot && this.$createElement('template', { slot: 'label' }, [].concat(labelSlot)),
+        prependSlot && this.$createElement('template', { slot: 'prepend' }, [].concat(prependSlot))
+      )
+    },
+
     /**
      * 生成输入框的 label 插槽
      */
@@ -53,4 +75,4 @@ export default Vue.extend({
       ]);
     }
   }
-});
+})
