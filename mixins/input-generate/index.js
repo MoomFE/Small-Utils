@@ -22,13 +22,19 @@ export default Vue.extend({
     },
     /** 根节点 children 选项 */
     getRootNodeChildren() {
+      const slots = [];
       const labelSlot = this.genLabelScopedSlot();
       const prependSlot = this.genPrependScopedSlot();
 
-      return [].concat(
+      // 写入传入的其他插槽
+      Object.entries(omit(this.$slots, ['label', 'prepend'])).forEach(([slot, node]) => {
+        slots.push(this.$createElement('template', { slot }, node));
+      });
+
+      return slots.concat(
         labelSlot && this.$createElement('template', { slot: 'label' }, [].concat(labelSlot)),
         prependSlot && this.$createElement('template', { slot: 'prepend' }, [].concat(prependSlot))
-      )
+      );
     },
 
     /**
@@ -75,4 +81,4 @@ export default Vue.extend({
       ]);
     }
   }
-})
+});
