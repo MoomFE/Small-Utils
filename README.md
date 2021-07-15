@@ -114,6 +114,24 @@
 >   isReference(Symbol('666')); // -> false
 > ```
 
+> ### isPrimitive
+>   - 判断传入参数是否是原始类型 ( `isReference` 方法的反向 )
+> ```js
+>   import isPrimitive from '@moomfe/small-utils/utils/isPrimitive';
+>
+>   isPrimitive(true); // -> true
+>   isPrimitive(false); // -> true
+>   isPrimitive(null); // -> true
+>   isPrimitive(undefined); // -> true
+>   isPrimitive(666); // -> true
+>   isPrimitive(666n); // -> true
+>   isPrimitive('666'); // -> true
+>   isPrimitive(Symbol('666')); // -> true
+>   isPrimitive({}); // -> false
+>   isPrimitive([]); // -> false
+>   isPrimitive(() => {}); // -> false
+> ```
+
 
 
 ## Overview ( Styles )
