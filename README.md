@@ -96,6 +96,24 @@
 >   isFunction(666); // -> false
 > ```
 
+> ### isReference
+>   - 判断传入参数是否是引用类型
+> ```js
+>   import isReference from '@moomfe/small-utils/utils/isReference';
+>
+>   isReference({}); // -> true
+>   isReference([]); // -> true
+>   isReference(() => {}); // -> true
+>   isReference(true); // -> false
+>   isReference(false); // -> false
+>   isReference(null); // -> false
+>   isReference(undefined); // -> false
+>   isReference(666); // -> false
+>   isReference(666n); // -> false
+>   isReference('666'); // -> false
+>   isReference(Symbol('666')); // -> false
+> ```
+
 
 
 ## Overview ( Styles )
