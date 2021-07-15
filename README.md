@@ -74,6 +74,18 @@
 >   isString(666); // -> false
 > ```
 
+> ### isObject
+>   - 判断传入参数是否是 Object 类型, 并且不为 null
+> ```js
+>   import isObject from '@moomfe/small-utils/utils/isObject';
+>
+>   isObject({}); // -> true
+>   isObject([]); // -> true
+>   isObject(() => {}); // -> false
+>   isObject(function() {}); // -> false
+>   isObject(666); // -> false
+> ```
+
 > ### isFunction
 >   - 判断传入参数是否是 Function 类型
 > ```js
