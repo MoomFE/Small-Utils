@@ -3,6 +3,7 @@
   - 🌟 新增 isObject 工具方法
   - 🌟 新增 isReference 工具方法
   - 🌟 新增 isPrimitive 工具方法
+  - 🌟 新增 isPromise 工具方法
 
 # 1.4.1
   - 📅 2021-07-08

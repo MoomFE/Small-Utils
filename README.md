@@ -132,6 +132,21 @@
 >   isPrimitive(() => {}); // -> false
 > ```
 
+> ### isPromise
+>   - 判断传入参数是否是类似于 Promise 的对象
+> ```js
+>   import isPromise from '@moomfe/small-utils/utils/isPromise';
+>
+>   isPromise(new Promise(() => {})) // -> true
+>   isPromise(Promise.resolve()) // -> true
+>   isPromise(Promise.reject()) // -> true
+>   isPromise({ then() {}, catch() {} }) // -> true
+>   isPromise({ then: true, catch: true }) // -> false
+>   isPromise({ then: true }) // -> false
+>   isPromise({}) // -> false
+>   isPromise(null) // -> false
+> ```
+
 
 
 ## Overview ( Styles )
