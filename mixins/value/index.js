@@ -8,24 +8,32 @@ export default Vue.extend({
   },
   data() {
     return {
-      /** 当前组件值 */
-      currentValue: this.value
+      /** 组件内部值 ( 修改时不通知父组件 ) */
+      lazyValue: this.value
     };
+  },
+  computed: {
+    /** 组件内部值 */
+    internalValue: {
+      get() {
+        return this.lazyValue;
+      },
+      set(value) {
+        this.lazyValue = value;
+        this.$emit('input', value);
+      }
+    }
   },
   methods: {
     /** 设置当前组件值 */
     setValue(value) {
-      this.currentValue = value;
+      this.internalValue = value;
     }
   },
   watch: {
-    // 父组件传入值更改后, 更改当前组件值
+    // 父组件传入值更改后, 更新当前组件值
     value(value) {
-      this.currentValue = value;
-    },
-    // 当前组件值更改后, 通知父组件更新值
-    currentValue(value) {
-      this.$emit('input', value);
+      this.lazyValue = value;
     }
   }
 });

@@ -12,7 +12,7 @@ export default Vue.extend({
         ref: 'input',
         props: {
           ...this.$attrs,
-          value: this.currentValue
+          value: this.internalValue
         },
         on: {
           ...listeners,
