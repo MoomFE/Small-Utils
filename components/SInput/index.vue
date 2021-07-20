@@ -16,7 +16,19 @@
       labelPrepend: { type: Boolean, default: false }
     },
     render(create) {
-      return create(VTextField, this.getRootNodeData(), this.getRootNodeChildren());
+      const data = this.getRootNodeData();
+
+      data.ref = 'input';
+
+      return create(VTextField, data, this.getRootNodeChildren());
+    },
+    methods: {
+      focus() {
+        this.$refs.input.focus();
+      },
+      blur() {
+        this.$refs.input.blur();
+      }
     }
   });
 </script>
