@@ -10,8 +10,10 @@ export default Vue.extend({
 
       return {
         ref: 'input',
+        attrs: {
+          ...this.$attrs
+        },
         props: {
-          ...this.$attrs,
           value: this.internalValue
         },
         on: {
