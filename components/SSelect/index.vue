@@ -24,6 +24,8 @@
       const data = baseMixins.options.methods.getRootNodeData.call(this);
 
       data.props.itemText = this.itemText;
+      data.ref = 'select';
+      data.staticClass = `s-select ${data.staticClass || ''}`.trim();
 
       return create(VSelect, data, this.getRootNodeChildren());
     }
