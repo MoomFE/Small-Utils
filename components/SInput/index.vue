@@ -19,6 +19,7 @@
       const data = this.getRootNodeData();
 
       data.ref = 'input';
+      data.staticClass = `s-input ${data.staticClass || ''}`.trim();
 
       return create(VTextField, data, this.getRootNodeChildren());
     },
