@@ -35,6 +35,14 @@
     data: () => ({
       osInstace: null
     }),
+    methods: {
+      scroll(...args) {
+        return this.osInstace.scroll(...args);
+      },
+      scrollStop(...args) {
+        return this.osInstace.scrollStop(...args);
+      }
+    },
     mounted() {
       this.osInstace = window.OverlayScrollbars(
         this.$el,
