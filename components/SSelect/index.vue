@@ -5,10 +5,7 @@
   import InputGenerate from '../../mixins/input-generate/index';
 
 
-  const baseMixins = mixins(Value, InputGenerate);
-
-
-  export default baseMixins.extend({
+  export default mixins(Value, InputGenerate).extend({
     inheritAttrs: false,
     props: {
       /** 是否必填 */
@@ -21,7 +18,7 @@
       itemText: { type: String, default: 'label' }
     },
     render(create) {
-      const data = baseMixins.options.methods.getRootNodeData.call(this);
+      const data = this.getRootNodeData();
 
       data.props.itemText = this.itemText;
       data.ref = 'select';
