@@ -135,10 +135,10 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.0.tgz#87de7af9c231826fdd68ac7258f77c429e0e5fcf"
   integrity sha512-wdppn25U8z/2yiaT6YGquE6X8sSv7hNMWSXYSSU1jGv/yd6XqjXgTDJ8KP4NgjTXfJ3GbRjeeb8RTV7a/VpM+w==
 
-"@moomfe/eslint-config@^1.3.0":
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/@moomfe/eslint-config/-/eslint-config-1.3.1.tgz#1eede842ebe733ba968cec1267a02f504175b6d7"
-  integrity sha512-XIHspNu+2Ekjmmh6nyULNckexVuFInikQGwQejmtC1oezumu6QAhVZTS/6mIV1V423GArnP413fcClnXI9kcaw==
+"@moomfe/eslint-config@^1.3.2":
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/@moomfe/eslint-config/-/eslint-config-1.3.2.tgz#7add11eca27c5d88f4e3ec24944748adbc186cb1"
+  integrity sha512-FFOWodqUtgxbkab2WgqtXJZgXrUlcTD7lUgVHUjBd1ym526K5ErF9FmYYPGqk5ozRNLcZrAj2Ndvd+kVn7LJFA==
 
 "@types/json5@^0.0.29":
   version "0.0.29"
