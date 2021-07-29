@@ -8,7 +8,7 @@
 
 ## Overview ( Vue Components )
 如要使用组件,<br>
-则默认您已拥有以下环境及类库: `Vite v2`, `Vue v2`, `Vuetify v2`, `lodash`
+则默认您已拥有以下环境及类库: [Vite v2](https://cn.vitejs.dev/), [Vue v2](https://cn.vuejs.org/), [Vuetify v2](https://vuetifyjs.com/zh-Hans/), [lodash](https://lodash.com/)
 
 > ### s-scrollbars 滚动条
 >   - 类库 [overlayscrollbars](https://github.com/KingSora/OverlayScrollbars) 的上层封装, 相关代码来自 [overlayscrollbars-vue](https://github.com/KingSora/OverlayScrollbars/tree/master/packages/overlayscrollbars-vue)
