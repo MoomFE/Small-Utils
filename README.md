@@ -8,7 +8,7 @@
 
 ## Overview ( Vue Components )
 如要使用组件,<br>
-则默认您已拥有以下环境及类库: [Vite v2](https://cn.vitejs.dev/), [Vue v2](https://cn.vuejs.org/), [Vuetify v2](https://vuetifyjs.com/zh-Hans/), [lodash](https://lodash.com/)
+则默认您已拥有以下环境及类库: [Vite v2](https://cn.vitejs.dev/), [Vue v2](https://cn.vuejs.org/), [Vuetify v2](https://vuetifyjs.com/zh-Hans/), [lodash](https://lodash.com/), [@vue/composition-api](https://github.com/vuejs/composition-api), [VueUse](https://vueuse.org/)
 
 > ### s-scrollbars 滚动条
 >   - 类库 [overlayscrollbars](https://github.com/KingSora/OverlayScrollbars) 的上层封装, 相关代码来自 [overlayscrollbars-vue](https://github.com/KingSora/OverlayScrollbars/tree/master/packages/overlayscrollbars-vue)
@@ -27,6 +27,11 @@
 >   - `Vuetify` 的 `v-select` 组件的上层封装
 >   - 提供了更多可选属性参数
 >   - `item-text` 默认值由 `text` 改为 `label`
+
+> ### s-textarea 文本域
+>   - `Vuetify` 的 `v-textarea` 组件的上层封装
+>   - 提供了更多可选属性参数
+>   - 优化了滚动条表现
 
 
 
