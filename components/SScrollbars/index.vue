@@ -59,11 +59,14 @@
       }
     },
     watch: {
-      options(options) {
-        const osInstance = this.osInstace;
+      options: {
+        deep: true,
+        handler(options) {
+          const osInstance = this.osInstace;
 
-        if (window.OverlayScrollbars.valid(osInstance)) {
-          osInstance.options(options);
+          if (window.OverlayScrollbars.valid(osInstance)) {
+            osInstance.options(options);
+          }
         }
       }
     }
