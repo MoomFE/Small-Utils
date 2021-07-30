@@ -1,6 +1,7 @@
 <script>
   import './index.scss';
   import VSelect from 'vuetify/lib/components/VSelect';
+  import VAutocomplete from 'vuetify/lib/components/VAutocomplete';
   import mixins from 'vuetify/lib/util/mixins';
   import Value from '../_mixins/value/index';
   import InputGenerate from '../_mixins/input-generate/index';
@@ -17,7 +18,9 @@
       /** 将输入框标签显示到输入框外部的前面 */
       labelPrepend: { type: Boolean, default: false },
       /** 设置 'items' 属性的文本值 */
-      itemText: { type: String, default: 'label' }
+      itemText: { type: String, default: 'label' },
+      /** 可搜索 */
+      filterable: { type: Boolean, default: false }
     },
     render(create) {
       const data = this.getRootNodeData();
@@ -26,7 +29,7 @@
       data.ref = 'select';
       data.staticClass = `s-select ${data.staticClass || ''}`.trim();
 
-      return create(VSelect, data, this.getRootNodeChildren());
+      return create(this.filterable ? VAutocomplete : VSelect, data, this.getRootNodeChildren());
     }
   });
 </script>
