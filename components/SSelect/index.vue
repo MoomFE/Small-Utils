@@ -6,6 +6,7 @@
 
 
   export default mixins(Value, InputGenerate).extend({
+    name: 's-select',
     inheritAttrs: false,
     props: {
       /** 是否必填 */
