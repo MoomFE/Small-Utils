@@ -1,4 +1,5 @@
 <script>
+  import './index.scss';
   import mixins from 'vuetify/lib/util/mixins';
   import Textarea from './components/Textarea.vue';
   import Value from '../_mixins/value/index';
