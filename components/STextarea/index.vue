@@ -1,8 +1,8 @@
 <script>
   import mixins from 'vuetify/lib/util/mixins';
   import Textarea from './components/Textarea.vue';
-  import Value from '../../mixins/value/index';
-  import InputGenerate from '../../mixins/input-generate/index';
+  import Value from '../_mixins/value/index';
+  import InputGenerate from '../_mixins/input-generate/index';
 
 
   export default mixins(Value, InputGenerate).extend({
