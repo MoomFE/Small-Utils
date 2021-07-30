@@ -1,4 +1,5 @@
 <script>
+  import './index.scss';
   import VSelect from 'vuetify/lib/components/VSelect';
   import mixins from 'vuetify/lib/util/mixins';
   import Value from '../_mixins/value/index';
