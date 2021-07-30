@@ -1,0 +1,9 @@
+@import "../_styles/components/input-style.scss";
+
+
+$name: s-textarea;
+
+
+.#{ $name }{
+  @include input-prepend-outer-style($name);
+}

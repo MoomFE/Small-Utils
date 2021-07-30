@@ -77,7 +77,7 @@ export default Vue.extend({
         return null;
       }
 
-      return this.$createElement('div', { staticClass: 'text-truncate' }, [
+      return this.$createElement('div', { staticClass: `${this.$options.name}__prepend-outer text-truncate` }, [
         this.required && this.$createElement('span', { staticClass: 'red--text mr-1' }, ['*']),
         content
       ]);

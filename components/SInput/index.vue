@@ -1,4 +1,5 @@
 <script>
+  import './index.scss';
   import VTextField from 'vuetify/lib/components/VTextField';
   import mixins from 'vuetify/lib/util/mixins';
   import Value from '../_mixins/value/index';
