@@ -19,7 +19,7 @@
       labelPrepend: { type: Boolean, default: false },
       /** 设置 'items' 属性的文本值 */
       itemText: { type: String, default: 'label' },
-      /** 可搜索 */
+      /** 可过滤 */
       filterable: { type: Boolean, default: false }
     },
     render(create) {
