@@ -1,4 +1,5 @@
   - 🌟 新增 `s-textarea` 组件
+  - 🌟 `s-select` 组件新增 `filterable` 选项以支持过滤功能
   - 💄 为 `s-input`, `s-select`, `s-textarea` 添加 `prepend` 插槽内容样式
   - ⚠️ 组件新增依赖类库 `@vue/composition-api`, `VueUse`
 
