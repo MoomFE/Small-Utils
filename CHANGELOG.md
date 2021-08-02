@@ -1,4 +1,5 @@
   - 🌟 新增 `s-textarea` 组件
+  - 💄 为 `s-input`, `s-select`, `s-textarea` 添加 `prepend` 插槽内容样式
   - ⚠️ 组件新增依赖类库 `@vue/composition-api`, `VueUse`
 
 # 1.5.6
