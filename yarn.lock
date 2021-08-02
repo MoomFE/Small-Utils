@@ -152,7 +152,16 @@
   dependencies:
     tslib "^2.3.0"
 
-"@vueuse/core@^5.2.0":
+"@vueuse/components@^5.2.0":
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/@vueuse/components/-/components-5.2.0.tgz#b3226f857f38a0818e1c277c4ab7eaba2f68698e"
+  integrity sha512-2FZqgcIHoheaiInHcOH7BRigeYywwhrQ5+F2/CMjIrO4dKsUWQ6TSHZrIQCA5SVHCuJDSc8d1IxKLZp9N5RqLQ==
+  dependencies:
+    "@vueuse/core" "5.2.0"
+    "@vueuse/shared" "5.2.0"
+    vue-demi "*"
+
+"@vueuse/core@5.2.0", "@vueuse/core@^5.2.0":
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/@vueuse/core/-/core-5.2.0.tgz#c2c0b89d9506fdfca41cd3056e38478226bc5e31"
   integrity sha512-IS2QnVZ4lTlRUtgPHJ4ttTatXGWRZuvj/GJDVp8FRlUjzKXD0YjZtx0280FCg7y3YejXV2QGhY+/YrXybMjpPw==
