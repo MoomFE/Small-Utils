@@ -1,4 +1,5 @@
-  - 🌟 新增 `hasMumbers`, `isMumbers` 正则验证器
+  - 🌟 新增 `hasMumbers`, `isMumbers` 数字正则验证器
+  - 🌟 新增 `isMobile`, `isCompleteMobile` 移动电话号码正则验证器
   - 💄 为 `s-scrollbars` 组件 viewport 层添加 ref 引用
   - 🐞 修复 `s-textarea` 组件的内容会和 label 重叠的问题
   - 🐞 修复 `s-textarea` 组件拖拽大小无效的问题
