@@ -2,7 +2,7 @@
   <div class="os-host s-scrollbars">
     <div class="os-resize-observer-host" />
     <div class="os-padding">
-      <div class="os-viewport">
+      <div ref="viewport" class="os-viewport">
         <div class="os-content">
           <slot />
         </div>
