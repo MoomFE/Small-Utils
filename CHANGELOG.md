@@ -1,3 +1,4 @@
+  - 🌟 新增 `hasMumbers`, `isMumbers` 正则验证器
   - 💄 为 `s-scrollbars` 组件 viewport 层添加 ref 引用
 
 # 1.6.0
