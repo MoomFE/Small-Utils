@@ -1,4 +1,5 @@
-  - 🌟 新增 `hasMumbers`, `isMumbers` 正则验证器
+  - 🌟 新增 `hasMumbers`, `isMumbers` 数字正则验证器
+  - 🌟 新增 `isMobile`, `isCompleteMobile` 移动电话号码正则验证器
   - 💄 为 `s-scrollbars` 组件 viewport 层添加 ref 引用
 
 # 1.6.0
