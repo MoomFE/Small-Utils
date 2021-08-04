@@ -9,9 +9,6 @@
  * isString(new String('666')); // -> true
  * isString(666); // -> false
  */
-function isString(value) {
+export default function isString(value) {
   return typeof value === 'string' || Object.prototype.toString.call(value) === '[object String]';
 }
-
-export { isString }
-export default isString

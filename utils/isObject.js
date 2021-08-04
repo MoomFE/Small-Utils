@@ -11,9 +11,6 @@
  * isObject(function() {}); // -> false
  * isObject(666); // -> false
  */
-function isObject(value) {
+export default function isObject(value) {
   return value !== null && typeof value === 'object';
 }
-
-export { isObject }
-export default isObject
