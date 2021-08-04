@@ -9,6 +9,10 @@
  * isFunction(function() {}); // -> true
  * isFunction(666); // -> false
  */
-export default function isFunction(value) {
+function isFunction(value) {
   return typeof value === 'function';
 }
+
+  
+export { isFunction };
+export default isFunction;

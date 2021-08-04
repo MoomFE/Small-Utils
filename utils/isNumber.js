@@ -13,6 +13,9 @@
  * isNumber(NaN); // -> false
  * isNumber('666'); // -> false
  */
-export default function isNumber(value) {
+function isNumber(value) {
   return (typeof value === 'number' || Object.prototype.toString.call(value) === '[object Number]') && value === value;
 }
+
+export { isNumber }
+export default isNumber
