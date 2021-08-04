@@ -2,6 +2,7 @@
   - 🌟 新增 `isMobile`, `isCompleteMobile` 移动电话号码正则验证器
   - 💄 支持在一个文件中返回所有验证器
   - 💄 支持在一个文件中返回所有工具方法
+  - 💄 支持在一个文件中返回所有组件
   - 💄 为 `s-scrollbars` 组件 viewport 层添加 ref 引用
 
 # 1.6.0
