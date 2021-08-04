@@ -1,9 +1,21 @@
-export * from './isFunction'
-export * from './isNumber'
-export * from './isNumeric'
-export * from './isObject'
-export * from './isPlainObject'
-export * from './isPrimitive'
-export * from './isPromise'
-export * from './isReference'
-export * from './isString'
+import isFunction from './isFunction';
+import isNumber from './isNumber';
+import isNumeric from './isNumeric';
+import isObject from './isObject';
+import isPlainObject from './isPlainObject';
+import isPrimitive from './isPrimitive';
+import isPromise from './isPromise';
+import isReference from './isReference';
+import isString from './isString';
+
+export {
+  isFunction,
+  isNumber,
+  isNumeric,
+  isObject,
+  isPlainObject,
+  isPrimitive,
+  isPromise,
+  isReference,
+  isString
+};

@@ -16,9 +16,6 @@ import isNumber from './isNumber';
  * isNumeric(new Number(666)); // -> true
  * isNumeric(NaN); // -> false
  */
-function isNumeric(value) {
+export default function isNumeric(value) {
   return isNumber(value) || (typeof value === 'string' && !isNaN(value - parseFloat(value)));
 }
-
-export { isNumeric }
-export default isNumeric

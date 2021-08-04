@@ -17,9 +17,6 @@ import isFunction from './isFunction';
  * isPromise({}) // -> false
  * isPromise(null) // -> false
  */
-function isPromise(value) {
+export default function isPromise(value) {
   return value != null && isFunction(value.then) && isFunction(value.catch);
 }
-
-export { isPromise }
-export default isPromise
