@@ -20,6 +20,9 @@ import isReference from './isReference';
  * isPrimitive([]); // -> false
  * isPrimitive(() => {}); // -> false
  */
-export default function isPrimitive(value) {
+function isPrimitive(value) {
   return !isReference(value);
 }
+
+export { isPrimitive }
+export default isPrimitive

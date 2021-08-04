@@ -17,8 +17,11 @@
  * isReference('666'); // -> false
  * isReference(Symbol('666')); // -> false
  */
-export default function isReference(value) {
+function isReference(value) {
   const type = typeof value;
 
   return (type === 'object' && value !== null) || type === 'function';
 }
+
+export { isReference }
+export default isReference

@@ -9,6 +9,9 @@
  * isPlainObject(Object.create(null)); // -> true
  * isPlainObject([]); // -> false
  */
-export default function isPlainObject(value) {
+function isPlainObject(value) {
   return Object.prototype.toString.call(value) === '[object Object]';
 }
+
+export { isPlainObject }
+export default isPlainObject
