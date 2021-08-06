@@ -2,13 +2,33 @@
   "folders": [
     {
       "path": "."
+    },
+    {
+      "path": "components",
+      "name": "Components"
+    },
+    {
+      "path": "utils",
+      "name": "Utils"
+    },
+    {
+      "path": "validator",
+      "name": "Validator"
+    },
+    {
+      "path": "styles",
+      "name": "Styles"
     }
   ],
   "settings": {
     "files.exclude": {
+      "components": true,
       "node_modules": true,
       "package-lock.json": true,
       "Small-Utils.code-workspace": true,
+      "styles": true,
+      "utils": true,
+      "validator": true,
       "yarn.lock": true
     },
     "editor.tabSize": 2,
