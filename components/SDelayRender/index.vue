@@ -1,5 +1,5 @@
 <script>
-  import { defineComponent } from '@vue/composition-api';
+  import { defineComponent, ref, onMounted } from '@vue/composition-api';
   import { useTimeoutFn } from '@vueuse/core';
   import isNumeric from '../../utils/isNumeric';
 
@@ -18,20 +18,27 @@
         default: 0
       }
     },
-    data: () => ({
+    setup(props) {
       /** 是否渲染 */
-      render: false
-    }),
+      const render = ref(false);
+
+      // 实例挂载后开始计时, 计时结束后进行渲染
+      onMounted(() => {
+        const delayTime = props.delayTime;
+        const interval = isNumeric(delayTime) ? delayTime : 0;
+
+        useTimeoutFn(
+          () => (render.value = true),
+          interval
+        );
+      });
+
+      return {
+        render
+      };
+    },
     render(create) {
       return this.render ? create(this.tag, null, [].concat(this.$slots.default)) : null;
-    },
-    mounted() {
-      const delayTime = this.delayTime;
-
-      useTimeoutFn(
-        () => (this.render = true),
-        isNumeric(delayTime) ? delayTime : 0
-      );
     }
   });
 </script>
