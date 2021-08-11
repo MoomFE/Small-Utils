@@ -12,7 +12,7 @@
   export default defineComponent({
     name: 's-date-picker',
     setup(props, ctx) {
-      const { lazyValue, internalValue, setValue } = useValue(props, ctx);
+      const { internalValue, setValue } = useValue(props, ctx);
       const { getInputData } = useInputGenerate(props, ctx, { internalValue, setValue });
 
       /** 菜单激活状态 */
@@ -24,8 +24,8 @@
       function genInput({ attrs, on }) {
         const data = mergeData(getInputData(), {
           on,
-          attrs,
-          props: {
+          attrs: {
+            ...attrs,
             readonly: true
           }
         });
@@ -41,8 +41,9 @@
        */
       function genDatePicker() {
         return create(VDatePicker, {
-          props: {
-            value: internalValue.value
+          attrs: {
+            value: internalValue.value,
+            locale: 'zh-cn'
           },
           on: {
             input: [
@@ -55,11 +56,10 @@
 
       return () => create(VMenu, {
         ref: 'menu',
-        props: {
+        attrs: {
           value: isMenuActive.value,
           offsetY: true,
           closeOnContentClick: false,
-          transition: 'scale-transition',
           minWidth: 'auto'
         },
         on: {
