@@ -3,10 +3,17 @@
   import VMenu from 'vuetify/lib/components/VMenu/VMenu';
   import VDatePicker from 'vuetify/lib/components/VDatePicker/VDatePicker';
   import SInput from '../SInput/index.vue';
-  import ValueMixin from '../_mixins/value/index';
+  import useValue from '../_composables/useValue';
 
   export default defineComponent({
     name: 's-date-picker',
+    setup(props, ctx) {
+      const { lazyValue, internalValue, setValue } = useValue(props, ctx);
+
+      return {
+        lazyValue, internalValue, setValue
+      };
+    },
     data: () => ({
       /** 菜单激活状态 */
       isMenuActive: false
@@ -22,14 +29,14 @@
           minWidth: 'auto'
         },
         on: {
-          'input': (value) => (this.isMenuActive = value)
+          input: (value) => (this.isMenuActive = value)
         },
         scopedSlots: {
           activator: this.genInput
         }
       }, [
         this.genDatePicker()
-      ])
+      ]);
     },
     methods: {
       /**
@@ -50,7 +57,7 @@
           nativeOn: {
             ...on
           }
-        })
+        });
       },
       /**
        * 生成组件的日期选择器部分
@@ -67,11 +74,8 @@
               () => (this.isMenuActive = false)
             ]
           }
-        })
+        });
       }
-    },
-    mixins: [
-      ValueMixin
-    ]
+    }
   });
 </script>
