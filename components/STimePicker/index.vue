@@ -11,6 +11,10 @@
 
   export default defineComponent({
     name: 's-time-picker',
+    props: {
+      /** 父组件传入值 */
+      value: null
+    },
     setup(props, ctx) {
       const { internalValue, setValue } = useValue(props, ctx);
       const { getInputData } = useInputGenerate(props, ctx, { internalValue, setValue });
