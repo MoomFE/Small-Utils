@@ -62,7 +62,7 @@
           }
         }
 
-        this.internalValue = value || null;
+        this.internalValue = value == null ? null : value;
       }
     }
   });
