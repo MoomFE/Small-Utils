@@ -1,4 +1,4 @@
 export * from './numbers';
 export * from './mobile';
-export * from './citizenId';
+export * from './citizenID';
 export * from './email';

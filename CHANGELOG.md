@@ -1,3 +1,5 @@
+  - 🐞 修复使用 `@moomfe/small-utils/validator` 方式导入验证器报错的问题
+
 # 2.3.0
   - 📅 2021-08-27
   - 🌟 新增 `isCitizenID` 18 位身份证号码正则验证器
