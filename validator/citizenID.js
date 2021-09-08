@@ -12,6 +12,10 @@ export const isCitizenIDReg = new RegExp(isCitizenIDRegStr);
  * 判断字符串是否是 18 位身份证号码
  * @param {any}} value 需要判断的参数
  * @returns {Boolean}
+ * @example
+ *
+ * isCitizenID('360602199901239999'); // -> true
+ * isCitizenID('360609999999999999'); // -> false
  */
 export function isCitizenID(value) {
   return isCitizenIDReg.test(value);

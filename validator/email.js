@@ -12,6 +12,14 @@ export const isEmailReg = new RegExp(isEmailRegStr);
  * 判断字符串是否是电子邮件地址
  * @param {any}} value 需要判断的参数
  * @returns {Boolean}
+ * @example
+ *
+ * isEmail('123456789@xxx.com'); // -> true
+ * isEmail('abcdefghi@xxx.com'); // -> true
+ * isEmail('123456789'); // -> false
+ * isEmail('123456789@'); // -> false
+ * isEmail('123456789@xxx'); // -> false
+ * isEmail('123456789@xxx.'); // -> false
  */
 export function isEmail(value) {
   return isEmailReg.test(value);
