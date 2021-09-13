@@ -1,3 +1,6 @@
+  - 💄 为 `s-scrollbars` 组件 padding, content 层添加 ref 引用
+  - 💄 为 `s-scrollbars` 组件新增 `paddingClass`, `viewportClass`, `contentClass` 属性
+
 # 2.3.1
   - 📅 2021-09-08
   - 🐞 修复使用 `@moomfe/small-utils/validator` 方式导入验证器报错的问题

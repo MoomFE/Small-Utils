@@ -1,9 +1,9 @@
 <template>
   <div class="os-host s-scrollbars">
     <div class="os-resize-observer-host" />
-    <div class="os-padding">
-      <div ref="viewport" class="os-viewport">
-        <div class="os-content">
+    <div ref="padding" class="os-padding" :class="paddingClass">
+      <div ref="viewport" class="os-viewport" :class="viewportClass">
+        <div ref="content" class="os-content" :class="contentClass">
           <slot />
         </div>
       </div>
@@ -29,8 +29,21 @@
   export default {
     name: 's-scrollbars',
     props: {
-      options: { type: Object },
-      extensions: { type: [String, Array, Object] }
+      /** 传递给 overlayscrollbars 的 options */
+      options: {
+        type: Object
+      },
+      /** 传递给 overlayscrollbars 的 extensions */
+      extensions: {
+        type: [String, Array, Object]
+      },
+
+      /** 组件 padding 层样式类 */
+      paddingClass: { type: String },
+      /** 组件 viewport 层样式类 */
+      viewportClass: { type: String },
+      /** 组件 content 层样式类 */
+      contentClass: { type: String }
     },
     data: () => ({
       osInstace: null
