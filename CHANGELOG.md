@@ -1,3 +1,5 @@
+# 2.3.2
+  - 📅 2021-09-26
   - 💄 为 `s-scrollbars` 组件 padding, content 层添加 ref 引用
   - 💄 为 `s-scrollbars` 组件新增 `paddingClass`, `viewportClass`, `contentClass` 属性
 
