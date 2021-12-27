@@ -1,13 +1,10 @@
 module.exports = {
   root: true,
   extends: [
-    'plugin:vue/essential',
-    './node_modules/@moomfe/eslint-config/.eslintrc.vue.js'
+    '@moomfe/eslint-config/.eslintrc.vue3.js'
   ],
+  parser: 'vue-eslint-parser',
   parserOptions: {
-    parser: 'babel-eslint'
-  },
-  rules: {
-    'import/no-extraneous-dependencies': ['off']
+    parser: '@typescript-eslint/parser'
   }
 };
