@@ -14,10 +14,6 @@
     {
       "path": "src/validator",
       "name": "Validator"
-    },
-    {
-      "path": "src/styles",
-      "name": "Styles"
     }
   ],
   "settings": {
