@@ -1,9 +1,0 @@
-@import "../_styles/components/input-style.scss";
-
-
-$name: s-select;
-
-
-.#{ $name }{
-  @include input-prepend-outer-style($name);
-}
