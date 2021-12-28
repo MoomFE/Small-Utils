@@ -4,31 +4,30 @@
       "path": "."
     },
     {
-      "path": "components",
+      "path": "src/components",
       "name": "Components"
     },
     {
-      "path": "utils",
+      "path": "src/utils",
       "name": "Utils"
     },
     {
-      "path": "validator",
+      "path": "src/validator",
       "name": "Validator"
     },
     {
-      "path": "styles",
+      "path": "src/styles",
       "name": "Styles"
     }
   ],
   "settings": {
     "files.exclude": {
-      "components": true,
       "node_modules": true,
       "package-lock.json": true,
       "Small-Utils.code-workspace": true,
-      "styles": true,
-      "utils": true,
-      "validator": true,
+      "src/components": true,
+      "src/utils": true,
+      "src/validator": true,
       "yarn.lock": true
     },
     "editor.tabSize": 2,
