@@ -13,7 +13,8 @@
   },
   "homepage": "https://github.com/MoomFE/Small-Utils#readme",
   "scripts": {
-    "test": "vitest"
+    "test": "vitest",
+    "build": "tsc"
   },
   "dependencies": {
     "overlayscrollbars": "^1.13.1",
