@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "./dist",
+    "outDir": "./",
     "target": "ESNext",
     "useDefineForClassFields": true,
     "module": "ESNext",
@@ -9,6 +9,8 @@
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "allowJs": true,
+    "declaration": true,
+    "declarationDir": "./types",
     "lib": ["ESNext", "DOM"],
     "baseUrl": "./",
     "paths": {
@@ -21,6 +23,7 @@
   "include": ["src"],
   "exclude": [
     "node_modules",
-    "dist"
+    "dist",
+    "src/**/*.test.ts"
   ]
 }
