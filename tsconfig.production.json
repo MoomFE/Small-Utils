@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "outDir": "./",
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "strict": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "allowJs": true,
+    "declaration": true,
+    "declarationDir": "./types",
+    "lib": ["ESNext", "DOM"],
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "types": [
+      "vite/client"
+    ]
+  },
+  "include": ["src"],
+  "exclude": [
+    "node_modules",
+    "src/**/*.test.ts"
+  ]
+}
