@@ -1,1 +1,1 @@
-export * from './mobile/mobile';
+export * from './mobile';
