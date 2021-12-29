@@ -11,7 +11,7 @@ test('leastRun: 运行函数并且保证最少执行 1000ms 的时间', async ()
   await leastRun(() => {});
   const end = Date.now();
   expect(end - start).toBeGreaterThanOrEqual(1000);
-});
+}, 1100);
 
 test('leastRun: 运行函数并且保证最少执行指定 ms 的时间', async () => {
   const times = [1, 10, 20, 100, 200, 1000, 2000];
@@ -22,7 +22,7 @@ test('leastRun: 运行函数并且保证最少执行指定 ms 的时间', async 
     const end = Date.now();
     expect(end - start).toBeGreaterThanOrEqual(time);
   }
-});
+}, 3431);
 
 test('leastRun: 传入的函数执行时间超过指定的时间时, 直接完成', async () => {
   const start = Date.now();
@@ -31,4 +31,4 @@ test('leastRun: 传入的函数执行时间超过指定的时间时, 直接完�
   });
   const end = Date.now();
   expect(end - start).toBeGreaterThanOrEqual(1000);
-});
+}, 1100);
