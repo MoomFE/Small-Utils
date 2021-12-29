@@ -1,5 +1,11 @@
 package-lock.json
 node_modules
 
+/index.js
+/validator
+/utils
+/components
+
 dist
+types
 coverage
