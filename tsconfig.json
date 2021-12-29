@@ -1,18 +1,21 @@
 {
   "compilerOptions": {
+    "rootDir": ".",
+    "baseUrl": ".",
     "outDir": "./",
     "target": "ESNext",
-    "useDefineForClassFields": true,
     "module": "ESNext",
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "moduleResolution": "node",
-    "strict": true,
-    "resolveJsonModule": true,
     "esModuleInterop": true,
-    "allowJs": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
     "declaration": true,
     "declarationDir": "./types",
-    "lib": ["ESNext", "DOM"],
-    "baseUrl": "./",
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "allowJs": true,
     "paths": {
       "@/*": ["./src/*"]
     },
