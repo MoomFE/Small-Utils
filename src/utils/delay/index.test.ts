@@ -1,5 +1,5 @@
 import { test, expect } from 'vitest'; // eslint-disable-line import/no-extraneous-dependencies
-import { delay } from '.';
+import { delay } from '@/index';
 
 
 test('delay: 返回一个 Promise', () => {
