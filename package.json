@@ -14,7 +14,7 @@
   "homepage": "https://github.com/MoomFE/Small-Utils#readme",
   "scripts": {
     "test": "vitest",
-    "build": "tsc"
+    "build": "tsc --emitDeclarationOnly"
   },
   "dependencies": {
     "overlayscrollbars": "^1.13.1",
