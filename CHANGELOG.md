@@ -1,5 +1,7 @@
 ## [Unreleased]
   - 🌟 项目使用 Typescript 重构
+  - 🌟 新增 delay 工具方法, 返回一个延迟指定时间的 Promise
+  - 🌟 新增 leastRun 工具方法, 运行函数并且保证最少执行指定 ms 的时间
 
 
 ## [v2.3.2]
