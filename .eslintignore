@@ -1,4 +1,8 @@
 /index.js
+/index.cjs
+/index.mjs
+/index.iife.js
+/index.iife.min.js
 /validator
 /utils
 /components
