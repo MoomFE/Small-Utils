@@ -4,13 +4,13 @@
   "description": "",
   "author": "Wei Zhang <https://github.com/Zhang-Wei-666>",
   "license": "MIT",
-  "types": "./types/index.d.ts",
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
+  "types": "./utils/index.d.ts",
+  "main": "./utils/index.cjs",
+  "module": "./utils/index.mjs",
   "exports": {
     ".": {
-      "import": "./index.mjs",
-      "require": "./index.cjs",
+      "import": "./utils/index.mjs",
+      "require": "./utils/index.cjs",
       "types": "./types/index.d.ts"
     }
   },
