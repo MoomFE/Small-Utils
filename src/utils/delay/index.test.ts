@@ -1,5 +1,5 @@
 import { test, expect } from 'vitest'; // eslint-disable-line import/no-extraneous-dependencies
-import { delay } from '@/index';
+import { delay, wait } from '@/index';
 
 
 test('delay: 返回一个 Promise', () => {
@@ -23,3 +23,7 @@ test('delay: 指定延迟时间', async () => {
     expect(end - start).toBeGreaterThanOrEqual(time);
   }
 }, 3431);
+
+test('wait: delay 方法的别名', () => {
+  expect(wait).toBe(delay);
+});

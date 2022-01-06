@@ -7,3 +7,9 @@ export function delay(ms: number = 1000) {
     setTimeout(resolve, ms);
   });
 }
+
+/**
+ * 返回一个延迟指定时间的 Promise
+ * @param ms 延迟时间 ( default: 1000 )
+ */
+export const wait = delay;
