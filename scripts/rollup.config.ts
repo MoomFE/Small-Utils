@@ -37,10 +37,11 @@ const configs: RollupOptions[] = [];
 
 
 ['utils', 'validator'].forEach((name) => {
-  //
+  // 打包代码
   configs.push({
     input: `src/${name}/index.ts`,
     output: [
+      { file: `${name}/index.js`, format: 'es' },
       { file: `${name}/index.mjs`, format: 'es' },
       { file: `${name}/index.cjs`, format: 'cjs' }
     ],
@@ -49,7 +50,7 @@ const configs: RollupOptions[] = [];
       rollupEsbuildPlugin
     ]
   });
-  //
+  // 打包声明文件
   configs.push({
     input: `src/${name}/index.ts`,
     output: [{
