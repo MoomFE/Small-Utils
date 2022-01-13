@@ -1,5 +1,5 @@
 import { test, expect } from 'vitest'; // eslint-disable-line import/no-extraneous-dependencies
-import { delay, leastRun } from '@/index';
+import { delay, leastRun } from '@/utils';
 
 
 test('leastRun: 返回一个 Promise', () => {

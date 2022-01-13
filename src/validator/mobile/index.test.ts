@@ -1,5 +1,5 @@
 import { test, expect } from 'vitest'; // eslint-disable-line import/no-extraneous-dependencies
-import { isMobile } from '@/index';
+import { isMobile } from '@/validator';
 
 
 test('isMobile: 基础测试', () => {

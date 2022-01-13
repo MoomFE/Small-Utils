@@ -1,5 +1,5 @@
 import { test, expect } from 'vitest'; // eslint-disable-line import/no-extraneous-dependencies
-import { isCitizenID } from '@/index';
+import { isCitizenID } from '@/validator';
 
 
 test('isCitizenID: 基础测试', () => {
