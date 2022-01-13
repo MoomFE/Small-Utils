@@ -11,8 +11,9 @@
     ".": {
       "import": "./utils/index.mjs",
       "require": "./utils/index.cjs",
-      "types": "./types/index.d.ts"
-    }
+      "types": "./utils/index.d.ts"
+    },
+    "./*": "./*"
   },
   "repository": {
     "type": "git",
