@@ -13,6 +13,7 @@ export async function leastRun(ms: number, fn: Function): Promise<any>;
  */
 export async function leastRun(fn: Function): Promise<any>; // eslint-disable-line no-redeclare
 export async function leastRun(msOrFn: number | Function, maybeFn?: Function) { // eslint-disable-line no-redeclare
+  const start = Date.now();
   let ms = msOrFn as number;
   let fn = maybeFn || (() => {});
 
@@ -21,7 +22,6 @@ export async function leastRun(msOrFn: number | Function, maybeFn?: Function) { 
     fn = msOrFn;
   }
 
-  const start = Date.now();
   let result = fn();
 
   // 如果函数是异步函数, 那么等待函数执行完毕
