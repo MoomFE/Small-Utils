@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "rootDir": "./src",
+    "rootDir": "./",
     "outDir": "./",
     "target": "ESNext",
     "module": "ESNext",
@@ -17,13 +17,17 @@
     "skipLibCheck": true,
     "allowJs": true,
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@@/*": ["./*"],
     },
     "types": [
       "vite/client"
     ]
   },
-  "include": ["src"],
+  "include": [
+    "src",
+    "test"
+  ],
   "exclude": [
     "node_modules"
   ]
