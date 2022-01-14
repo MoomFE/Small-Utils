@@ -7,6 +7,6 @@
  * isString('666'); // -> true
  * isString(666); // -> false
  */
-export function isString(value: any): value is string {
+export function isString(value: unknown): value is string {
   return typeof value === 'string';
 }
