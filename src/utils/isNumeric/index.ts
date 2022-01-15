@@ -4,8 +4,7 @@ import { isNumber, isString } from '@/utils';
 /**
  * 判断传入参数是否是数字, 支持判断数字字符串
  *
- * @param {any} value 需要判断的参数
- * @returns {Boolean}
+ * @param value 需要判断的参数
  * @example
  *
  * isNumeric(666); // -> true
