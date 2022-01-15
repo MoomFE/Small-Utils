@@ -3,13 +3,28 @@ import { expect } from 'vitest';
 
 export const types = {
 
-  // Primitive
+  // Undefined
   undefined: [undefined],
+
+  // Null
   null: [null],
+
+  // String
   string: ['', ' ', 'Zw'],
+
+  // Number
   number: [-0, 0, 6, 6.6, -Infinity, Infinity],
+
+  // NaN
+  nan: [NaN],
+
+  // Boolean
   boolean: [true, false],
+
+  // Symbol
   symbol: [Symbol(''), Symbol.iterator],
+
+  // BigInt
   bigint: [-0n, 0n, 6n],
 
   // Object
