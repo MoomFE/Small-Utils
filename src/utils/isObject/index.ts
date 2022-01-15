@@ -13,3 +13,18 @@
 export function isObject(value: unknown): value is object {
   return value !== null && typeof value === 'object';
 }
+
+
+/**
+ * 判断传入参数是否是纯粹的对象
+ *
+ * @param value 需要判断的参数
+ * @example
+ *
+ * isPlainObject({}); // -> true
+ * isPlainObject(Object.create(null)); // -> true
+ * isPlainObject([]); // -> false
+ */
+export function isPlainObject(value: unknown) {
+  return Object.prototype.toString.call(value) === '[object Object]';
+}
