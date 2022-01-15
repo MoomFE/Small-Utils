@@ -5,8 +5,8 @@
  * @example
  *
  * isNumber(666); // -> true
- * isNumber(NaN); // -> false
  * isNumber('666'); // -> false
+ * isNumber(NaN); // -> false
  */
 export function isNumber(value: unknown): value is number {
   return typeof value === 'number' && value === value; // eslint-disable-line no-self-compare

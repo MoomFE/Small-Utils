@@ -13,7 +13,10 @@ export const types = {
   string: ['', ' ', 'Zw'],
 
   // Number
-  number: [-0, 0, 6, 6.6, -Infinity, Infinity],
+  number: [-6.6, -6, -0, 0, 6, 6.6, -Infinity, Infinity],
+
+  // Numeric String
+  numericString: ['-6.6', '-6', '-0', '0', '6', '6.6'],
 
   // NaN
   nan: [NaN],

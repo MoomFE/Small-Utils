@@ -1,5 +1,5 @@
 /**
- * 判断传入参数是否是 string 类型
+ * 判断传入参数是否是 String 类型
  *
  * @param value 需要判断的参数
  * @example

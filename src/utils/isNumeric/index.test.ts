@@ -1,8 +1,8 @@
 import { test } from 'vitest'; // eslint-disable-line import/no-extraneous-dependencies
 import { testTypes } from '@@/test/shared';
-import { isString } from '@/utils';
+import { isNumeric } from '@/utils';
 
 
-test('isString: 基础测试', () => {
-  testTypes(isString, ['string', 'numericString']);
+test('isNumeric: 基础测试', () => {
+  testTypes(isNumeric, ['number', 'numericString']);
 });
