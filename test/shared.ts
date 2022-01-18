@@ -80,22 +80,31 @@ export const types = {
 };
 
 
-export function testTypes(
-  fn: (v: any) => boolean,
-  checkTypes: (keyof typeof types)[]
-) {
+type TestTypesFn = (v: any) => boolean;
+type TestTypesCheckTypes = (keyof typeof types)[];
+interface TestTypesOptions {
+  /**
+   * 是否反向测试
+   * @default false
+   */
+  reverse?: boolean;
+}
+
+
+export function testTypes(fn: TestTypesFn, checkTypes: TestTypesCheckTypes, options: TestTypesOptions = {}) {
   const keys = Object.keys(types) as (keyof typeof types)[];
+  const isReverse = !!options.reverse;
 
   for (const key of keys) {
     const values = types[key];
 
     if (checkTypes.includes(key)) {
       for (const value of values) {
-        expect(fn(value)).toBe(true);
+        expect(fn(value)).toBe(!isReverse);
       }
     } else {
       for (const value of values) {
-        expect(fn(value)).toBe(false);
+        expect(fn(value)).toBe(isReverse);
       }
     }
   }
