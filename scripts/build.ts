@@ -4,6 +4,7 @@
 import { resolve } from 'path';
 import { build } from 'vite';
 import { rollup } from 'rollup';
+import { upperFirst } from 'lodash-es';
 import fs from 'fs-extra';
 import dts from 'rollup-plugin-dts';
 
@@ -70,7 +71,7 @@ fs.readdirSync(resolve(srcPath, 'components')).forEach(async (name) => {
     await build({
       resolve: viteResolveConfig,
       build: {
-        outDir: resolve(rootPath, 'components', name),
+        outDir: resolve(rootPath, 'components', `S${upperFirst(name)}`),
         lib: {
           entry: input,
           formats: ['es', 'cjs'],
@@ -89,7 +90,7 @@ fs.readdirSync(resolve(srcPath, 'components')).forEach(async (name) => {
       external: rollupExternal
     }).then((bundle) => {
       bundle.write({
-        file: resolve(rootPath, `components/${name}/index.d.ts`),
+        file: resolve(rootPath, `components/S${upperFirst(name)}/index.d.ts`),
         format: 'es'
       });
     });
