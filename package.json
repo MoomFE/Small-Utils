@@ -5,11 +5,16 @@
   "author": "Wei Zhang <https://github.com/Zhang-Wei-666>",
   "license": "MIT",
   "types": "./utils/index.d.ts",
+  "files": [
+    "utils",
+    "validator",
+    "components"
+  ],
   "main": "./utils/index.cjs",
-  "module": "./utils/index.mjs",
+  "module": "./utils/index.js",
   "exports": {
     ".": {
-      "import": "./utils/index.mjs",
+      "import": "./utils/index.js",
       "require": "./utils/index.cjs",
       "types": "./utils/index.d.ts"
     },
@@ -25,7 +30,7 @@
   "homepage": "https://github.com/MoomFE/Small-Utils#readme",
   "scripts": {
     "test": "vitest",
-    "build": "rollup -c"
+    "build": "esno scripts/build.ts"
   },
   "dependencies": {
     "overlayscrollbars": "^1.13.1",
@@ -34,21 +39,22 @@
   },
   "devDependencies": {
     "@moomfe/eslint-config": "^1.8.1",
-    "@types/node": "^17.0.8",
-    "@typescript-eslint/parser": "^5.9.1",
-    "esbuild-register": "^3.3.2",
-    "eslint": "^8.6.0",
+    "@types/node": "^17.0.13",
+    "@typescript-eslint/parser": "^5.10.1",
+    "eslint": "^8.8.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.25.4",
-    "eslint-plugin-vue": "^8.3.0",
+    "eslint-plugin-vue": "^8.4.0",
+    "esno": "^0.14.0",
     "fs-extra": "^10.0.0",
-    "rollup": "^2.63.0",
+    "rollup": "^2.66.1",
     "rollup-plugin-dts": "^4.1.0",
     "rollup-plugin-esbuild": "^4.8.2",
-    "typescript": "^4.5.4",
-    "vite": "^2.7.11",
-    "vitest": "^0.1.12",
+    "sass": "^1.49.0",
+    "typescript": "^4.5.5",
+    "vite": "^2.7.13",
+    "vitest": "^0.2.5",
     "vue": "^3.2.29",
-    "vue-eslint-parser": "^8.0.1"
+    "vue-eslint-parser": "^8.2.0"
   }
 }
