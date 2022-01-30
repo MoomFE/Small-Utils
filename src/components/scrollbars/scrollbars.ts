@@ -25,7 +25,7 @@ const scrollbarsProps = {
 const Scrollbars = defineComponent({
   name: 's-scrollbars',
   props: scrollbarsProps,
-  setup(props, { slots, expose }) {
+  setup(props, { attrs, slots, expose }) {
     const osInstace = ref();
     const el = ref<HTMLDivElement | null>(null);
 
@@ -59,16 +59,26 @@ const Scrollbars = defineComponent({
     });
 
     return () => {
-      return h('div', { ref: el, class: 'os-host s-scrollbars' }, [
-        h('div', { class: 'os-resize-observer-host' }, [
-          h('div', { class: `os-padding ${props.paddingClass || ''}` }, [
-            h('div', { class: `os-viewport ${props.viewportClass || ''}` }, [
-              h('div', { class: `os-content ${props.contentClass || ''}` }, [
-                renderSlot(slots, 'default')
-              ])
+      return h('div', { ref: el, class: `os-host s-scrollbars ${attrs.class || ''}` }, [
+        h('div', { class: 'os-resize-observer-host' }),
+        h('div', { class: `os-padding ${props.paddingClass || ''}` }, [
+          h('div', { class: `os-viewport ${props.viewportClass || ''}` }, [
+            h('div', { class: `os-content ${props.contentClass || ''}` }, [
+              renderSlot(slots, 'default')
             ])
           ])
-        ])
+        ]),
+        h('div', { class: 'os-scrollbar os-scrollbar-horizontal' }, [
+          h('div', { class: 'os-scrollbar-track' }, [
+            h('div', { class: 'os-scrollbar-handle' })
+          ])
+        ]),
+        h('div', { class: 'os-scrollbar os-scrollbar-vertical' }, [
+          h('div', { class: 'os-scrollbar-track' }, [
+            h('div', { class: 'os-scrollbar-handle' })
+          ])
+        ]),
+        h('div', { class: 'os-scrollbar-corner' })
       ]);
     };
   }
