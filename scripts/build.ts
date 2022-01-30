@@ -59,3 +59,72 @@ const rollupExternal = [
     });
   });
 });
+
+
+// 单个组件
+fs.readdirSync(resolve(srcPath, 'components')).forEach(async (name) => {
+  const input = resolve(srcPath, 'components', name, 'index.ts');
+
+  if (fs.pathExistsSync(input)) {
+    // 打包代码
+    await build({
+      resolve: viteResolveConfig,
+      build: {
+        outDir: resolve(rootPath, 'components', name),
+        lib: {
+          entry: input,
+          formats: ['es', 'cjs'],
+          fileName: (format) => `index.${format === 'es' ? 'js' : format}`,
+        },
+        minify: false,
+        rollupOptions: {
+          external: rollupExternal
+        }
+      }
+    });
+    // 打包声明文件
+    await rollup({
+      input,
+      plugins: [rollupDtsPlugin],
+      external: rollupExternal
+    }).then((bundle) => {
+      bundle.write({
+        file: resolve(rootPath, `components/${name}/index.d.ts`),
+        format: 'es'
+      });
+    });
+  }
+});
+
+// 所有组件
+(async () => {
+  const input = resolve(srcPath, 'components/index.ts');
+
+  // 打包代码
+  await build({
+    resolve: viteResolveConfig,
+    build: {
+      outDir: resolve(rootPath, 'components'),
+      lib: {
+        entry: input,
+        formats: ['es', 'cjs'],
+        fileName: (format) => `index.${format === 'es' ? 'js' : format}`,
+      },
+      minify: false,
+      rollupOptions: {
+        external: rollupExternal
+      }
+    }
+  });
+  // 打包声明文件
+  await rollup({
+    input,
+    plugins: [rollupDtsPlugin],
+    external: rollupExternal
+  }).then((bundle) => {
+    bundle.write({
+      file: resolve(rootPath, 'components/index.d.ts'),
+      format: 'es'
+    });
+  });
+})();
