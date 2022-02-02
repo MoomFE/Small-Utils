@@ -4,7 +4,7 @@
 import { resolve } from 'path';
 import { build } from 'vite';
 import { rollup } from 'rollup';
-import { upperFirst } from 'lodash-es';
+import { upperFirst, camelCase } from 'lodash-es';
 import fs from 'fs-extra';
 import dts from 'rollup-plugin-dts';
 
@@ -24,8 +24,12 @@ const viteResolveConfig = {
 const rollupDtsPlugin = dts();
 const rollupExternal = [
   'vue-demi',
-  'overlayscrollbars/css/OverlayScrollbars.css'
+  '@vueuse/core',
+  'overlayscrollbars/css/OverlayScrollbars.css',
 ];
+
+
+const taskList = [];
 
 
 // 工具方法， 验证器
@@ -33,7 +37,7 @@ const rollupExternal = [
   const input = resolve(srcPath, `${name}/index.ts`);
 
   // 打包代码
-  await build({
+  taskList.push(() => build({
     resolve: viteResolveConfig,
     build: {
       outDir: resolve(rootPath, name),
@@ -47,9 +51,9 @@ const rollupExternal = [
         external: rollupExternal
       }
     }
-  });
+  }));
   // 打包声明文件
-  await rollup({
+  taskList.push(() => rollup({
     input,
     plugins: [rollupDtsPlugin],
     external: rollupExternal
@@ -58,7 +62,7 @@ const rollupExternal = [
       file: resolve(rootPath, `${name}/index.d.ts`),
       format: 'es'
     });
-  });
+  }));
 });
 
 
@@ -68,10 +72,10 @@ fs.readdirSync(resolve(srcPath, 'components')).forEach(async (name) => {
 
   if (fs.pathExistsSync(input)) {
     // 打包代码
-    await build({
+    taskList.push(() => build({
       resolve: viteResolveConfig,
       build: {
-        outDir: resolve(rootPath, 'components', `S${upperFirst(name)}`),
+        outDir: resolve(rootPath, 'components', `S${upperFirst(camelCase(name))}`),
         lib: {
           entry: input,
           formats: ['es', 'cjs'],
@@ -82,18 +86,18 @@ fs.readdirSync(resolve(srcPath, 'components')).forEach(async (name) => {
           external: rollupExternal
         }
       }
-    });
+    }));
     // 打包声明文件
-    await rollup({
+    taskList.push(() => rollup({
       input,
       plugins: [rollupDtsPlugin],
       external: rollupExternal
     }).then((bundle) => {
       bundle.write({
-        file: resolve(rootPath, `components/S${upperFirst(name)}/index.d.ts`),
+        file: resolve(rootPath, `components/S${upperFirst(camelCase(name))}/index.d.ts`),
         format: 'es'
       });
-    });
+    }));
   }
 });
 
@@ -102,7 +106,7 @@ fs.readdirSync(resolve(srcPath, 'components')).forEach(async (name) => {
   const input = resolve(srcPath, 'components/index.ts');
 
   // 打包代码
-  await build({
+  taskList.push(() => build({
     resolve: viteResolveConfig,
     build: {
       outDir: resolve(rootPath, 'components'),
@@ -116,9 +120,9 @@ fs.readdirSync(resolve(srcPath, 'components')).forEach(async (name) => {
         external: rollupExternal
       }
     }
-  });
+  }));
   // 打包声明文件
-  await rollup({
+  taskList.push(() => rollup({
     input,
     plugins: [rollupDtsPlugin],
     external: rollupExternal
@@ -127,5 +131,18 @@ fs.readdirSync(resolve(srcPath, 'components')).forEach(async (name) => {
       file: resolve(rootPath, 'components/index.d.ts'),
       format: 'es'
     });
+  }));
+})();
+
+
+(async () => {
+  // 清空目录
+  ['utils', 'validator', 'components'].forEach((name) => {
+    fs.emptyDirSync(resolve(rootPath, name));
   });
+
+  // 挨个执行打包
+  for (const task of taskList) {
+    await task(); // eslint-disable-line no-await-in-loop
+  }
 })();
