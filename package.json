@@ -33,6 +33,7 @@
     "build": "esno scripts/build.ts"
   },
   "dependencies": {
+    "@vueuse/core": "^7.5.5",
     "overlayscrollbars": "^1.13.1",
     "overlayscrollbars-vue": "^0.2.2",
     "vue-demi": "^0.12.1"
