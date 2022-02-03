@@ -65,6 +65,38 @@ const taskList = [];
   }));
 });
 
+// 所有组件
+(async () => {
+  const input = resolve(srcPath, 'components/index.ts');
+
+  // 打包代码
+  taskList.push(() => build({
+    resolve: viteResolveConfig,
+    build: {
+      outDir: resolve(rootPath, 'components'),
+      lib: {
+        entry: input,
+        formats: ['es', 'cjs'],
+        fileName: (format) => `index.${format === 'es' ? 'js' : format}`,
+      },
+      minify: false,
+      rollupOptions: {
+        external: rollupExternal
+      }
+    }
+  }));
+  // 打包声明文件
+  taskList.push(() => rollup({
+    input,
+    plugins: [rollupDtsPlugin],
+    external: rollupExternal
+  }).then((bundle) => {
+    bundle.write({
+      file: resolve(rootPath, 'components/index.d.ts'),
+      format: 'es'
+    });
+  }));
+})();
 
 // 单个组件
 fs.readdirSync(resolve(srcPath, 'components')).forEach(async (name) => {
@@ -100,39 +132,6 @@ fs.readdirSync(resolve(srcPath, 'components')).forEach(async (name) => {
     }));
   }
 });
-
-// 所有组件
-(async () => {
-  const input = resolve(srcPath, 'components/index.ts');
-
-  // 打包代码
-  taskList.push(() => build({
-    resolve: viteResolveConfig,
-    build: {
-      outDir: resolve(rootPath, 'components'),
-      lib: {
-        entry: input,
-        formats: ['es', 'cjs'],
-        fileName: (format) => `index.${format === 'es' ? 'js' : format}`,
-      },
-      minify: false,
-      rollupOptions: {
-        external: rollupExternal
-      }
-    }
-  }));
-  // 打包声明文件
-  taskList.push(() => rollup({
-    input,
-    plugins: [rollupDtsPlugin],
-    external: rollupExternal
-  }).then((bundle) => {
-    bundle.write({
-      file: resolve(rootPath, 'components/index.d.ts'),
-      format: 'es'
-    });
-  }));
-})();
 
 
 (async () => {
