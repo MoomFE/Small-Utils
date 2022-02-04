@@ -1,7 +1,7 @@
 {
   "name": "@moomfe/small-utils",
-  "version": "2.3.2",
-  "description": "",
+  "version": "3.0.0",
+  "description": "前端工具合集",
   "author": "Wei Zhang <https://github.com/Zhang-Wei-666>",
   "license": "MIT",
   "types": "./utils/index.d.ts",

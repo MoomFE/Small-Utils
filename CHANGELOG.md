@@ -1,4 +1,7 @@
 ## [Unreleased]
+
+## [v3.0.0]
+  - 📅 2022-02-04
   - 🌟 项目使用 Typescript 重构
   - 🌟 组件同时支持 Vue2 和 Vue3, 特殊说明除外
   - 🌟 新增 delay 工具方法, 返回一个延迟指定时间的 Promise
