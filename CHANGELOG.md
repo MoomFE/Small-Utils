@@ -1,13 +1,24 @@
-# 2.3.2
+## [Unreleased]
+
+## [v3.0.0]
+  - 📅 2022-02-04
+  - 🌟 项目使用 Typescript 重构
+  - 🌟 组件同时支持 Vue2 和 Vue3, 特殊说明除外
+  - 🌟 新增 delay 工具方法, 返回一个延迟指定时间的 Promise
+  - 🌟 新增 leastRun 工具方法, 运行函数并且保证最少执行指定 ms 的时间
+  - ⚠️ 保留 `s-scrollbars` 和 `s-delay-render` 组件, 移除 `s-date-picker`, `s-time-picker`, `s-form`, `s-input`, `s-select`, `s-textarea` 组件
+
+
+## [v2.3.2]
   - 📅 2021-09-26
   - 💄 为 `s-scrollbars` 组件 padding, content 层添加 ref 引用
   - 💄 为 `s-scrollbars` 组件新增 `paddingClass`, `viewportClass`, `contentClass` 属性
 
-# 2.3.1
+## [v2.3.1]
   - 📅 2021-09-08
   - 🐞 修复使用 `@moomfe/small-utils/validator` 方式导入验证器报错的问题
 
-# 2.3.0
+## [v2.3.0]
   - 📅 2021-08-27
   - 🌟 新增 `isCitizenID` 18 位身份证号码正则验证器
   - 🌟 新增 `isEmail` 电子邮件地址正则验证器
@@ -16,11 +27,11 @@
   - 🐞 修复 `s-select` 选项值为 0 时, 无法选中的问题
   - ⚠️ 修复拼写错误 `isMumbers` -> `isNumbers`,  `hasMumbers` -> `hasNumbers` (\*/ω＼\*)
 
-# 2.2.0
+## [v2.2.0]
   - 📅 2021-08-04
   - 🌟 新增 `s-delay-render` 组件
 
-# 2.1.0
+## [v2.1.0]
   - 📅 2021-08-04
   - 🌟 新增 `hasMumbers`, `isMumbers` 数字正则验证器
   - 🌟 新增 `isMobile`, `isCompleteMobile` 移动电话号码正则验证器
@@ -31,7 +42,7 @@
   - 🐞 修复 `s-textarea` 组件的内容会和 label 重叠的问题
   - 🐞 修复 `s-textarea` 组件拖拽大小无效的问题
 
-# 2.0.0
+## [v2.0.0]
   - 📅 2021-08-02
   - 🌟 新增 `s-textarea` 组件
   - 🌟 `s-select` 组件新增 `filterable` 选项以支持过滤条目功能
@@ -39,7 +50,7 @@
   - 💄 为 `s-input`, `s-select`, `s-textarea` 添加 `prepend` 插槽内容样式
   - ⚠️ 组件新增依赖类库 `@vue/composition-api`, `VueUse`
 
-# 1.7.0
+## [v1.7.0]
   - 📅 2021-08-04
   - 🌟 新增 `hasMumbers`, `isMumbers` 数字正则验证器
   - 🌟 新增 `isMobile`, `isCompleteMobile` 移动电话号码正则验证器
@@ -48,38 +59,38 @@
   - 💄 支持在一个文件中返回所有组件
   - 💄 为 `s-scrollbars` 组件 viewport 层添加 ref 引用
 
-# 1.6.0
+## [v1.6.0]
   - 📅 2021-08-02
   - 🌟 `s-select` 组件新增 `filterable` 选项以支持过滤条目功能
   - 🌟 `s-select` 组件新增 `creatable` 选项以支持新建条目功能
   - 💄 为 `s-input`, `s-select` 添加 `prepend` 插槽内容样式
 
-# 1.5.6
+## [v1.5.6]
   - 📅 2021-07-29
   - 🐞 修复 `s-scrollbars` 组件修改选项不生效的问题
 
-# 1.5.5
+## [v1.5.5]
   - 📅 2021-07-29
   - 💄 `s-scrollbars` 组件开放 `scroll()`, `scrollStop()` 方法
 
-# 1.5.4
+## [v1.5.4]
   - 📅 2021-07-21
   - 💄 为 `s-input` 组件添加 `.s-input` 类名
   - 💄 为 `s-select` 组件添加 `.s-select` 类名
 
-# 1.5.3
+## [v1.5.3]
   - 📅 2021-07-20
   - 🐞 修复将原生属性传给 `s-input`, `s-select` 组件时, 可能会不生效的问题
 
-# 1.5.2
+## [v1.5.2]
   - 📅 2021-07-20
   - 🐞 修复从父组件传值给 `s-input`, `s-select` 组件时, 组件会触发 `@input` 事件的问题
 
-# 1.5.1
+## [v1.5.1]
   - 📅 2021-07-20
   - 💄 `s-input` 组件开放 `focus()`, `blur()` 方法
 
-# 1.5.0
+## [v1.5.0]
   - 📅 2021-07-15
   - 🌟 新增 `s-select` 组件
   - 🌟 新增 `s-input` 组件
@@ -88,31 +99,31 @@
   - 🌟 新增 `isPrimitive` 工具方法
   - 🌟 新增 `isPromise` 工具方法
 
-# 1.4.1
+## [v1.4.1]
   - 📅 2021-07-08
   - 🐞 修复在使用 `s-scrollbars` 组件时, 报错说 overlayscrollbars 没有 default 导出的问题
 
-# 1.4.0
+## [v1.4.0]
   - 📅 2021-07-07
   - 🌟 新增 `s-form` 组件
   - 🌟 新增 `s-scrollbars` 组件
 
-# 1.3.0
+## [v1.3.0]
   - 📅 2021-07-05
   - 🌟 新增 `isFunction` 工具方法
   - 💄 优化 `isNumeric` 工具方法的逻辑
 
-# 1.2.0
+## [v1.2.0]
   - 📅 2021-07-01
   - 🌟 新增 `isNumeric` 工具方法
 
-# 1.1.0
+## [v1.1.0]
   - 📅 2021-07-01
   - 🌟 新增 `isPlainObject` 工具方法
   - 🌟 新增 `isNumber` 工具方法
   - 🌟 新增 `isString` 工具方法
 
-# 1.0.0
+## [v1.0.0]
   - 📅 2021-04-22
   - 🌟 Vuetify 的 `Elevation` ( 海拔 ) 的减淡效果
 
@@ -137,3 +148,30 @@ CHANGELOG 图标规范
 - ⚠️: 与上一版本可能不兼容的功能更改<br>
 - 🐞: 问题修正<br>
 - 📅: 版本发布日期
+
+<br>
+<hr>
+<br>
+
+[Unreleased]: https://github.com/it-moom/Tools/compare/v2.3.2...HEAD
+[v2.3.2]: https://github.com/MoomFE/Small-Utils/releases/tag/v2.3.2
+[v2.3.1]: https://github.com/MoomFE/Small-Utils/releases/tag/v2.3.1
+[v2.3.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v2.3.0
+[v2.2.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v2.2.0
+[v2.1.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v2.1.0
+[v2.0.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v2.0.0
+[v1.7.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v1.7.0
+[v1.6.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v1.6.0
+[v1.5.6]: https://github.com/MoomFE/Small-Utils/releases/tag/v1.5.6
+[v1.5.5]: https://github.com/MoomFE/Small-Utils/releases/tag/v1.5.5
+[v1.5.4]: https://github.com/MoomFE/Small-Utils/releases/tag/v1.5.4
+[v1.5.3]: https://github.com/MoomFE/Small-Utils/releases/tag/v1.5.3
+[v1.5.2]: https://github.com/MoomFE/Small-Utils/releases/tag/v1.5.2
+[v1.5.1]: https://github.com/MoomFE/Small-Utils/releases/tag/v1.5.1
+[v1.5.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v1.5.0
+[v1.4.1]: https://github.com/MoomFE/Small-Utils/releases/tag/v1.4.1
+[v1.4.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v1.4.0
+[v1.3.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v1.3.0
+[v1.2.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v1.2.0
+[v1.1.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v1.1.0
+[v1.0.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v1.0.0
