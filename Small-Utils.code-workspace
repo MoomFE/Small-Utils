@@ -4,16 +4,20 @@
       "path": "."
     },
     {
-      "path": "src/components",
-      "name": "Components"
-    },
-    {
       "path": "src/utils",
       "name": "Utils"
     },
     {
       "path": "src/validator",
       "name": "Validator"
+    },
+    {
+      "path": "src/components",
+      "name": "Components"
+    },
+    {
+      "path": "src/composables",
+      "name": "Composables"
     }
   ],
   "settings": {
@@ -22,6 +26,7 @@
       "package-lock.json": true,
       "Small-Utils.code-workspace": true,
       "src/components": true,
+      "src/composables": true,
       "src/utils": true,
       "src/validator": true,
       "yarn.lock": true
