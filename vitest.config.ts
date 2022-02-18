@@ -14,6 +14,6 @@ export default defineConfig({
   },
   // @ts-ignore
   test: {
-
+    threads: false
   },
 });
