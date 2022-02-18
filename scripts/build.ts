@@ -20,6 +20,10 @@ const viteResolveConfig = {
   }
 };
 
+const viteOptimizeDeps = {
+  exclude: ['vue-demi']
+};
+
 
 const rollupDtsPlugin = dts();
 const rollupExternal = [
@@ -72,6 +76,7 @@ const taskList = [];
   // 打包代码
   taskList.push(() => build({
     resolve: viteResolveConfig,
+    optimizeDeps: viteOptimizeDeps,
     build: {
       outDir: resolve(rootPath, 'components'),
       lib: {
@@ -106,6 +111,7 @@ fs.readdirSync(resolve(srcPath, 'components')).forEach(async (name) => {
     // 打包代码
     taskList.push(() => build({
       resolve: viteResolveConfig,
+      optimizeDeps: viteOptimizeDeps,
       build: {
         outDir: resolve(rootPath, 'components', `S${upperFirst(camelCase(name))}`),
         lib: {
