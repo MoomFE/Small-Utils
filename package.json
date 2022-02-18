@@ -30,6 +30,7 @@
   "homepage": "https://github.com/MoomFE/Small-Utils#readme",
   "scripts": {
     "test": "vitest",
+    "test:ui": "vitest --ui",
     "build": "esno scripts/build.ts"
   },
   "dependencies": {
@@ -41,6 +42,7 @@
     "@moomfe/eslint-config": "^1.8.1",
     "@types/node": "^17.0.18",
     "@typescript-eslint/parser": "^5.12.0",
+    "@vitest/ui": "^0.4.0",
     "eslint": "^8.9.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.25.4",
@@ -53,7 +55,7 @@
     "rollup-plugin-esbuild": "^4.8.2",
     "sass": "^1.49.8",
     "typescript": "^4.5.5",
-    "vite": "^2.8.3",
+    "vite": "^2.8.4",
     "vitest": "0.4.0",
     "vue": "^3.2.31",
     "vue-eslint-parser": "^8.2.0"
