@@ -47,19 +47,48 @@ test('deepUnref: 会解包普通对象内的 ref 对象', () => {
   const a = {
     b: ref(1)
   };
+
   const unrefA = deepUnref(a);
 
   expect(isRef(a.b)).toBe(true);
   expect(isRef(unrefA.b)).toBe(false);
+  expect(a.b.value).toBe(1);
+  expect(unrefA.b).toBe(1);
 
 
-  const b = {
-    c: {
-      d: ref(1)
+  const computedA = computed(() => a);
+  const unrefComputedA = deepUnref(a);
+
+  expect(isRef(computedA)).toBe(true);
+  expect(isRef(unrefComputedA)).toBe(false);
+  expect(isRef(computedA.value.b)).toBe(true);
+  expect(isRef(unrefComputedA.b)).toBe(false);
+  expect(computedA.value.b.value).toBe(1);
+  expect(unrefComputedA.b).toBe(1);
+});
+
+test('deepUnref: 会解包普通对象内的 ref 对象 ( 二 )', () => {
+  const a = {
+    b: {
+      c: ref(1)
     }
   };
-  const unrefB = deepUnref(b);
 
-  expect(isRef(b.c.d)).toBe(true);
-  expect(isRef(unrefB.c.d)).toBe(false);
+  const unrefA = deepUnref(a);
+
+  expect(isRef(a.b.c)).toBe(true);
+  expect(isRef(unrefA.b.c)).toBe(false);
+  expect(a.b.c.value).toBe(1);
+  expect(unrefA.b.c).toBe(1);
+
+
+  const computedA = computed(() => a);
+  const unrefComputedA = deepUnref(a);
+
+  expect(isRef(computedA)).toBe(true);
+  expect(isRef(unrefComputedA)).toBe(false);
+  expect(isRef(computedA.value.b.c)).toBe(true);
+  expect(isRef(unrefComputedA.b.c)).toBe(false);
+  expect(computedA.value.b.c.value).toBe(1);
+  expect(unrefComputedA.b.c).toBe(1);
 });
