@@ -1641,11 +1641,6 @@ optionator@^0.9.1:
     type-check "^0.4.0"
     word-wrap "^1.2.3"
 
-overlayscrollbars-vue@^0.2.2:
-  version "0.2.2"
-  resolved "https://registry.npmjs.org/overlayscrollbars-vue/-/overlayscrollbars-vue-0.2.2.tgz"
-  integrity sha512-JpDkM+fkNp7YbZxZNf9cbSWCa1tylaSUkmdhux+qtVFekH4zpZpM8+GRtOgs7YDDWyVNPkUBQ8FnMRMoBNfoJw==
-
 overlayscrollbars@^1.13.1:
   version "1.13.1"
   resolved "https://registry.npmjs.org/overlayscrollbars/-/overlayscrollbars-1.13.1.tgz"

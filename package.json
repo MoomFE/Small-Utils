@@ -35,7 +35,6 @@
   "dependencies": {
     "@vueuse/core": "^7.6.2",
     "overlayscrollbars": "^1.13.1",
-    "overlayscrollbars-vue": "^0.2.2",
     "vue-demi": "^0.12.1"
   },
   "devDependencies": {
