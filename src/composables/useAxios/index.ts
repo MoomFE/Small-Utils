@@ -104,7 +104,26 @@ export function useAxios<T = any, D = AxiosRequestConfig>(url: MaybeRef<string>,
 
 
     return new Promise((resolve, reject) => {
+      axiosInstance(axiosUrl, axiosConfig)
+        .finally(() => {
+          isLoading.value = false;
+          isFinished.value = true;
 
+          finallyEvent.trigger(null);
+        })
+        .then((res: AxiosResponse<T, D>) => {
+          response.value = res;
+          data.value = res.data;
+
+          successEvent.trigger(res);
+          resolve(res);
+        })
+        .catch((err: AxiosError<T>) => {
+          error.value = err;
+
+          errorEvent.trigger(err);
+          reject(err);
+        });
     });
   }
 
@@ -117,4 +136,28 @@ export function useAxios<T = any, D = AxiosRequestConfig>(url: MaybeRef<string>,
   if (useAxiosConfig?.abortOnUnmounted !== false) {
     tryOnUnmounted(abort);
   }
+
+
+  const shell = {
+    response,
+    data,
+    error,
+
+    isExecuted,
+    isLoading,
+    isFinished,
+    isAborted,
+
+    canAbort,
+    execute,
+    abort,
+
+    // 事件钩子
+    onSuccess: successEvent.on,
+    onError: errorEvent.on,
+    onFinally: finallyEvent.on
+  };
+
+
+  return shell;
 }
