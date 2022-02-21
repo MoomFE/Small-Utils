@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+## [v3.2.0-beta.2]
+  - 📅 2022-02-21
+  - 🐞 修复使用时, 包名错误引起的报错
+
 ## [v3.2.0-beta.1]
   - 📅 2022-02-21
   - 🐞 修复使用时, 包名错误引起的报错
@@ -173,7 +177,8 @@ CHANGELOG 图标规范
 <hr>
 <br>
 
-[Unreleased]: https://github.com/it-moom/Tools/compare/v3.2.0-beta.1...HEAD
+[Unreleased]: https://github.com/it-moom/Tools/compare/v3.2.0-beta.2...HEAD
+[v3.2.0-beta.2]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.2.0-beta.2
 [v3.2.0-beta.1]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.2.0-beta.1
 [v3.2.0-beta.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.2.0-beta.0
 [v3.1.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.1.0
