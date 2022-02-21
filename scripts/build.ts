@@ -26,9 +26,9 @@ const rollupDtsPlugin = dts();
 const rollupExternalizeDependencyPlugin: Plugin = {
   name: 'externalize-dependency',
   resolveId(id) {
-    if (id.startsWith('@')) {
+    if (id.startsWith('@/')) {
       return {
-        id: id.replace('@', '@moomfe'),
+        id: id.replace('@/', '@moomfe/small-utils/'),
         external: true
       }
     }
