@@ -27,7 +27,7 @@ export interface UseAxiosConfig{
    * 是否在发起请求时重置数据
    * @default true
    */
-  resetDataOnExecute: boolean;
+  resetDataOnExecute?: boolean;
 }
 
 
@@ -66,7 +66,7 @@ export interface UseAxiosReturn<T = any, D = AxiosRequestConfig> {
 }
 
 
-export function useAxios<T = any, D = AxiosRequestConfig>(url: MaybeRef<string>, config: MaybeRef<D>, useAxiosConfig?: UseAxiosConfig) {
+export function useAxios<T = any, D = AxiosRequestConfig>(url: MaybeRef<string>, config?: MaybeRef<D>, useAxiosConfig?: UseAxiosConfig) {
   /** axios 实例 */
   const axiosInstance = useAxiosConfig?.instance || axios;
 
@@ -202,4 +202,15 @@ export function useAxios<T = any, D = AxiosRequestConfig>(url: MaybeRef<string>,
 
 
   return shell;
+}
+
+
+export function createUseAxios<D = AxiosRequestConfig>(initConfig?: MaybeRef<D>, initUseAxiosConfig?: UseAxiosConfig) {
+  return (url: MaybeRef<string>, config?: MaybeRef<AxiosRequestConfig>, useAxiosConfig?: UseAxiosConfig) => {
+    return useAxios(
+      url,
+      { ...initConfig, ...config },
+      { ...initUseAxiosConfig, ...useAxiosConfig }
+    );
+  }
 }
