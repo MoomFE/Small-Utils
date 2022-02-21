@@ -1,6 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 
 
+import type { Plugin } from 'rollup';
 import { resolve } from 'path';
 import { build } from 'vite';
 import { rollup } from 'rollup';
@@ -15,21 +16,30 @@ const srcPath = resolve(rootPath, 'src');
 
 const viteResolveConfig = {
   alias: {
-    '@': srcPath,
     '@@': rootPath
   }
 };
 
-const viteOptimizeDeps = {
-  exclude: ['vue-demi']
-};
 
 
 const rollupDtsPlugin = dts();
+const rollupExternalizeDependencyPlugin: Plugin = {
+  name: 'externalize-dependency',
+  resolveId(id) {
+    if (id.startsWith('@')) {
+      return {
+        id: id.replace('@', '@moomfe'),
+        external: true
+      }
+    }
+    return null;
+  }
+};
 const rollupExternal = [
   'vue-demi',
   '@vueuse/core',
   'overlayscrollbars/css/OverlayScrollbars.css',
+  'axios'
 ];
 
 
@@ -43,6 +53,7 @@ const taskList = [];
   // 打包代码
   taskList.push(() => build({
     resolve: viteResolveConfig,
+    plugins: [rollupExternalizeDependencyPlugin],
     build: {
       outDir: resolve(rootPath, name),
       lib: {
@@ -76,7 +87,7 @@ const taskList = [];
   // 打包代码
   taskList.push(() => build({
     resolve: viteResolveConfig,
-    optimizeDeps: viteOptimizeDeps,
+    plugins: [rollupExternalizeDependencyPlugin],
     build: {
       outDir: resolve(rootPath, 'components'),
       lib: {
@@ -111,7 +122,7 @@ fs.readdirSync(resolve(srcPath, 'components')).forEach(async (name) => {
     // 打包代码
     taskList.push(() => build({
       resolve: viteResolveConfig,
-      optimizeDeps: viteOptimizeDeps,
+      plugins: [rollupExternalizeDependencyPlugin],
       build: {
         outDir: resolve(rootPath, 'components', `S${upperFirst(camelCase(name))}`),
         lib: {
