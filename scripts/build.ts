@@ -36,8 +36,8 @@ const rollupExternal = [
 const taskList = [];
 
 
-// 工具方法， 验证器
-['utils', 'validator'].forEach(async (name) => {
+// 工具方法， 验证器, 可组合式方法
+['utils', 'validator', 'composables'].forEach(async (name) => {
   const input = resolve(srcPath, `${name}/index.ts`);
 
   // 打包代码
