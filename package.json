@@ -19,7 +19,27 @@
       "require": "./utils/index.cjs",
       "types": "./utils/index.d.ts"
     },
-    "./*": "./*"
+    "./*": "./*",
+    "./utils": {
+      "import": "./utils/index.js",
+      "require": "./utils/index.cjs",
+      "types": "./utils/index.d.ts"
+    },
+    "./validator": {
+      "import": "./validator/index.js",
+      "require": "./validator/index.cjs",
+      "types": "./validator/index.d.ts"
+    },
+    "./components": {
+      "import": "./components/index.js",
+      "require": "./components/index.cjs",
+      "types": "./components/index.d.ts"
+    },
+    "./composables": {
+      "import": "./composables/index.js",
+      "require": "./composables/index.cjs",
+      "types": "./composables/index.d.ts"
+    }
   },
   "repository": {
     "type": "git",
