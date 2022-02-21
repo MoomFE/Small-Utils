@@ -1,5 +1,10 @@
 ## [Unreleased]
 
+## [v3.2.0-beta.0]
+  - 📅 2022-02-21
+  - 🌟 新增 useAxios 组合式方法
+  - 💄 优化打包相关代码
+
 ## [v3.1.0]
   - 📅 2022-02-18
   - 🌟 新增 deepUnref 工具方法
@@ -165,6 +170,10 @@ CHANGELOG 图标规范
 <br>
 
 [Unreleased]: https://github.com/it-moom/Tools/compare/v2.3.2...HEAD
+[v3.2.0-beta.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.2.0-beta.0
+[v3.1.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.1.0
+[v3.0.1]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.0.1
+[v3.0.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.0.0
 [v2.3.2]: https://github.com/MoomFE/Small-Utils/releases/tag/v2.3.2
 [v2.3.1]: https://github.com/MoomFE/Small-Utils/releases/tag/v2.3.1
 [v2.3.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v2.3.0
