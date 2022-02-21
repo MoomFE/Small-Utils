@@ -1,8 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 
 
-import type { Plugin } from 'rollup';
-import { resolve } from 'path';
+import { resolve, relative } from 'path';
 import { build } from 'vite';
 import { rollup } from 'rollup';
 import { upperFirst, camelCase } from 'lodash-es';
@@ -13,9 +12,18 @@ import dts from 'rollup-plugin-dts';
 const rootPath = resolve(__dirname, '../');
 const srcPath = resolve(rootPath, 'src');
 
+const componentsModules = [];
+const modules = [
+  'utils',
+  'validator',
+  'components',
+  'composables'
+];
+
 
 const viteResolveConfig = {
   alias: {
+    '@': srcPath,
     '@@': rootPath
   }
 };
@@ -23,23 +31,12 @@ const viteResolveConfig = {
 
 
 const rollupDtsPlugin = dts();
-const rollupExternalizeDependencyPlugin: Plugin = {
-  name: 'externalize-dependency',
-  resolveId(id) {
-    if (id.startsWith('@/')) {
-      return {
-        id: id.replace('@/', '@moomfe/small-utils/'),
-        external: true
-      }
-    }
-    return null;
-  }
-};
 const rollupExternal = [
   'vue-demi',
   '@vueuse/core',
   'overlayscrollbars/css/OverlayScrollbars.css',
-  'axios'
+  'axios',
+  ...modules.map(m => `@/${m}`)
 ];
 
 
@@ -47,13 +44,12 @@ const taskList = [];
 
 
 // 工具方法， 验证器, 可组合式方法
-['utils', 'validator', 'composables'].forEach(async (name) => {
+modules.filter(name => name !== 'components').forEach(async (name) => {
   const input = resolve(srcPath, `${name}/index.ts`);
 
   // 打包代码
   taskList.push(() => build({
     resolve: viteResolveConfig,
-    plugins: [rollupExternalizeDependencyPlugin],
     build: {
       outDir: resolve(rootPath, name),
       lib: {
@@ -63,7 +59,7 @@ const taskList = [];
       },
       minify: false,
       rollupOptions: {
-        external: rollupExternal
+        external: rollupExternal.filter(e => e !== `@/${name}`)
       }
     }
   }));
@@ -87,7 +83,6 @@ const taskList = [];
   // 打包代码
   taskList.push(() => build({
     resolve: viteResolveConfig,
-    plugins: [rollupExternalizeDependencyPlugin],
     build: {
       outDir: resolve(rootPath, 'components'),
       lib: {
@@ -119,12 +114,15 @@ fs.readdirSync(resolve(srcPath, 'components')).forEach(async (name) => {
   const input = resolve(srcPath, 'components', name, 'index.ts');
 
   if (fs.pathExistsSync(input)) {
+    const dirName = `S${upperFirst(camelCase(name))}`;
+
+    // 保存组件名称
+    componentsModules.push(`components/${dirName}`);
     // 打包代码
     taskList.push(() => build({
       resolve: viteResolveConfig,
-      plugins: [rollupExternalizeDependencyPlugin],
       build: {
-        outDir: resolve(rootPath, 'components', `S${upperFirst(camelCase(name))}`),
+        outDir: resolve(rootPath, 'components', dirName),
         lib: {
           entry: input,
           formats: ['es', 'cjs'],
@@ -153,7 +151,7 @@ fs.readdirSync(resolve(srcPath, 'components')).forEach(async (name) => {
 
 (async () => {
   // 清空目录
-  ['utils', 'validator', 'components'].forEach((name) => {
+  modules.forEach((name) => {
     fs.emptyDirSync(resolve(rootPath, name));
   });
 
@@ -161,4 +159,29 @@ fs.readdirSync(resolve(srcPath, 'components')).forEach(async (name) => {
   for (const task of taskList) {
     await task(); // eslint-disable-line no-await-in-loop
   }
+
+  // 重定向路径
+  modules.concat(componentsModules).forEach((name) => {
+    const moduleDir = resolve(rootPath, name);
+
+    console.log(moduleDir)
+    
+    fs.readdirSync(moduleDir).forEach((file) => {
+      if (!(file.endsWith('.js') || file.endsWith('.cjs'))) return;
+
+      const filePath = resolve(moduleDir, file);
+      let fileContent = fs.readFileSync(filePath, 'utf-8');
+
+      modules.forEach(m=> {
+        if (fileContent.includes(`@/${m}`)) {
+          const aliasReg = new RegExp(`@/${m}`, 'g');
+          const moduleRelativePath = relative(moduleDir, resolve(rootPath, m)).replace(/\\/g, '/');
+
+          fileContent = fileContent.replace(aliasReg, moduleRelativePath);
+        }
+      })
+
+      fs.writeFileSync(filePath, fileContent);
+    });
+  });
 })();
