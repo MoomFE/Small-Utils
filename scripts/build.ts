@@ -27,7 +27,9 @@ const viteResolveConfig = {
     '@@': rootPath
   }
 };
-
+const viteOptimizeDeps = {
+  exclude: ['vue-demi']
+};
 
 
 const rollupDtsPlugin = dts();
@@ -36,7 +38,7 @@ const rollupExternal = [
   '@vueuse/core',
   'overlayscrollbars/css/OverlayScrollbars.css',
   'axios',
-  ...modules.map(m => `@/${m}`)
+  ...modules.map((m) => `@/${m}`)
 ];
 
 
@@ -44,12 +46,13 @@ const taskList = [];
 
 
 // 工具方法， 验证器, 可组合式方法
-modules.filter(name => name !== 'components').forEach(async (name) => {
+modules.filter((name) => name !== 'components').forEach(async (name) => {
   const input = resolve(srcPath, `${name}/index.ts`);
 
   // 打包代码
   taskList.push(() => build({
     resolve: viteResolveConfig,
+    optimizeDeps: viteOptimizeDeps,
     build: {
       outDir: resolve(rootPath, name),
       lib: {
@@ -59,7 +62,7 @@ modules.filter(name => name !== 'components').forEach(async (name) => {
       },
       minify: false,
       rollupOptions: {
-        external: rollupExternal.filter(e => e !== `@/${name}`)
+        external: rollupExternal.filter((e) => e !== `@/${name}`)
       }
     }
   }));
@@ -83,6 +86,7 @@ modules.filter(name => name !== 'components').forEach(async (name) => {
   // 打包代码
   taskList.push(() => build({
     resolve: viteResolveConfig,
+    optimizeDeps: viteOptimizeDeps,
     build: {
       outDir: resolve(rootPath, 'components'),
       lib: {
@@ -121,6 +125,7 @@ fs.readdirSync(resolve(srcPath, 'components')).forEach(async (name) => {
     // 打包代码
     taskList.push(() => build({
       resolve: viteResolveConfig,
+      optimizeDeps: viteOptimizeDeps,
       build: {
         outDir: resolve(rootPath, 'components', dirName),
         lib: {
@@ -164,22 +169,20 @@ fs.readdirSync(resolve(srcPath, 'components')).forEach(async (name) => {
   modules.concat(componentsModules).forEach((name) => {
     const moduleDir = resolve(rootPath, name);
 
-    console.log(moduleDir)
-    
     fs.readdirSync(moduleDir).forEach((file) => {
       if (!(file.endsWith('.js') || file.endsWith('.cjs'))) return;
 
       const filePath = resolve(moduleDir, file);
       let fileContent = fs.readFileSync(filePath, 'utf-8');
 
-      modules.forEach(m=> {
+      modules.forEach((m) => {
         if (fileContent.includes(`@/${m}`)) {
           const aliasReg = new RegExp(`@/${m}`, 'g');
           const moduleRelativePath = relative(moduleDir, resolve(rootPath, m)).replace(/\\/g, '/');
 
           fileContent = fileContent.replace(aliasReg, moduleRelativePath);
         }
-      })
+      });
 
       fs.writeFileSync(filePath, fileContent);
     });
