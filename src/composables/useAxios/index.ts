@@ -1,7 +1,7 @@
 import type { ShallowRef, Ref, ComputedRef } from 'vue-demi';
 import type { MaybeRef, EventHookOn } from '@vueuse/core';
 import type { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
-import type { Get } from 'type-fest';
+import type { Get, Except, Merge } from 'type-fest';
 import axios from 'axios';
 import { shallowRef, ref, computed, unref } from 'vue-demi';
 import { createEventHook, useTimeoutFn, tryOnUnmounted } from '@vueuse/core';
@@ -31,7 +31,7 @@ export interface UseAxiosConfig{
 }
 
 
-export interface UseAxiosReturn<T = any, D = AxiosRequestConfig> {
+export interface UseAxiosReturn<T = any, D = AxiosRequestConfig<T>> {
   /** 服务器响应 */
   response: ShallowRef<AxiosResponse<T, D> | undefined>;
   /** 服务器响应数据 */
@@ -66,7 +66,7 @@ export interface UseAxiosReturn<T = any, D = AxiosRequestConfig> {
 }
 
 
-export function useAxios<T = any, D = AxiosRequestConfig>(url: MaybeRef<string>, config?: MaybeRef<D>, useAxiosConfig?: UseAxiosConfig) {
+export function useAxios<T = any, D = AxiosRequestConfig<T>>(url: MaybeRef<string>, config?: MaybeRef<D>, useAxiosConfig?: UseAxiosConfig) {
   /** axios 实例 */
   const axiosInstance = useAxiosConfig?.instance || axios;
 
@@ -205,12 +205,17 @@ export function useAxios<T = any, D = AxiosRequestConfig>(url: MaybeRef<string>,
 }
 
 
-export function createUseAxios<D = AxiosRequestConfig>(initConfig?: MaybeRef<D>, initUseAxiosConfig?: UseAxiosConfig) {
-  return (url: MaybeRef<string>, config?: MaybeRef<AxiosRequestConfig>, useAxiosConfig?: UseAxiosConfig) => {
+interface CreateUseAxiosReturn<ID = Except<AxiosRequestConfig, 'data'>> {
+  <T = any, D = AxiosRequestConfig<T>, C = UseAxiosConfig>(url: MaybeRef<string>, config?: MaybeRef<D>, useAxiosConfig?: C): UseAxiosReturn<T, Merge<ID, D>>;
+  [key: string]: any;
+}
+
+export function createUseAxios<ID = Except<AxiosRequestConfig, 'data'>>(initConfig?: ID, initUseAxiosConfig?: UseAxiosConfig): CreateUseAxiosReturn<ID> {
+  return function<T = any, D = AxiosRequestConfig<T>> (url: MaybeRef<string>, config?: MaybeRef<D>, useAxiosConfig?: UseAxiosConfig): UseAxiosReturn<T, Merge<ID, D>> {
     return useAxios(
       url,
-      { ...initConfig, ...config },
+      computed(() => ({ ...initConfig, ...config } as Merge<ID, D>)),
       { ...initUseAxiosConfig, ...useAxiosConfig }
     );
-  }
+  };
 }
