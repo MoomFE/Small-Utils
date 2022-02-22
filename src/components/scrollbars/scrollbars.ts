@@ -2,8 +2,9 @@ import {
   h,
   ref, watchEffect,
   onMounted, onUnmounted,
-  defineComponent, renderSlot
+  defineComponent
 } from 'vue-demi';
+import { templateRef } from '@vueuse/core';
 import 'overlayscrollbars/css/OverlayScrollbars.css';
 import 'overlayscrollbars/js/OverlayScrollbars.min';
 
@@ -25,9 +26,9 @@ const scrollbarsProps = {
 const Scrollbars = defineComponent({
   name: 's-scrollbars',
   props: scrollbarsProps,
-  setup(props, { attrs, slots, expose }) {
+  setup(props) {
     const osInstace = ref();
-    const el = ref<HTMLDivElement | null>(null);
+    const el = templateRef<HTMLDivElement | null>('el');
 
     onMounted(() => {
       // @ts-ignore
@@ -53,34 +54,32 @@ const Scrollbars = defineComponent({
       }
     });
 
-    expose({
+    return {
+      el,
       scroll: (...args: any[]) => osInstace.value?.scroll(...args),
       scrollStop: (...args: any[]) => osInstace.value?.scrollStop(...args),
-    });
-
-    return () => {
-      return h('div', { ref: el, class: `os-host s-scrollbars ${attrs.class || ''}` }, [
-        h('div', { class: 'os-resize-observer-host' }),
-        h('div', { class: `os-padding ${props.paddingClass || ''}` }, [
-          h('div', { class: `os-viewport ${props.viewportClass || ''}` }, [
-            h('div', { class: `os-content ${props.contentClass || ''}` }, [
-              renderSlot(slots, 'default')
-            ])
-          ])
-        ]),
-        h('div', { class: 'os-scrollbar os-scrollbar-horizontal' }, [
-          h('div', { class: 'os-scrollbar-track' }, [
-            h('div', { class: 'os-scrollbar-handle' })
-          ])
-        ]),
-        h('div', { class: 'os-scrollbar os-scrollbar-vertical' }, [
-          h('div', { class: 'os-scrollbar-track' }, [
-            h('div', { class: 'os-scrollbar-handle' })
-          ])
-        ]),
-        h('div', { class: 'os-scrollbar-corner' })
-      ]);
     };
+  },
+  render() {
+    return h('div', { ref: 'el', class: 'os-host s-scrollbars' }, [
+      h('div', { class: 'os-resize-observer-host' }),
+      h('div', { class: `os-padding ${this.paddingClass || ''}` }, [
+        h('div', { class: `os-viewport ${this.viewportClass || ''}` }, [
+          h('div', { class: `os-content ${this.contentClass || ''}` }, this.$slots.default)
+        ])
+      ]),
+      h('div', { class: 'os-scrollbar os-scrollbar-horizontal' }, [
+        h('div', { class: 'os-scrollbar-track' }, [
+          h('div', { class: 'os-scrollbar-handle' })
+        ])
+      ]),
+      h('div', { class: 'os-scrollbar os-scrollbar-vertical' }, [
+        h('div', { class: 'os-scrollbar-track' }, [
+          h('div', { class: 'os-scrollbar-handle' })
+        ])
+      ]),
+      h('div', { class: 'os-scrollbar-corner' })
+    ]);
   }
 });
 
