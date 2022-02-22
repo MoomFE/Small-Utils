@@ -1,5 +1,10 @@
 ## [Unreleased]
 
+## [v3.2.0-beta.3]
+  - 📅 2022-02-22
+  - 💄 优化构建相关代码
+  - 🐞 修复 scrollbars 组件在 Vue2 环境下无法使用的问题
+
 ## [v3.2.0-beta.2]
   - 📅 2022-02-21
   - 🐞 修复使用时, 包名错误引起的报错
@@ -11,7 +16,7 @@
 ## [v3.2.0-beta.0]
   - 📅 2022-02-21
   - 🌟 新增 useAxios 组合式方法
-  - 💄 优化打包相关代码
+  - 💄 优化构建相关代码
 
 ## [v3.1.0]
   - 📅 2022-02-18
@@ -21,7 +26,7 @@
 ## [v3.0.1]
   - 📅 2022-02-18
   - 💄 升级依赖类库
-  - 💄 优化打包相关代码
+  - 💄 优化构建相关代码
   - 💄 配置 `package.json` 文件 `peerDependencies` 选项
 
 ## [v3.0.0]
@@ -177,7 +182,8 @@ CHANGELOG 图标规范
 <hr>
 <br>
 
-[Unreleased]: https://github.com/it-moom/Tools/compare/v3.2.0-beta.2...HEAD
+[Unreleased]: https://github.com/it-moom/Tools/compare/v3.2.0-beta.3...HEAD
+[v3.2.0-beta.3]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.2.0-beta.3
 [v3.2.0-beta.2]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.2.0-beta.2
 [v3.2.0-beta.1]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.2.0-beta.1
 [v3.2.0-beta.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.2.0-beta.0
