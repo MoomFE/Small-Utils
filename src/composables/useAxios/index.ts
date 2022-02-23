@@ -1,3 +1,6 @@
+/* eslint-disable max-len */
+
+
 import type { ShallowRef, Ref, ComputedRef } from 'vue-demi';
 import type { MaybeRef, EventHookOn } from '@vueuse/core';
 import type { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
@@ -31,15 +34,15 @@ export interface UseAxiosConfig{
 }
 
 
-export interface UseAxiosReturn<T = any, D = AxiosRequestConfig<T>> {
+export interface UseAxiosReturn<Data = any, AxiosConfig = AxiosRequestConfig<Data>> {
   /** 服务器响应 */
-  response: ShallowRef<AxiosResponse<T, D> | undefined>;
+  response: ShallowRef<AxiosResponse<Data, AxiosConfig> | undefined>;
   /** 服务器响应数据 */
-  responseData: ShallowRef<T | undefined>;
+  responseData: ShallowRef<Data | undefined>;
   /** 服务器返回的数据 */
-  data: ShallowRef<Get<T, 'data'> | undefined>;
+  data: ShallowRef<Get<Data, 'data'> | undefined>;
   /** 服务器返回的错误 */
-  error: ShallowRef<AxiosError<T, D> | undefined>;
+  error: ShallowRef<AxiosError<Data, AxiosConfig> | undefined>;
 
   /** 是否发起过请求 */
   isExecuted: Ref<boolean>;
@@ -55,38 +58,50 @@ export interface UseAxiosReturn<T = any, D = AxiosRequestConfig<T>> {
   /** 用于取消当前请求的方法 */
   abort: (message?: string) => any;
   /** 执行 Ajax 请求的方法 */
-  execute: () => Promise<AxiosResponse<T, D>>;
+  execute: () => Promise<AxiosResponse<Data, AxiosConfig>>;
 
   /** 请求成功事件钩子 */
-  onSuccess: EventHookOn<AxiosResponse<T, D>>;
+  onSuccess: EventHookOn<AxiosResponse<Data, AxiosConfig>>;
   /** 请求失败事件钩子 */
-  onError: EventHookOn<AxiosError<T, D>>;
+  onError: EventHookOn<AxiosError<Data, AxiosConfig>>;
   /** 请求完成事件钩子 */
   onFinally: EventHookOn<any>;
 }
 
-
-export function useAxios<T = any, D = AxiosRequestConfig<T>>(url: MaybeRef<string>, config?: MaybeRef<D>, useAxiosConfig?: UseAxiosConfig) {
+/**
+ * 对 axios 的封装
+ * @param url 请求地址
+ * @param config axios 配置项
+ * @param useAxiosConfig 配置项
+ */
+function baseUseAxios<
+  Data = any,
+  AxiosConfig = AxiosRequestConfig<Data>
+>(
+  url: MaybeRef<string>,
+  config?: MaybeRef<AxiosConfig>,
+  useAxiosConfig?: UseAxiosConfig
+) {
   /** axios 实例 */
   const axiosInstance = useAxiosConfig?.instance || axios;
 
 
   /** 请求成功事件钩子 */
-  const successEvent = createEventHook<AxiosResponse<T, D>>();
+  const successEvent = createEventHook<AxiosResponse<Data, AxiosConfig>>();
   /** 请求失败事件钩子 */
-  const errorEvent = createEventHook<AxiosError<T, D>>();
+  const errorEvent = createEventHook<AxiosError<Data, AxiosConfig>>();
   /** 请求完成事件钩子 */
   const finallyEvent = createEventHook<any>();
 
 
   /** 服务器响应 */
-  const response = shallowRef<AxiosResponse<T, D>>();
+  const response = shallowRef<AxiosResponse<Data, AxiosConfig>>();
   /** 服务器响应数据 */
-  const responseData = shallowRef<T>();
+  const responseData = shallowRef<Data>();
   /** 服务器返回的数据 */
-  const data = shallowRef<Get<T, 'data'>>();
+  const data = shallowRef<Get<Data, 'data'>>();
   /** 服务器返回的错误 */
-  const error = shallowRef<AxiosError<T, D>>();
+  const error = shallowRef<AxiosError<Data, AxiosConfig>>();
   /** 是否发起过请求 */
   const isExecuted = ref(false);
   /** 是否在请求中 */
@@ -112,7 +127,7 @@ export function useAxios<T = any, D = AxiosRequestConfig<T>>(url: MaybeRef<strin
     isFinished.value = false;
   }
   /** 执行 Ajax 请求的方法 */
-  function execute(): Promise<AxiosResponse<T, D>> {
+  function execute(): Promise<AxiosResponse<Data, AxiosConfig>> {
     // 尝试取消当前已经发起的请求
     abort();
 
@@ -150,7 +165,7 @@ export function useAxios<T = any, D = AxiosRequestConfig<T>>(url: MaybeRef<strin
 
           finallyEvent.trigger(null);
         })
-        .then((res: AxiosResponse<T, D>) => {
+        .then((res: AxiosResponse<Data, AxiosConfig>) => {
           response.value = res;
           responseData.value = res.data;
           // @ts-ignore
@@ -159,7 +174,7 @@ export function useAxios<T = any, D = AxiosRequestConfig<T>>(url: MaybeRef<strin
           successEvent.trigger(res);
           resolve(res);
         })
-        .catch((err: AxiosError<T, D>) => {
+        .catch((err: AxiosError<Data, AxiosConfig>) => {
           error.value = err;
 
           errorEvent.trigger(err);
@@ -179,7 +194,7 @@ export function useAxios<T = any, D = AxiosRequestConfig<T>>(url: MaybeRef<strin
   }
 
 
-  const shell: UseAxiosReturn<T, D> = {
+  const shell: UseAxiosReturn<Data, AxiosConfig> = {
     response,
     responseData,
     data,
@@ -205,17 +220,65 @@ export function useAxios<T = any, D = AxiosRequestConfig<T>>(url: MaybeRef<strin
 }
 
 
-interface CreateUseAxiosReturn<ID = Except<AxiosRequestConfig, 'data'>> {
-  <T = any, D = AxiosRequestConfig<T>, C = UseAxiosConfig>(url: MaybeRef<string>, config?: MaybeRef<D>, useAxiosConfig?: C): UseAxiosReturn<T, Merge<ID, D>>;
-  [key: string]: any;
+export interface UseAxios<InitAxiosConfig = AxiosRequestConfig>{
+  /** 使用 axios 发起请求 */
+  <Data = any, UserAxiosConfig = AxiosRequestConfig<Data>>(url: MaybeRef<string>, config?: MaybeRef<UserAxiosConfig>, useAxiosConfig?: UseAxiosConfig): UseAxiosReturn<Data, Merge<InitAxiosConfig, UserAxiosConfig>>;
+  /** 使用 axios 发起 GET 请求 */
+  get: <Data = any, UserAxiosConfig = AxiosRequestConfig<Data>>(url: MaybeRef<string>, params?: any, config?: MaybeRef<UserAxiosConfig>, useAxiosConfig?: UseAxiosConfig) => UseAxiosReturn<Data, Merge<InitAxiosConfig, UserAxiosConfig>>;
+  /** 使用 axios 发起 DELETE 请求 */
+  delete: <Data = any, UserAxiosConfig = AxiosRequestConfig<Data>>(url: MaybeRef<string>, params?: any, config?: MaybeRef<UserAxiosConfig>, useAxiosConfig?: UseAxiosConfig) => UseAxiosReturn<Data, Merge<InitAxiosConfig, UserAxiosConfig>>;
+  /** 使用 axios 发起 POST 请求 */
+  post: <Data = any, UserAxiosConfig = AxiosRequestConfig<Data>>(url: MaybeRef<string>, data?: Data, config?: MaybeRef<UserAxiosConfig>, useAxiosConfig?: UseAxiosConfig) => UseAxiosReturn<Data, Merge<InitAxiosConfig, UserAxiosConfig>>;
+  /** 使用 axios 发起 PUT 请求 */
+  put: <Data = any, UserAxiosConfig = AxiosRequestConfig<Data>>(url: MaybeRef<string>, data?: Data, config?: MaybeRef<UserAxiosConfig>, useAxiosConfig?: UseAxiosConfig) => UseAxiosReturn<Data, Merge<InitAxiosConfig, UserAxiosConfig>>;
+  /** 使用 axios 发起 PATCH 请求 */
+  patch: <Data = any, UserAxiosConfig = AxiosRequestConfig<Data>>(url: MaybeRef<string>, data?: Data, config?: MaybeRef<UserAxiosConfig>, useAxiosConfig?: UseAxiosConfig) => UseAxiosReturn<Data, Merge<InitAxiosConfig, UserAxiosConfig>>;
 }
 
-export function createUseAxios<ID = Except<AxiosRequestConfig, 'data'>>(initConfig?: ID, initUseAxiosConfig?: UseAxiosConfig): CreateUseAxiosReturn<ID> {
-  return function<T = any, D = AxiosRequestConfig<T>> (url: MaybeRef<string>, config?: MaybeRef<D>, useAxiosConfig?: UseAxiosConfig): UseAxiosReturn<T, Merge<ID, D>> {
-    return useAxios(
+/**
+ * 创建一个自定义配置的 axios 封装实例
+ * @param initConfig 初始化 axios 配置项
+ * @param useAxiosConfig 初始化配置项
+ */
+export function createUseAxios<
+  InitAxiosConfig = AxiosRequestConfig
+>(
+  initConfig?: MaybeRef<InitAxiosConfig>,
+  initUseAxiosConfig?: UseAxiosConfig
+): UseAxios<InitAxiosConfig> {
+  /** 使用 axios 发起请求 */
+  function newUseAxios<Data = any, UserAxiosConfig = AxiosRequestConfig<Data>>(url: MaybeRef<string>, config?: MaybeRef<UserAxiosConfig>, useAxiosConfig?: UseAxiosConfig) {
+    return baseUseAxios(
       url,
-      computed(() => ({ ...initConfig, ...config } as Merge<ID, D>)),
-      { ...initUseAxiosConfig, ...useAxiosConfig }
+      computed(() => Object.assign({}, unref(initConfig), unref(config))),
+      Object.assign({}, initUseAxiosConfig, useAxiosConfig)
     );
-  };
+  }
+  /** 使用 axios 发起 GET, DELETE 请求 */
+  ['get', 'delete'].forEach((method) => {
+    // @ts-ignore
+    newUseAxios[method] = function<Data = any, UserAxiosConfig = AxiosRequestConfig<Data>> (url: MaybeRef<string>, params?: any, config?: MaybeRef<UserAxiosConfig>, useAxiosConfig?: UseAxiosConfig) {
+      return newUseAxios(
+        url,
+        computed(() => Object.assign({}, unref(config), { method, params })),
+        Object.assign({}, initUseAxiosConfig, useAxiosConfig)
+      );
+    };
+  });
+  /** 使用 axios 发起 POST, PUT, PATCH 请求 */
+  ['post', 'put', 'patch'].forEach((method) => {
+    // @ts-ignore
+    newUseAxios[method] = function<Data = any, UserAxiosConfig = AxiosRequestConfig<Data>> (url: MaybeRef<string>, data?: Data, config?: MaybeRef<UserAxiosConfig>, useAxiosConfig?: UseAxiosConfig) {
+      return newUseAxios(
+        url,
+        computed(() => Object.assign({}, unref(config), { method, data })),
+        Object.assign({}, initUseAxiosConfig, useAxiosConfig)
+      );
+    };
+  });
+
+  return newUseAxios as UseAxios<InitAxiosConfig>;
 }
+
+
+export const useAxios: UseAxios = createUseAxios();
