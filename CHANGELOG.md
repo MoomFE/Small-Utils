@@ -1,6 +1,7 @@
 ## [Unreleased]
 
 ## [v3.2.0]
+  - 📅 2022-02-23
   - 🌟 新增 `useAxios` 组合式方法, 是对 `axios` 的封装
     - 支持使用 `createUseAxios` 创建一个自定义配置的 `axios` 封装实例
     - 提供 `get`, `delete`, `post`, `put`, `patch` 请求方式的别名
@@ -193,7 +194,8 @@ CHANGELOG 图标规范
 <hr>
 <br>
 
-[Unreleased]: https://github.com/it-moom/Tools/compare/v3.2.0-beta.4...HEAD
+[Unreleased]: https://github.com/it-moom/Tools/compare/v3.2.0...HEAD
+[v3.2.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.2.0
 [v3.2.0-beta.4]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.2.0-beta.4
 [v3.2.0-beta.3]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.2.0-beta.3
 [v3.2.0-beta.2]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.2.0-beta.2
