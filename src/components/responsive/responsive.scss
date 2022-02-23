@@ -1,0 +1,18 @@
+.s-responsive{
+  max-width: 100%;
+  display: flex;
+  flex: 1 0 auto;
+  position: relative;
+  overflow: hidden;
+
+  .s-responsive-sizer{
+    flex: 1 0 0px
+  }
+   .s-responsive-content{
+    max-width: 100%;
+    flex: 1 0 0px;
+  }
+  .s-responsive-sizer ~ .s-responsive-content{
+    margin-left: -100%;
+  }
+}
