@@ -35,6 +35,7 @@ const rollupExternal = [
   '@vueuse/core',
   'overlayscrollbars/css/OverlayScrollbars.css',
   'axios',
+  'css-render',
   ...modules.map((m) => `@/${m}`)
 ];
 

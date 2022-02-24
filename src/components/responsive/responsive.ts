@@ -1,5 +1,5 @@
 import { h, computed, defineComponent } from 'vue-demi';
-import './responsive.scss';
+import CssRender from 'css-render';
 
 
 /** 当前浏览器是否支持纵横比属性 */
@@ -22,7 +22,7 @@ const responsiveProps = {
 const Responsive = defineComponent({
   name: 's-responsive',
   props: responsiveProps,
-  setup(props) {
+  setup(props, { slots }) {
     /** 数字格式长宽比 */
     const computedAspectRatio = computed(() => Number(props.aspectRatio));
     /** 尺寸调整容器样式 */
@@ -44,27 +44,37 @@ const Responsive = defineComponent({
       return undefined;
     });
 
-    return {
-      computedAspectRatio,
-      sizerStyle,
-      contentStyle
+    return () => {
+      return h('div', { class: 's-responsive' }, [
+        sizerStyle.value && h('div', {
+          class: ['s-responsive-sizer', props.sizerClass],
+          style: sizerStyle.value
+        }),
+        h('div', {
+          class: ['s-responsive-content', props.contentClass],
+          style: contentStyle.value
+        }, slots.default?.())
+      ]);
     };
-  },
-  render() {
-    const { sizerStyle } = this;
-
-    return h('div', { class: 's-responsive' }, [
-      sizerStyle && h('div', {
-        class: ['s-responsive-sizer', this.sizerClass],
-        style: sizerStyle
-      }),
-      h('div', {
-        class: ['s-responsive-content', this.contentClass],
-        style: this.contentStyle
-      }, this.$slots.default)
-    ]);
   }
 });
+
+
+const { c } = CssRender();
+const style = c('.s-responsive', {
+  maxWidth: '100%',
+  display: 'flex',
+  flex: '1 0 auto',
+  position: 'relative',
+  overflow: 'hidden'
+}, [
+  c('.s-responsive-sizer', { flex: '1 0 0px' }, [
+    c('~ .s-responsive-content', { marginLeft: '-100%' })
+  ]),
+  c('.s-responsive-content', { maxWidth: '100%', flex: '1 0 0px' })
+]);
+
+style.mount();
 
 
 export default Responsive;
