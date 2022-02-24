@@ -1,5 +1,9 @@
 ## [Unreleased]
+
+## [v3.3.0]
+  - 📅 2022-02-24
   - 🌟 新增 `s-responsive` 组件, 用于固定一个宽高比
+  - 💄 调整代码目录结构
   - 🐞 修复 `s-delay-render` 组件在 Vue2 环境下无法渲染内容的问题
   - 🐞 修复 `s-scrollbars` 组件在 Vue3 环境下无法渲染内容的问题
 
@@ -197,7 +201,8 @@ CHANGELOG 图标规范
 <hr>
 <br>
 
-[Unreleased]: https://github.com/it-moom/Tools/compare/v3.2.0...HEAD
+[Unreleased]: https://github.com/it-moom/Tools/compare/v3.3.0...HEAD
+[v3.3.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.3.0
 [v3.2.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.2.0
 [v3.2.0-beta.4]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.2.0-beta.4
 [v3.2.0-beta.3]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.2.0-beta.3
