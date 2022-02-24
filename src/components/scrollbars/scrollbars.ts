@@ -22,8 +22,8 @@ const scrollbarsProps = {
   contentClass: String
 };
 
-
-const Scrollbars = defineComponent({
+export type ScrollbarsProps = typeof scrollbarsProps;
+export const SScrollbars = defineComponent({
   name: 's-scrollbars',
   props: scrollbarsProps,
   setup(props) {
@@ -82,7 +82,3 @@ const Scrollbars = defineComponent({
     ]);
   }
 });
-
-
-export default Scrollbars;
-export type ScrollbarsProps = typeof scrollbarsProps;

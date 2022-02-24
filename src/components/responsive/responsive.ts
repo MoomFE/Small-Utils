@@ -19,7 +19,8 @@ const responsiveProps = {
 };
 
 
-const Responsive = defineComponent({
+export type ResponsiveProps = typeof responsiveProps;
+export const SResponsive = defineComponent({
   name: 's-responsive',
   props: responsiveProps,
   setup(props, { slots }) {
@@ -75,7 +76,3 @@ const style = c('.s-responsive', {
 ]);
 
 style.mount();
-
-
-export default Responsive;
-export type ResponsiveProps = typeof responsiveProps;

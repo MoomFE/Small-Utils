@@ -1,4 +1,4 @@
-import { h, ref, onMounted, defineComponent, renderSlot } from 'vue-demi';
+import { h, ref, onMounted, defineComponent } from 'vue-demi';
 import { useTimeoutFn } from '@vueuse/core';
 import { isNumeric } from '@/utils';
 
@@ -17,7 +17,8 @@ const delayRenderProps = {
 };
 
 
-const DelayRender = defineComponent({
+export const DelayRenderProps = typeof delayRenderProps;
+export const SDelayRender = defineComponent({
   name: 's-delay-render',
   props: delayRenderProps,
   setup(props, { slots }) {
@@ -36,12 +37,8 @@ const DelayRender = defineComponent({
 
     return () => {
       return render.value
-        ? h(props.tag, [renderSlot(slots, 'default')])
+        ? h(props.tag, slots.default?.())
         : null;
     };
   }
 });
-
-
-export default DelayRender;
-export const DelayRenderProps = typeof delayRenderProps;
