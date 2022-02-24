@@ -1,4 +1,4 @@
-import { test } from 'vitest'; // eslint-disable-line import/no-extraneous-dependencies
+import { test } from 'vitest';
 import { testTypes } from '@@/test/shared';
 import { isNumber } from '@/utils';
 

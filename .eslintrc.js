@@ -6,5 +6,8 @@ module.exports = {
   parser: 'vue-eslint-parser',
   parserOptions: {
     parser: '@typescript-eslint/parser'
+  },
+  rules: {
+    'import/no-extraneous-dependencies': 'off',
   }
 };

@@ -1,4 +1,4 @@
-import { test, expect } from 'vitest'; // eslint-disable-line import/no-extraneous-dependencies
+import { test, expect } from 'vitest';
 import { delay, wait } from '@/utils';
 
 

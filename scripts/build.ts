@@ -1,6 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
-
-
 import { resolve, relative } from 'path';
 import { build } from 'vite';
 import { rollup } from 'rollup';
