@@ -25,6 +25,6 @@ export function isObject(value: unknown): value is object {
  * isPlainObject(Object.create(null)); // -> true
  * isPlainObject([]); // -> false
  */
-export function isPlainObject(value: unknown) {
+export function isPlainObject<Value = unknown>(value: unknown): value is Record<PropertyKey, Value> {
   return Object.prototype.toString.call(value) === '[object Object]';
 }
