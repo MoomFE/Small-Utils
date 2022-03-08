@@ -1,6 +1,9 @@
 import { expect } from 'vitest';
 
 
+/**
+ * 所有用于测试的类型
+ */
 export const types = {
 
   // Undefined
@@ -65,8 +68,7 @@ export const types = {
   // Promise
   promise: [
     new Promise(() => {}),
-    Promise.resolve(),
-    Promise.reject()
+    Promise.resolve()
   ],
 
   // Promise Like
@@ -80,9 +82,10 @@ export const types = {
 };
 
 
-type TestTypesFn = (v: any) => boolean;
-type TestTypesCheckTypes = (keyof typeof types)[];
-interface TestTypesOptions {
+/** 需要测试的类型数组 */
+type CheckTypes = (keyof typeof types)[];
+/** 其余选项 */
+interface Options {
   /**
    * 是否反向测试
    * @default false
@@ -91,8 +94,12 @@ interface TestTypesOptions {
 }
 
 
-export function testTypes(fn: TestTypesFn, checkTypes: TestTypesCheckTypes, options: TestTypesOptions = {}) {
-  const keys = Object.keys(types) as (keyof typeof types)[];
+export function testTypes(
+  fn: (v: any) => boolean,
+  checkTypes: CheckTypes,
+  options: Options = {}
+) {
+  const keys = Object.keys(types) as CheckTypes;
   const isReverse = !!options.reverse;
 
   for (const key of keys) {
