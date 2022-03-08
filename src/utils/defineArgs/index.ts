@@ -1,5 +1,6 @@
 import { isFunction } from '@/utils';
 
+
 interface OArgs {
   [key: number]: any;
 }
