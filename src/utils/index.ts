@@ -9,5 +9,6 @@ export * from './isPrimitive';
 
 export * from './delay';
 export * from './leastRun';
+export * from './defineArgs';
 
 export * from './deepUnref';
