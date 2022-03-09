@@ -101,3 +101,28 @@ test('defineArgs: 定义了指定位置的参数值, 如果前面的参数值没
   wrapRecord(1);
   expect(args).toEqual([1, undefined, 666, undefined]);
 });
+
+test('defineArgs: 确保不会传入多余的参数', () => {
+  let args: any[] = [];
+
+  const record = (...userArgs: any[]) => {
+    args = userArgs;
+  };
+
+  const wrapRecord = defineArgs(record, {
+    2: 666
+  });
+
+
+  wrapRecord();
+  expect(args).toEqual([undefined, undefined, 666]);
+
+  wrapRecord(1);
+  expect(args).toEqual([1, undefined, 666]);
+
+  wrapRecord(1, 2);
+  expect(args).toEqual([1, 2, 666]);
+
+  wrapRecord(1, 2, 3);
+  expect(args).toEqual([1, 2, 666, 3]);
+});
