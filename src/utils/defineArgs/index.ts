@@ -1,4 +1,4 @@
-import { isFunction } from '@/utils';
+import { isFunction, isNumeric } from '@/utils';
 
 
 interface OArgs {
@@ -6,15 +6,18 @@ interface OArgs {
 }
 
 
-export function defineArgs<T>(func: (...args: any[]) => T, oArgs: OArgs) {
+export function defineArgs<T>(
+  func: (...args: any[]) => T,
+  oArgs: OArgs
+) {
   return function (...userArgs: any[]) {
-    const args = [];
-    const argsLength = Object.keys(oArgs).length + userArgs.length;
+    const args: any[] = [];
+    const maxOArgsIndex = Math.max(...Object.keys(oArgs).filter(isNumeric).map(Number));
 
     let userArgsIndex = 0;
     let index = 0;
 
-    for (; index < argsLength; index++) {
+    for (; index <= maxOArgsIndex || userArgsIndex < userArgs.length; index++) {
       let value;
 
       if (index in oArgs) {

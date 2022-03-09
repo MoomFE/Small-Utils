@@ -86,3 +86,18 @@ test('defineArgs: 定义了指定位置的参数值, 方法传入的参数会绕
   wrapRecord(1, 2, 3);
   expect(args).toEqual([1, 2, 666, 3]);
 });
+
+test('defineArgs: 定义了指定位置的参数值, 如果前面的参数值没有传入, 那么会为 undefined', () => {
+  let args: any[] = [];
+
+  const record = (a: any, b: any, c: any, d: any) => {
+    args = [a, b, c, d];
+  };
+
+  const wrapRecord = defineArgs(record, {
+    2: 666
+  });
+
+  wrapRecord(1);
+  expect(args).toEqual([1, undefined, 666, undefined]);
+});
