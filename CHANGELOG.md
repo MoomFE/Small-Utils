@@ -1,4 +1,7 @@
 ## [Unreleased]
+
+## [v3.4.0]
+  - 📅 2022-03-09
   - 🌟 新增 `defineArgs` 工具方法, 对传入方法进行参数定义, 返回一个新方法
   - 💄 优化 `isPlainObject` 方法的类型定义
 
@@ -203,7 +206,8 @@ CHANGELOG 图标规范
 <hr>
 <br>
 
-[Unreleased]: https://github.com/it-moom/Tools/compare/v3.3.0...HEAD
+[Unreleased]: https://github.com/it-moom/Tools/compare/v3.4.0...HEAD
+[v3.4.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.4.0
 [v3.3.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.3.0
 [v3.2.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.2.0
 [v3.2.0-beta.4]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.2.0-beta.4
