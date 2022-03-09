@@ -1,4 +1,5 @@
 ## [Unreleased]
+  - 🌟 新增 `defineArgs` 工具方法, 对传入方法进行参数定义, 返回一个新方法
   - 💄 优化 `isPlainObject` 方法的类型定义
 
 ## [v3.3.0]
