@@ -48,6 +48,22 @@ test('defineArgs: 提前定义方法的参数 ( 二 )', () => {
   expect(args).toEqual([2, 1]);
 });
 
+test('defineArgs: 提前定义方法的多个参数', () => {
+  let args: any[] = [];
+
+  const record = (a: any, b: any, c: any, d: any) => {
+    args = [a, b, c, d];
+  };
+
+  const wrapRecord = defineArgs(record, {
+    1: 333,
+    2: 666
+  });
+
+  wrapRecord(1, 2);
+  expect(args).toEqual([1, 333, 666, 2]);
+});
+
 test('defineArgs: 定义参数值时, 可以传入方法, 取值时, 会执行方法获取实时的值', () => {
   let index = 1;
   let args: number[] = [];
