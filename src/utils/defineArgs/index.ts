@@ -6,6 +6,19 @@ interface OArgs {
 }
 
 
+/**
+ * 对传入方法进行参数定义, 返回一个新方法
+ * @param func 需要进行参数定义的方法
+ * @param oArgs 参数定义
+ * @example
+ *
+ * const timeout = defineArgs(setTimeout, {
+ *   0: 1000,
+ * })
+ *
+ * timeout(() => { ... });
+ * timeout(() => { ... });
+ */
 export function defineArgs<T>(
   func: (...args: any[]) => T,
   oArgs: OArgs
