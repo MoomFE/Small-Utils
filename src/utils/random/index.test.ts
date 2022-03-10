@@ -1,17 +1,130 @@
 import { expect, test } from 'vitest';
-import { randomNatural } from '@/utils';
+import { randomNatural, random } from '@/utils';
 
 
-test('randomNatural: 在传入的两个自然数中随机一个数字', () => {
+test('randomNatural: 在传入的两个自然数之间随机生成一个自然数', () => {
   const nums = new Set();
 
   for (let i = 0; i < 1000; i++) {
     nums.add(
-      randomNatural(0, 10)
+      randomNatural(0, 9)
+    );
+  }
+
+  expect(
+    Array.from(nums).sort()
+  ).toEqual([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+});
+
+test('randomNatural: 第一个参数必须小于第二个参数, 否则结果不正确', () => {
+  const nums = new Set();
+
+  for (let i = 0; i < 1000; i++) {
+    nums.add(
+      randomNatural(9, 0)
+    );
+  }
+
+  expect(
+    Array.from(nums).sort()
+  ).toEqual([1, 2, 3, 4, 5, 6, 7, 8]);
+});
+
+test('randomNatural: 两个参数都必须传, 否则结果不正确', () => {
+  const nums = new Set();
+  const nums2 = new Set();
+
+  for (let i = 0; i < 1000; i++) {
+    // @ts-ignore
+    nums.add(randomNatural(9));
+    // @ts-ignore
+    nums2.add(randomNatural());
+  }
+
+  expect(Array.from(nums)).toEqual([NaN]);
+  expect(Array.from(nums2)).toEqual([NaN]);
+});
+
+test('random: 在传入的两个数字之间随机生成一个数字', () => {
+  const nums = new Set();
+
+  for (let i = 0; i < 1000; i++) {
+    nums.add(
+      random(0, 9)
+    );
+  }
+
+  expect(
+    Array.from(nums).sort()
+  ).toEqual([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+});
+
+test('random: 支持负数', () => {
+  const nums = new Set();
+
+  for (let i = 0; i < 1000; i++) {
+    nums.add(
+      random(-9, -1)
+    );
+  }
+
+  expect(
+    Array.from(nums).sort()
+  ).toEqual([-1, -2, -3, -4, -5, -6, -7, -8, -9]);
+});
+
+test('random: 支持正数和负数混用', () => {
+  const nums = new Set();
+
+  for (let i = 0; i < 2000; i++) {
+    nums.add(
+      random(-9, 9)
+    );
+  }
+
+  expect(
+    Array.from(nums).sort()
+  ).toEqual([-1, -2, -3, -4, -5, -6, -7, -8, -9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+});
+
+test('random: 支持第一个参数大于第二个参数', () => {
+  const nums = new Set();
+
+  for (let i = 0; i < 1000; i++) {
+    nums.add(
+      random(9, 0)
+    );
+  }
+
+  expect(
+    Array.from(nums).sort()
+  ).toEqual([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+});
+
+test('random: 不传参数, 则默认在 0 和 10 之间随机生成一个数字', () => {
+  const nums = new Set();
+
+  for (let i = 0; i < 1000; i++) {
+    nums.add(
+      random()
     );
   }
 
   expect(
     Array.from(nums).sort()
   ).toEqual([0, 1, 10, 2, 3, 4, 5, 6, 7, 8, 9]);
+});
+
+test('random: 如果只传了一个参数, 则默认在 0 和传入参数之间随机生成一个数字', () => {
+  const nums = new Set();
+
+  for (let i = 0; i < 1000; i++) {
+    nums.add(
+      random(9)
+    );
+  }
+
+  expect(
+    Array.from(nums).sort()
+  ).toEqual([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
 });
