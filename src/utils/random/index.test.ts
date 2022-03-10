@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest';
-import { randomNatural, random } from '@/utils';
+import { randomNatural, random, randomLetter } from '@/utils';
 
 
 test('randomNatural: 在传入的两个自然数之间随机生成一个自然数', () => {
@@ -127,4 +127,46 @@ test('random: 如果只传了一个参数, 则默认在 0 和传入参数之间�
   expect(
     Array.from(nums).sort()
   ).toEqual([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+});
+
+test('randomLetter: 随机一个小写英文字母', () => {
+  const nums = new Set();
+
+  for (let i = 0; i < 10000; i++) {
+    nums.add(
+      randomLetter()
+    );
+  }
+
+  expect(
+    Array.from(nums).sort()
+  ).toEqual(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']);
+});
+
+test('randomLetter: 随机一个小写英文字母 ( 二 )', () => {
+  const nums = new Set();
+
+  for (let i = 0; i < 10000; i++) {
+    nums.add(
+      randomLetter(false)
+    );
+  }
+
+  expect(
+    Array.from(nums).sort()
+  ).toEqual(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']);
+});
+
+test('randomLetter: 随机一个大写英文字母', () => {
+  const nums = new Set();
+
+  for (let i = 0; i < 10000; i++) {
+    nums.add(
+      randomLetter(true)
+    );
+  }
+
+  expect(
+    Array.from(nums).sort()
+  ).toEqual(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']);
 });

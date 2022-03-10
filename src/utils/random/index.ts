@@ -44,3 +44,18 @@ export function random(...args: number[]) {
 
   return result;
 }
+
+
+/**
+ * 随机一个英文字母
+ * @param uppercase 是否大写 ( default: false )
+ * @example
+ *
+ * randomLetter(); // -> a ~ z
+ * randomLetter(true); // -> A ~ Z
+ */
+export function randomLetter(uppercase: boolean = false) {
+  return String.fromCharCode(
+    uppercase ? randomNatural(65, 90) : randomNatural(97, 122)
+  );
+}
