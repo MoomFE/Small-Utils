@@ -1,5 +1,8 @@
 ## [Unreleased]
-  - 🐞 修复组合式方法 `useAxios` 返回的 `isLoading`, `isFinished` 状态比 `onSuccess` 更早被触发的问题
+
+## [v3.5.1]
+  - 📅 2022-03-11
+  - 🐞 修复组合式方法 `useAxios` 请求完成时 `isLoading`, `isFinished` 比 `onSuccess` 更早被触发的问题
 
 ## [v3.5.0]
   - 📅 2022-03-11
@@ -214,7 +217,8 @@ CHANGELOG 图标规范
 <hr>
 <br>
 
-[Unreleased]: https://github.com/it-moom/Tools/compare/v3.5.0...HEAD
+[Unreleased]: https://github.com/it-moom/Tools/compare/v3.5.1...HEAD
+[v3.5.1]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.5.1
 [v3.5.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.5.0
 [v3.4.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.4.0
 [v3.3.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.3.0
