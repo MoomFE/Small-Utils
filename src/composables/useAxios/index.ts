@@ -7,7 +7,7 @@ import type { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse } fro
 import type { Get, Except, Merge } from 'type-fest';
 import axios from 'axios';
 import { shallowRef, ref, computed, unref } from 'vue-demi';
-import { createEventHook, useTimeoutFn, tryOnUnmounted } from '@vueuse/core';
+import { createEventHook, tryOnUnmounted } from '@vueuse/core';
 import { deepUnref } from '@/utils';
 
 
@@ -186,7 +186,7 @@ function baseUseAxios<
 
   // 是否立即触发请求
   if (useAxiosConfig?.immediate) {
-    useTimeoutFn(execute, 0);
+    execute();
   }
   // 是否在组件被卸载时取消当前请求
   if (useAxiosConfig?.abortOnUnmounted !== false) {
