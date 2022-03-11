@@ -1,4 +1,7 @@
 ## [Unreleased]
+
+## [v3.5.0]
+  - 📅 2022-03-11
   - 🌟 新增 `randomNatural` 工具方法, 在传入的两个自然数之间随机生成一个自然数
   - 🌟 新增 `random` 工具方法, 在传入的两个数字之间随机生成一个数字
   - 🌟 新增 `randomLetter` 工具方法, 随机一个英文字母, 可以指定大小写
@@ -210,7 +213,8 @@ CHANGELOG 图标规范
 <hr>
 <br>
 
-[Unreleased]: https://github.com/it-moom/Tools/compare/v3.4.0...HEAD
+[Unreleased]: https://github.com/it-moom/Tools/compare/v3.5.0...HEAD
+[v3.5.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.5.0
 [v3.4.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.4.0
 [v3.3.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.3.0
 [v3.2.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.2.0
