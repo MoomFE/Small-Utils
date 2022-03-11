@@ -160,9 +160,6 @@ function baseUseAxios<
     return new Promise((resolve, reject) => {
       axiosInstance(axiosUrl, axiosConfig)
         .finally(() => {
-          isLoading.value = false;
-          isFinished.value = true;
-
           finallyEvent.trigger(null);
         })
         .then((res: AxiosResponse<Data, AxiosConfig>) => {
@@ -171,12 +168,16 @@ function baseUseAxios<
           // @ts-ignore
           data.value = res.data?.data ?? {};
 
+          isLoading.value = false;
+          isFinished.value = true;
           successEvent.trigger(res);
           resolve(res);
         })
         .catch((err: AxiosError<Data, AxiosConfig>) => {
           error.value = err;
 
+          isLoading.value = false;
+          isFinished.value = true;
           errorEvent.trigger(err);
           reject(err);
         });
