@@ -1,16 +1,14 @@
-import { h, computed, defineComponent } from 'vue-demi';
+import { computed, defineComponent, h } from 'vue-demi';
 import './style';
-
 
 /** 当前浏览器是否支持纵横比属性 */
 const supportsAspectRatio = CSS.supports('aspect-ratio: 1');
-
 
 const responsiveProps = {
   /** ( 宽度 / 高度 ) 计算的基本长宽比 */
   aspectRatio: {
     type: [String, Number],
-    default: 1
+    default: 1,
   },
   /** 尺寸调整容器样式类 */
   sizerClass: String,
@@ -18,10 +16,9 @@ const responsiveProps = {
   contentClass: String,
 };
 
-
 export type ResponsiveProps = typeof responsiveProps;
 export const SResponsive = defineComponent({
-  name: 's-responsive',
+  name: 'SResponsive',
   props: responsiveProps,
   setup(props, { slots }) {
     /** 数字格式长宽比 */
@@ -30,7 +27,7 @@ export const SResponsive = defineComponent({
     const sizerStyle = computed(() => {
       if (!supportsAspectRatio && computedAspectRatio.value) {
         return {
-          paddingBottom: `${(1 / computedAspectRatio.value) * 100}%`
+          paddingBottom: `${(1 / computedAspectRatio.value) * 100}%`,
         };
       }
       return undefined;
@@ -39,7 +36,7 @@ export const SResponsive = defineComponent({
     const contentStyle = computed(() => {
       if (supportsAspectRatio && computedAspectRatio.value) {
         return {
-          aspectRatio: `${computedAspectRatio.value}`
+          aspectRatio: `${computedAspectRatio.value}`,
         };
       }
       return undefined;
@@ -49,13 +46,13 @@ export const SResponsive = defineComponent({
       return h('div', { class: 's-responsive' }, [
         sizerStyle.value && h('div', {
           class: ['s-responsive-sizer', props.sizerClass],
-          style: sizerStyle.value
+          style: sizerStyle.value,
         }),
         h('div', {
           class: ['s-responsive-content', props.contentClass],
-          style: contentStyle.value
-        }, slots.default?.())
+          style: contentStyle.value,
+        }, slots.default?.()),
       ]);
     };
-  }
+  },
 });

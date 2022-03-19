@@ -8,10 +8,9 @@
  */
 export function randomNatural(from: number, to: number) {
   return Math.floor(
-    Math.random() * (to - from + 1) + from
+    Math.random() * (to - from + 1) + from,
   );
 }
-
 
 /**
  * 在传入的两个数字之间随机生成一个数字
@@ -24,27 +23,22 @@ export function randomNatural(from: number, to: number) {
 export function random(...args: number[]) {
   let [from = 0, to = 10] = args;
 
-  if (args.length === 1) {
+  if (args.length === 1)
     [from, to] = [0, from];
-  }
 
-  if (from > to) {
+  if (from > to)
     [from, to] = [to, from];
-  }
 
-  if (from > 0) {
+  if (from > 0)
     return randomNatural(from, to);
-  }
 
   const result = randomNatural(0, to + Math.abs(from));
 
-  if (result > to) {
+  if (result > to)
     return to - result;
-  }
 
   return result;
 }
-
 
 /**
  * 随机一个英文字母
@@ -54,8 +48,8 @@ export function random(...args: number[]) {
  * randomLetter(); // -> a ~ z
  * randomLetter(true); // -> A ~ Z
  */
-export function randomLetter(uppercase: boolean = false) {
+export function randomLetter(uppercase = false) {
   return String.fromCharCode(
-    uppercase ? randomNatural(65, 90) : randomNatural(97, 122)
+    uppercase ? randomNatural(65, 90) : randomNatural(97, 122),
   );
 }

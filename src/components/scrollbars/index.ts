@@ -1,13 +1,12 @@
 import {
-  h,
-  ref, watchEffect,
-  onMounted, onUnmounted,
-  defineComponent
+  defineComponent,
+  h, onMounted,
+  onUnmounted, ref,
+  watchEffect,
 } from 'vue-demi';
 import { templateRef } from '@vueuse/core';
 import 'overlayscrollbars/css/OverlayScrollbars.css';
 import 'overlayscrollbars/js/OverlayScrollbars.min';
-
 
 const scrollbarsProps = {
   /** 传递给 overlayscrollbars 的 options */
@@ -19,35 +18,34 @@ const scrollbarsProps = {
   /** 组件 viewport 层样式类 */
   viewportClass: String,
   /** 组件 content 层样式类 */
-  contentClass: String
+  contentClass: String,
 };
 
 export type ScrollbarsProps = typeof scrollbarsProps;
 export const SScrollbars = defineComponent({
-  name: 's-scrollbars',
+  name: 'SScrollbars',
   props: scrollbarsProps,
   setup(props, { slots }) {
     const osInstace = ref();
     const el = templateRef<HTMLDivElement | null>('el');
 
     onMounted(() => {
-      // @ts-ignore
+      // @ts-expect-error xxx
       osInstace.value = window.OverlayScrollbars(
         el.value,
         props.options || {},
-        props.extensions
+        props.extensions,
       );
     });
 
     watchEffect(() => {
-      // @ts-ignore
-      if (window.OverlayScrollbars.valid(osInstace.value)) {
+      // @ts-expect-error xxx
+      if (window.OverlayScrollbars.valid(osInstace.value))
         osInstace.value.options(props.options);
-      }
     });
 
     onUnmounted(() => {
-      // @ts-ignore
+      // @ts-expect-error xxx
       if (window.OverlayScrollbars.valid(osInstace.value)) {
         osInstace.value.destroy();
         osInstace.value = null;
@@ -66,20 +64,20 @@ export const SScrollbars = defineComponent({
       h('div', { class: 'os-resize-observer-host' }),
       h('div', { class: `os-padding ${this.paddingClass || ''}` }, [
         h('div', { class: `os-viewport ${this.viewportClass || ''}` }, [
-          h('div', { class: `os-content ${this.contentClass || ''}` }, this.slots.default?.())
-        ])
+          h('div', { class: `os-content ${this.contentClass || ''}` }, this.slots.default?.()),
+        ]),
       ]),
       h('div', { class: 'os-scrollbar os-scrollbar-horizontal' }, [
         h('div', { class: 'os-scrollbar-track' }, [
-          h('div', { class: 'os-scrollbar-handle' })
-        ])
+          h('div', { class: 'os-scrollbar-handle' }),
+        ]),
       ]),
       h('div', { class: 'os-scrollbar os-scrollbar-vertical' }, [
         h('div', { class: 'os-scrollbar-track' }, [
-          h('div', { class: 'os-scrollbar-handle' })
-        ])
+          h('div', { class: 'os-scrollbar-handle' }),
+        ]),
       ]),
-      h('div', { class: 'os-scrollbar-corner' })
+      h('div', { class: 'os-scrollbar-corner' }),
     ]);
-  }
+  },
 });

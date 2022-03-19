@@ -1,6 +1,5 @@
 import { isNumber, isString } from '@/utils';
 
-
 /**
  * 判断传入参数是否是数字, 支持判断数字字符串
  *
@@ -12,6 +11,6 @@ import { isNumber, isString } from '@/utils';
  * isNumeric(NaN); // -> false
  */
 export function isNumeric(value: unknown) {
-  // @ts-ignore
+  // @ts-expect-error xxx
   return isNumber(value) || (isString(value) && !isNaN(value - parseFloat(value))); // eslint-disable-line no-restricted-globals
 }

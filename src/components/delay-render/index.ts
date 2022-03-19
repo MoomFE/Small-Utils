@@ -1,25 +1,23 @@
-import { h, ref, onMounted, defineComponent } from 'vue-demi';
+import { defineComponent, h, onMounted, ref } from 'vue-demi';
 import { useTimeoutFn } from '@vueuse/core';
 import { isNumeric } from '@/utils';
-
 
 const delayRenderProps = {
   /** 标签 */
   tag: {
     type: String,
-    default: 'span'
+    default: 'span',
   },
   /** 延迟时间 */
   delayTime: {
     type: [Number, String],
-    default: 0
-  }
+    default: 0,
+  },
 };
-
 
 export const DelayRenderProps = typeof delayRenderProps;
 export const SDelayRender = defineComponent({
-  name: 's-delay-render',
+  name: 'SDelayRender',
   props: delayRenderProps,
   setup(props, { slots }) {
     /** 是否渲染 */
@@ -31,7 +29,7 @@ export const SDelayRender = defineComponent({
 
       useTimeoutFn(
         () => (render.value = true),
-        interval
+        interval,
       );
     });
 
@@ -40,5 +38,5 @@ export const SDelayRender = defineComponent({
         ? h(props.tag, slots.default?.())
         : null;
     };
-  }
+  },
 });

@@ -1,6 +1,5 @@
 import { expect } from 'vitest';
 
-
 /**
  * 所有用于测试的类型
  */
@@ -38,7 +37,7 @@ export const types = {
     {},
     { Zw: 1 },
     Object.create(null),
-    Object.create({ Zw: 1 })
+    Object.create({ Zw: 1 }),
   ],
 
   // Array
@@ -46,41 +45,40 @@ export const types = {
     [],
     [1, 2, 3],
     ['a', 'b', 'c'],
-    new Array(2)
+    new Array(2),
   ],
 
   // Function
   function: [
     function Zw() {},
-    function () {},
+    function() {},
     () => {},
-    async function () {}, // eslint-disable-line no-empty-function
+    async function() {}, // eslint-disable-line no-empty-function
     function* () {}, // eslint-disable-line no-empty-function
-    async function* () {} // eslint-disable-line no-empty-function
+    async function* () {}, // eslint-disable-line no-empty-function
   ],
 
   // RegExp
   regExp: [
     /\w/,
-    new RegExp('\\w') // eslint-disable-line prefer-regex-literals
+    new RegExp('\\w'), // eslint-disable-line prefer-regex-literals
   ],
 
   // Promise
   promise: [
     new Promise(() => {}),
-    Promise.resolve()
+    Promise.resolve(),
   ],
 
   // Promise Like
   promiseLike: [
     {
       then() {},
-      catch() {}
-    }
-  ]
+      catch() {},
+    },
+  ],
 
 };
-
 
 /** 需要测试的类型数组 */
 type CheckTypes = (keyof typeof types)[];
@@ -90,14 +88,13 @@ interface Options {
    * 是否反向测试
    * @default false
    */
-  reverse?: boolean;
+  reverse?: boolean
 }
-
 
 export function testTypes(
   fn: (v: any) => boolean,
   checkTypes: CheckTypes,
-  options: Options = {}
+  options: Options = {},
 ) {
   const keys = Object.keys(types) as CheckTypes;
   const isReverse = !!options.reverse;
@@ -106,13 +103,12 @@ export function testTypes(
     const values = types[key];
 
     if (checkTypes.includes(key)) {
-      for (const value of values) {
+      for (const value of values)
         expect(fn(value)).toBe(!isReverse);
-      }
-    } else {
-      for (const value of values) {
+    }
+    else {
+      for (const value of values)
         expect(fn(value)).toBe(isReverse);
-      }
     }
   }
 }

@@ -1,7 +1,6 @@
-import { test, expect } from 'vitest';
-import { ref, isRef, computed, unref } from 'vue';
+import { expect, test } from 'vitest';
+import { computed, isRef, ref, unref } from 'vue';
 import { deepUnref } from '@/utils';
-
 
 test('deepUnref: 最基础的作用和 Vue 的 unref 相同', () => {
   const a = ref(1);
@@ -45,7 +44,7 @@ test('deepUnref: 如果传入的不是普通对象, 那么直接返回传入值�
 
 test('deepUnref: 会解包普通对象内的 ref 对象', () => {
   const a = {
-    b: ref(1)
+    b: ref(1),
   };
 
   const unrefA = deepUnref(a);
@@ -54,7 +53,6 @@ test('deepUnref: 会解包普通对象内的 ref 对象', () => {
   expect(isRef(unrefA.b)).toBe(false);
   expect(a.b.value).toBe(1);
   expect(unrefA.b).toBe(1);
-
 
   const computedA = computed(() => a);
   const unrefComputedA = deepUnref(a);
@@ -70,8 +68,8 @@ test('deepUnref: 会解包普通对象内的 ref 对象', () => {
 test('deepUnref: 会解包普通对象内的 ref 对象 ( 二 )', () => {
   const a = {
     b: {
-      c: ref(1)
-    }
+      c: ref(1),
+    },
   };
 
   const unrefA = deepUnref(a);
@@ -80,7 +78,6 @@ test('deepUnref: 会解包普通对象内的 ref 对象 ( 二 )', () => {
   expect(isRef(unrefA.b.c)).toBe(false);
   expect(a.b.c.value).toBe(1);
   expect(unrefA.b.c).toBe(1);
-
 
   const computedA = computed(() => a);
   const unrefComputedA = deepUnref(a);

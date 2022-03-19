@@ -14,7 +14,6 @@ export function isObject(value: unknown): value is object {
   return value !== null && typeof value === 'object';
 }
 
-
 /**
  * 判断传入参数是否是纯粹的对象
  *

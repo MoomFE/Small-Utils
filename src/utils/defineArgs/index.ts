@@ -1,10 +1,6 @@
 import { isFunction, isNumeric } from '@/utils';
 
-
-interface OArgs {
-  [key: number]: any;
-}
-
+type OArgs = Record<number, any>;
 
 /**
  * 对传入方法进行参数定义, 返回一个新方法
@@ -21,9 +17,9 @@ interface OArgs {
  */
 export function defineArgs<T>(
   func: (...args: any[]) => T,
-  oArgs: OArgs
+  oArgs: OArgs,
 ) {
-  return function (...userArgs: any[]) {
+  return function(...userArgs: any[]) {
     const args: any[] = [];
     const maxOArgsIndex = Math.max(...Object.keys(oArgs).filter(isNumeric).map(Number));
 
@@ -36,7 +32,8 @@ export function defineArgs<T>(
       if (index in oArgs) {
         value = oArgs[index];
         value = isFunction(value) ? value() : value;
-      } else {
+      }
+      else {
         value = userArgs[userArgsIndex++];
       }
 

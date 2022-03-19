@@ -2,7 +2,6 @@ import { test } from 'vitest';
 import { testTypes } from '@@/test/shared';
 import { isPrimitive } from '@/utils';
 
-
 test('isPrimitive: 基础测试', () => {
   testTypes(isPrimitive, [
     'undefined',
@@ -11,6 +10,6 @@ test('isPrimitive: 基础测试', () => {
     'number', 'nan',
     'boolean',
     'symbol',
-    'bigint'
+    'bigint',
   ]);
 });

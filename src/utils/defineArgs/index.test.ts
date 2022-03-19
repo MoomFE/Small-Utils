@@ -1,6 +1,5 @@
-import { test, expect } from 'vitest';
+import { expect, test } from 'vitest';
 import { defineArgs } from '@/utils';
-
 
 test('defineArgs: 提前定义方法的参数', () => {
   let args: number[] = [];
@@ -11,9 +10,8 @@ test('defineArgs: 提前定义方法的参数', () => {
   };
 
   const next = defineArgs(add, {
-    0: 1
+    0: 1,
   });
-
 
   expect(next(0)).toBe(1);
   expect(args).toEqual([1, 0]);
@@ -34,9 +32,8 @@ test('defineArgs: 提前定义方法的参数 ( 二 )', () => {
   };
 
   const next = defineArgs(add, {
-    1: 1
+    1: 1,
   });
-
 
   expect(next(0)).toBe(1);
   expect(args).toEqual([0, 1]);
@@ -57,7 +54,7 @@ test('defineArgs: 提前定义方法的多个参数', () => {
 
   const wrapRecord = defineArgs(record, {
     1: 333,
-    2: 666
+    2: 666,
   });
 
   wrapRecord(1, 2);
@@ -74,9 +71,8 @@ test('defineArgs: 定义参数值时, 可以传入方法, 取值时, 会执行�
   };
 
   const next = defineArgs(add, {
-    1: () => index++
+    1: () => index++,
   });
-
 
   expect(next(0)).toBe(1);
   expect(args).toEqual([0, 1]);
@@ -96,7 +92,7 @@ test('defineArgs: 定义了指定位置的参数值, 方法传入的参数会绕
   };
 
   const wrapRecord = defineArgs(record, {
-    2: 666
+    2: 666,
   });
 
   wrapRecord(1, 2, 3);
@@ -111,7 +107,7 @@ test('defineArgs: 定义了指定位置的参数值, 如果前面的参数值没
   };
 
   const wrapRecord = defineArgs(record, {
-    2: 666
+    2: 666,
   });
 
   wrapRecord(1);
@@ -126,9 +122,8 @@ test('defineArgs: 确保不会传入多余的参数', () => {
   };
 
   const wrapRecord = defineArgs(record, {
-    2: 666
+    2: 666,
   });
-
 
   wrapRecord();
   expect(args).toEqual([undefined, undefined, 666]);

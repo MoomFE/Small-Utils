@@ -1,6 +1,5 @@
-import { test, expect } from 'vitest';
+import { expect, test } from 'vitest';
 import { isEmail } from '@/validator';
-
 
 test('isEmail: 基础测试', () => {
   expect(isEmail('123456789@xxx.com')).toBe(true);

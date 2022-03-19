@@ -1,6 +1,5 @@
 import { isReference } from '@/utils';
 
-
 /**
  * 判断传入参数是否是原始类型
  *

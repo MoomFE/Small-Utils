@@ -3,7 +3,6 @@
  */
 const isMobileReg = /^1[3-9]\d{9}$/;
 
-
 /**
  * 判断字符串是否是移动电话号码
  * @param value 需要判断的参数

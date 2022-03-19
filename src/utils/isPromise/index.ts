@@ -1,6 +1,5 @@
 import { isFunction } from '@/utils';
 
-
 /**
  * 判断传入参数是否是 Promise 对象
  *
@@ -15,7 +14,6 @@ import { isFunction } from '@/utils';
 export function isNativePromise<T = unknown>(value: unknown): value is Promise<T> {
   return Object.prototype.toString.call(value) === '[object Promise]';
 }
-
 
 /**
  * 判断传入参数是否是 Promise 对象或是类似于 Promise 的对象

@@ -2,7 +2,6 @@ import { test } from 'vitest';
 import { testTypes } from '@@/test/shared';
 import { isReference } from '@/utils';
 
-
 test('isReference: 基础测试', () => {
   testTypes(isReference, [
     'undefined',
@@ -11,8 +10,8 @@ test('isReference: 基础测试', () => {
     'number', 'nan',
     'boolean',
     'symbol',
-    'bigint'
+    'bigint',
   ], {
-    reverse: true
+    reverse: true,
   });
 });

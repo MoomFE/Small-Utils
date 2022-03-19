@@ -1,10 +1,9 @@
-import { resolve, relative } from 'path';
+import { relative, resolve } from 'path';
 import { build } from 'vite';
 import { rollup } from 'rollup';
-import { upperFirst, camelCase } from 'lodash-es';
+import { camelCase, upperFirst } from 'lodash-es';
 import fs from 'fs-extra';
 import dts from 'rollup-plugin-dts';
-
 
 const rootPath = resolve(__dirname, '../');
 const srcPath = resolve(rootPath, 'src');
@@ -14,20 +13,18 @@ const modules = [
   'utils',
   'validator',
   'components',
-  'composables'
+  'composables',
 ];
-
 
 const viteResolveConfig = {
   alias: {
     '@': srcPath,
-    '@@': rootPath
-  }
+    '@@': rootPath,
+  },
 };
 const viteOptimizeDeps = {
-  exclude: ['vue-demi']
+  exclude: ['vue-demi'],
 };
-
 
 const rollupDtsPlugin = dts();
 const rollupExternal = [
@@ -36,15 +33,13 @@ const rollupExternal = [
   'overlayscrollbars/css/OverlayScrollbars.css',
   'axios',
   'css-render',
-  ...modules.map((m) => `@/${m}`)
+  ...modules.map(m => `@/${m}`),
 ];
-
 
 const taskList = [];
 
-
 // 工具方法， 验证器, 可组合式方法
-modules.filter((name) => name !== 'components').forEach(async (name) => {
+modules.filter(name => name !== 'components').forEach(async(name) => {
   const input = resolve(srcPath, `${name}/index.ts`);
 
   // 打包代码
@@ -56,29 +51,29 @@ modules.filter((name) => name !== 'components').forEach(async (name) => {
       lib: {
         entry: input,
         formats: ['es', 'cjs'],
-        fileName: (format) => `index.${format === 'es' ? 'js' : format}`,
+        fileName: format => `index.${format === 'es' ? 'js' : format}`,
       },
       minify: false,
       rollupOptions: {
-        external: rollupExternal.filter((e) => e !== `@/${name}`)
-      }
-    }
+        external: rollupExternal.filter(e => e !== `@/${name}`),
+      },
+    },
   }));
   // 打包声明文件
   taskList.push(() => rollup({
     input,
     plugins: [rollupDtsPlugin],
-    external: rollupExternal
+    external: rollupExternal,
   }).then((bundle) => {
     bundle.write({
       file: resolve(rootPath, `${name}/index.d.ts`),
-      format: 'es'
+      format: 'es',
     });
   }));
 });
 
 // 所有组件
-(async () => {
+(async() => {
   const input = resolve(srcPath, 'components/index.ts');
 
   // 打包代码
@@ -90,29 +85,29 @@ modules.filter((name) => name !== 'components').forEach(async (name) => {
       lib: {
         entry: input,
         formats: ['es', 'cjs'],
-        fileName: (format) => `index.${format === 'es' ? 'js' : format}`,
+        fileName: format => `index.${format === 'es' ? 'js' : format}`,
       },
       minify: false,
       rollupOptions: {
-        external: rollupExternal
-      }
-    }
+        external: rollupExternal,
+      },
+    },
   }));
   // 打包声明文件
   taskList.push(() => rollup({
     input,
     plugins: [rollupDtsPlugin],
-    external: rollupExternal
+    external: rollupExternal,
   }).then((bundle) => {
     bundle.write({
       file: resolve(rootPath, 'components/index.d.ts'),
-      format: 'es'
+      format: 'es',
     });
   }));
 })();
 
 // 单个组件
-fs.readdirSync(resolve(srcPath, 'components')).forEach(async (name) => {
+fs.readdirSync(resolve(srcPath, 'components')).forEach(async(name) => {
   const input = resolve(srcPath, 'components', name, 'index.ts');
 
   if (fs.pathExistsSync(input)) {
@@ -129,39 +124,37 @@ fs.readdirSync(resolve(srcPath, 'components')).forEach(async (name) => {
         lib: {
           entry: input,
           formats: ['es', 'cjs'],
-          fileName: (format) => `index.${format === 'es' ? 'js' : format}`,
+          fileName: format => `index.${format === 'es' ? 'js' : format}`,
         },
         minify: false,
         rollupOptions: {
-          external: rollupExternal
-        }
-      }
+          external: rollupExternal,
+        },
+      },
     }));
     // 打包声明文件
     taskList.push(() => rollup({
       input,
       plugins: [rollupDtsPlugin],
-      external: rollupExternal
+      external: rollupExternal,
     }).then((bundle) => {
       bundle.write({
         file: resolve(rootPath, `components/S${upperFirst(camelCase(name))}/index.d.ts`),
-        format: 'es'
+        format: 'es',
       });
     }));
   }
 });
 
-
-(async () => {
+(async() => {
   // 清空目录
   modules.forEach((name) => {
     fs.emptyDirSync(resolve(rootPath, name));
   });
 
   // 挨个执行打包
-  for (const task of taskList) {
+  for (const task of taskList)
     await task(); // eslint-disable-line no-await-in-loop
-  }
 
   // 重定向路径
   modules.concat(componentsModules).forEach((name) => {

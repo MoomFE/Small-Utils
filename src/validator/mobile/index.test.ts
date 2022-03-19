@@ -1,6 +1,5 @@
-import { test, expect } from 'vitest';
+import { expect, test } from 'vitest';
 import { isMobile } from '@/validator';
-
 
 test('isMobile: 基础测试', () => {
   expect(isMobile('10000000000')).toBe(false);

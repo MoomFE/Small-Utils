@@ -1,6 +1,5 @@
-import { test, expect } from 'vitest';
+import { expect, test } from 'vitest';
 import { isCitizenID } from '@/validator';
-
 
 test('isCitizenID: 基础测试', () => {
   expect(isCitizenID('360602199901239999')).toBe(true);
