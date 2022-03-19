@@ -1,4 +1,5 @@
 ## [Unreleased]
+  - ⚠️ 移除 `s-responsive` 组件的 `sizerClass` 和 `contentClass` 传参
 
 ## [v3.5.1]
   - 📅 2022-03-11

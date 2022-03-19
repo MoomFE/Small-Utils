@@ -10,10 +10,6 @@ const responsiveProps = {
     type: [String, Number],
     default: 1,
   },
-  /** 尺寸调整容器样式类 */
-  sizerClass: String,
-  /** 内容容器样式类 */
-  contentClass: String,
 };
 
 export type ResponsiveProps = typeof responsiveProps;
@@ -45,11 +41,11 @@ export const SResponsive = defineComponent({
     return () => {
       return h('div', { class: 's-responsive' }, [
         sizerStyle.value && h('div', {
-          class: ['s-responsive-sizer', props.sizerClass],
+          class: 's-responsive-sizer',
           style: sizerStyle.value,
         }),
         h('div', {
-          class: ['s-responsive-content', props.contentClass],
+          class: 's-responsive-content',
           style: contentStyle.value,
         }, slots.default?.()),
       ]);
