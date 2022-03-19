@@ -1,4 +1,5 @@
 ## [Unreleased]
+  - 🌟 新增 `useCountdown` 组合式方法, 用于创建一个倒计时
   - ⚠️ 移除 `s-responsive` 组件的 `sizerClass` 和 `contentClass` 传参
 
 ## [v3.5.1]
