@@ -21,20 +21,40 @@
     }
   ],
   "settings": {
+    "editor.tabSize": 2,
+    "editor.detectIndentation": false,
+    "editor.codeActionsOnSave": {
+      "source.fixAll": false,
+      "source.fixAll.eslint": true,
+      "source.organizeImports": false
+    },
+    "editor.guides.bracketPairs": "active",
+    "editor.renderWhitespace": "boundary",
+    "editor.accessibilitySupport": "off",
+    "editor.cursorSmoothCaretAnimation": true,
+    "breadcrumbs.enabled": false,
     "files.exclude": {
+      "*.code-workspace": true,
       "node_modules": true,
-      "package-lock.json": true,
-      "Small-Utils.code-workspace": true,
       "src/components": true,
       "src/composables": true,
       "src/utils": true,
       "src/validator": true,
-      "yarn.lock": true
     },
-    "editor.tabSize": 2,
-    "editor.detectIndentation": false,
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true
-    }
-  }
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "prettier.enable": false,
+    "eslint.quiet": true,
+    "eslint.validate": [
+      "javascript",
+      "typescript",
+      "javascriptreact",
+      "typescriptreact",
+      "vue",
+      "html",
+      "markdown",
+      "json",
+      "jsonc",
+      "json5"
+    ]
+  },
 }
