@@ -9,8 +9,7 @@ export default defineConfig({
       '@@': __dirname,
     }
   },
-  // @ts-ignore
   test: {
-
+    environment: 'jsdom'
   },
 });
