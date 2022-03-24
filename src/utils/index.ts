@@ -7,6 +7,8 @@ export * from './isObject';
 export * from './isReference';
 export * from './isPrimitive';
 
+export * from './isESModule';
+
 export * from './delay';
 export * from './leastRun';
 export * from './defineArgs';
