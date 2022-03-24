@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+## [v3.7.0]
+  - 📅 2022-03-20
+  - 🌟 新增 isESModule 工具方法, 用于判断传入参数是否是 ES Module
+
 ## [v3.6.0]
   - 📅 2022-03-20
   - 🌟 新增 `useCountdown` 组合式方法, 用于创建一个倒计时
@@ -222,7 +226,8 @@ CHANGELOG 图标规范
 <hr>
 <br>
 
-[Unreleased]: https://github.com/it-moom/Tools/compare/v3.6.0...HEAD
+[Unreleased]: https://github.com/it-moom/Tools/compare/v3.7.0...HEAD
+[v3.7.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.7.0
 [v3.6.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.6.0
 [v3.5.1]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.5.1
 [v3.5.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.5.0

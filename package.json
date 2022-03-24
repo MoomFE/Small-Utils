@@ -1,18 +1,16 @@
 {
   "name": "@moomfe/small-utils",
-  "version": "3.6.0",
+  "version": "3.7.0",
   "description": "前端工具合集",
-  "author": "Wei Zhang <https://github.com/Zhang-Wei-666>",
   "license": "MIT",
-  "types": "./utils/index.d.ts",
-  "files": [
-    "utils",
-    "validator",
-    "components",
-    "composables"
-  ],
+  "author": "Wei Zhang <https://github.com/Zhang-Wei-666>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MoomFE/Small-Utils.git"
+  },
   "main": "./utils/index.cjs",
   "module": "./utils/index.js",
+  "types": "./utils/index.d.ts",
   "exports": {
     ".": {
       "import": "./utils/index.js",
@@ -41,10 +39,12 @@
       "types": "./composables/index.d.ts"
     }
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/MoomFE/Small-Utils.git"
-  },
+  "files": [
+    "utils",
+    "validator",
+    "components",
+    "composables"
+  ],
   "bugs": {
     "url": "https://github.com/MoomFE/Small-Utils/issues"
   },
@@ -53,6 +53,17 @@
     "test": "vitest",
     "test:ui": "vitest --ui",
     "build": "esno scripts/build.ts"
+  },
+  "peerDependencies": {
+    "@vue/composition-api": "^1.0.0-rc.1",
+    "@vueuse/core": ">5.3.0",
+    "axios": ">=0.26.0",
+    "vue": "^2.0.0 || >=3.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@vue/composition-api": {
+      "optional": true
+    }
   },
   "dependencies": {
     "@vueuse/core": "^8.1.2",
@@ -79,16 +90,5 @@
     "vite": "^2.8.6",
     "vitest": "0.7.9",
     "vue": "^3.2.31"
-  },
-  "peerDependencies": {
-    "@vue/composition-api": "^1.0.0-rc.1",
-    "@vueuse/core": ">5.3.0",
-    "axios": ">=0.26.0",
-    "vue": "^2.0.0 || >=3.0.0"
-  },
-  "peerDependenciesMeta": {
-    "@vue/composition-api": {
-      "optional": true
-    }
   }
 }
