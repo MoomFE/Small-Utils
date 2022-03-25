@@ -141,10 +141,9 @@ function baseUseAxios<
     /** axios 请求 URL */
     const axiosUrl = unref(url);
     /** axios 请求配置 */
-    const axiosConfig = {
-      ...deepUnref(config),
+    const axiosConfig = Object.assign({}, deepUnref(config), {
       cancelToken: cancelToken.token,
-    };
+    });
 
     return new Promise((resolve, reject) => {
       axiosInstance(axiosUrl, axiosConfig)
