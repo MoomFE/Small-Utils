@@ -49,6 +49,7 @@
     "url": "https://github.com/MoomFE/Small-Utils/issues"
   },
   "homepage": "https://github.com/MoomFE/Small-Utils#readme",
+  "sideEffects": false,
   "scripts": {
     "build": "esno scripts/build.ts",
     "test": "vitest",
@@ -57,12 +58,15 @@
     "test-build:ui": "npm run build && vitest --mode test-build --ui"
   },
   "peerDependencies": {
-    "@vue/composition-api": "^1.0.0-rc.1",
+    "@vue/composition-api": "^1.1.0",
     "@vueuse/core": ">5.3.0",
     "axios": ">=0.26.0",
-    "vue": "^2.0.0 || >=3.0.0"
+    "vue": "^2.6.0 || ^3.2.0"
   },
   "peerDependenciesMeta": {
+    "vue": {
+      "optional": true
+    },
     "@vue/composition-api": {
       "optional": true
     }
