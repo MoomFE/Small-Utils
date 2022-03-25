@@ -1,15 +1,18 @@
-import { defineConfig } from 'vite';
+/// <reference types="vitest" />
+
 import { resolve } from 'path';
+import { defineConfig } from 'vite';
 
-
-export default defineConfig({
-  resolve: {
-    alias: {
-      '@': resolve(__dirname, './src'),
-      '@@': __dirname,
-    }
-  },
-  test: {
-    environment: 'jsdom'
-  },
+export default defineConfig(({ mode }) => {
+  return {
+    resolve: {
+      alias: {
+        '@': resolve(__dirname, mode === 'test-build' ? './' : './src'),
+        '@@': __dirname,
+      },
+    },
+    test: {
+      environment: 'jsdom',
+    },
+  };
 });

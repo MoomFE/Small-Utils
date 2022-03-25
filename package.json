@@ -50,9 +50,11 @@
   },
   "homepage": "https://github.com/MoomFE/Small-Utils#readme",
   "scripts": {
+    "build": "esno scripts/build.ts",
     "test": "vitest",
     "test:ui": "vitest --ui",
-    "build": "esno scripts/build.ts"
+    "test-build": "npm run build && vitest --mode test-build",
+    "test-build:ui": "npm run build && vitest --mode test-build --ui"
   },
   "peerDependencies": {
     "@vue/composition-api": "^1.0.0-rc.1",
