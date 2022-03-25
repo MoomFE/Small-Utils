@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+## [v3.7.2]
+  - 📅 2022-03-25
+  - 💄 调整 `package.json` 文件
+
 ## [v3.7.1]
   - 📅 2022-03-25
   - 💄 优化 `leastRun` 方法, 判断异步函数的方式改为使用 `isPromise` 工具方法进行判断
@@ -231,7 +235,8 @@ CHANGELOG 图标规范
 <hr>
 <br>
 
-[Unreleased]: https://github.com/it-moom/Tools/compare/v3.7.1...HEAD
+[Unreleased]: https://github.com/it-moom/Tools/compare/v3.7.2...HEAD
+[v3.7.2]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.7.2
 [v3.7.1]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.7.1
 [v3.7.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.7.0
 [v3.6.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.6.0
