@@ -9,32 +9,32 @@
     "url": "git+https://github.com/MoomFE/Small-Utils.git"
   },
   "main": "./utils/index.cjs",
-  "module": "./utils/index.js",
+  "module": "./utils/index.mjs",
   "types": "./utils/index.d.ts",
   "exports": {
     ".": {
-      "import": "./utils/index.js",
+      "import": "./utils/index.mjs",
       "require": "./utils/index.cjs",
       "types": "./utils/index.d.ts"
     },
     "./*": "./*",
     "./utils": {
-      "import": "./utils/index.js",
+      "import": "./utils/index.mjs",
       "require": "./utils/index.cjs",
       "types": "./utils/index.d.ts"
     },
     "./validator": {
-      "import": "./validator/index.js",
+      "import": "./validator/index.mjs",
       "require": "./validator/index.cjs",
       "types": "./validator/index.d.ts"
     },
     "./components": {
-      "import": "./components/index.js",
+      "import": "./components/index.mjs",
       "require": "./components/index.cjs",
       "types": "./components/index.d.ts"
     },
     "./composables": {
-      "import": "./composables/index.js",
+      "import": "./composables/index.mjs",
       "require": "./composables/index.cjs",
       "types": "./composables/index.d.ts"
     }
@@ -49,7 +49,6 @@
     "url": "https://github.com/MoomFE/Small-Utils/issues"
   },
   "homepage": "https://github.com/MoomFE/Small-Utils#readme",
-  "sideEffects": false,
   "scripts": {
     "build": "esno scripts/build.ts",
     "test": "vitest",

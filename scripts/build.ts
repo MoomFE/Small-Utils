@@ -51,7 +51,7 @@ modules.filter(name => name !== 'components').forEach(async(name) => {
       lib: {
         entry: input,
         formats: ['es', 'cjs'],
-        fileName: format => `index.${format === 'es' ? 'js' : format}`,
+        fileName: format => `index.${format === 'es' ? 'mjs' : format}`,
       },
       minify: false,
       rollupOptions: {
@@ -85,7 +85,7 @@ modules.filter(name => name !== 'components').forEach(async(name) => {
       lib: {
         entry: input,
         formats: ['es', 'cjs'],
-        fileName: format => `index.${format === 'es' ? 'js' : format}`,
+        fileName: format => `index.${format === 'es' ? 'mjs' : format}`,
       },
       minify: false,
       rollupOptions: {
@@ -124,7 +124,7 @@ fs.readdirSync(resolve(srcPath, 'components')).forEach(async(name) => {
         lib: {
           entry: input,
           formats: ['es', 'cjs'],
-          fileName: format => `index.${format === 'es' ? 'js' : format}`,
+          fileName: format => `index.${format === 'es' ? 'mjs' : format}`,
         },
         minify: false,
         rollupOptions: {
@@ -161,7 +161,7 @@ fs.readdirSync(resolve(srcPath, 'components')).forEach(async(name) => {
     const moduleDir = resolve(rootPath, name);
 
     fs.readdirSync(moduleDir).forEach((file) => {
-      if (!(file.endsWith('.js') || file.endsWith('.cjs'))) return;
+      if (!(file.endsWith('.mjs') || file.endsWith('.cjs'))) return;
 
       const filePath = resolve(moduleDir, file);
       let fileContent = fs.readFileSync(filePath, 'utf-8');
