@@ -1,4 +1,7 @@
 ## [Unreleased]
+
+## [v3.7.3]
+  - 📅 2022-03-25
   - 💄 打包 `esm` 模块时, 文件名改为 `.mjs`
 
 ## [v3.7.2]
@@ -236,7 +239,8 @@ CHANGELOG 图标规范
 <hr>
 <br>
 
-[Unreleased]: https://github.com/it-moom/Tools/compare/v3.7.2...HEAD
+[Unreleased]: https://github.com/it-moom/Tools/compare/v3.7.3...HEAD
+[v3.7.3]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.7.3
 [v3.7.2]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.7.2
 [v3.7.1]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.7.1
 [v3.7.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.7.0
