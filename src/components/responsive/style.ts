@@ -1,4 +1,4 @@
-import CssRender from 'css-render';
+import { CssRender } from 'css-render';
 
 const { c } = CssRender();
 const style = c('.s-responsive', {
