@@ -13,6 +13,6 @@ export * from './delay';
 export * from './leastRun';
 export * from './defineArgs';
 export * from './random';
-export * from './cloneDeep';
+export * from './deepClone';
 
 export * from './deepUnref';

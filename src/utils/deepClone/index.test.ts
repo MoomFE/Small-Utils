@@ -1,15 +1,15 @@
 import { describe, expect, test } from 'vitest';
 import { types } from '@@/test/shared';
-import { cloneDeep } from '@/utils';
+import { deepClone } from '@/utils';
 
-describe('cloneDeep', () => {
+describe('deepClone', () => {
 
   test('深拷贝普通对象', () => {
     const obj = {
       a: 1,
       b: { c: 2 },
     };
-    const result = cloneDeep(obj);
+    const result = deepClone(obj);
 
     expect(result).not.equals(obj);
     expect(result.b).not.equals(obj.b);
@@ -22,7 +22,7 @@ describe('cloneDeep', () => {
       1,
       { c: 2 },
     ];
-    const result = cloneDeep(arr);
+    const result = deepClone(arr);
 
     expect(result).not.equals(arr);
     expect(result[1]).not.equals(arr[1]);
@@ -35,7 +35,7 @@ describe('cloneDeep', () => {
       if (['nan', 'object', 'array', 'promiseLike'].includes(type)) return;
 
       values.forEach((value) => {
-        expect(cloneDeep(value)).equals(value);
+        expect(deepClone(value)).equals(value);
       });
     });
   });
