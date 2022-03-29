@@ -1,5 +1,6 @@
 import { describe, expect, test } from 'vitest';
 import { computed, isRef, ref, unref } from 'vue';
+import { types } from '@@/test/shared';
 import { deepUnref } from '@/utils';
 
 describe('deepUnref', () => {
@@ -48,12 +49,17 @@ describe('deepUnref', () => {
   });
 
   test('如果传入的不是普通对象和数组, 那么直接返回传入值的 `unref` 结果', () => {
-    const a = /123/;
-    const refA = ref(a);
-    const computedA = computed(() => a);
+    Object.entries(types).forEach(([type, values]) => {
+      if (['nan', 'object', 'array', 'promiseLike'].includes(type)) return;
 
-    expect(unref(refA)).toBe(a);
-    expect(deepUnref(computedA)).toBe(a);
+      values.forEach((value) => {
+        const refValue = ref(value);
+        const computedValue = computed(() => value);
+
+        expect(deepUnref(refValue)).equals(value);
+        expect(deepUnref(computedValue)).equals(value);
+      });
+    });
   });
 
   test('会解包普通对象内的 ref 对象', () => {
