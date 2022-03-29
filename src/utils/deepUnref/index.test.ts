@@ -23,7 +23,7 @@ describe('deepUnref', () => {
     expect(deepUnref(b)).toBe(3);
   });
 
-  test('如果传入的是普通对象, 那么会返回副本', () => {
+  test('如果传入的是普通对象, 那么会返回对象的副本', () => {
     const a = { a: 1 };
     const refA = ref(a);
     const computedA = computed(() => a);
@@ -35,7 +35,19 @@ describe('deepUnref', () => {
     expect(deepUnref(computedA).a).toBe(1);
   });
 
-  test('如果传入的不是普通对象, 那么直接返回传入值的 `unref` 结果', () => {
+  test('如果传入的是数组, 那么会返回数组的副本', () => {
+    const a = [1];
+    const refA = ref(a);
+    const computedA = computed(() => a);
+
+    expect(unref(refA)).not.toBe(a);
+    expect(deepUnref(computedA)).not.toBe(a);
+
+    expect(unref(refA)[0]).toBe(1);
+    expect(deepUnref(computedA)[0]).toBe(1);
+  });
+
+  test('如果传入的不是普通对象和数组, 那么直接返回传入值的 `unref` 结果', () => {
     const a = /123/;
     const refA = ref(a);
     const computedA = computed(() => a);
@@ -90,6 +102,54 @@ describe('deepUnref', () => {
     expect(isRef(unrefComputedA.b.c)).toBe(false);
     expect(computedA.value.b.c.value).toBe(1);
     expect(unrefComputedA.b.c).toBe(1);
+  });
+
+  test('会解包数组内的 ref 对象', () => {
+    const a = [
+      ref(1),
+    ];
+
+    const unrefA = deepUnref(a);
+
+    expect(isRef(a[0])).toBe(true);
+    expect(isRef(unrefA[0])).toBe(false);
+    expect(a[0].value).toBe(1);
+    expect(unrefA[0]).toBe(1);
+
+    const computedA = computed(() => a);
+    const unrefComputedA = deepUnref(a);
+
+    expect(isRef(computedA)).toBe(true);
+    expect(isRef(unrefComputedA)).toBe(false);
+    expect(isRef(computedA.value[0])).toBe(true);
+    expect(isRef(unrefComputedA[0])).toBe(false);
+    expect(computedA.value[0].value).toBe(1);
+    expect(unrefComputedA[0]).toBe(1);
+  });
+
+  test('会解包数组内的 ref 对象 ( 二 )', () => {
+    const a = [
+      {
+        c: ref(1),
+      },
+    ];
+
+    const unrefA = deepUnref(a);
+
+    expect(isRef(a[0].c)).toBe(true);
+    expect(isRef(unrefA[0].c)).toBe(false);
+    expect(a[0].c.value).toBe(1);
+    expect(unrefA[0].c).toBe(1);
+
+    const computedA = computed(() => a);
+    const unrefComputedA = deepUnref(a);
+
+    expect(isRef(computedA)).toBe(true);
+    expect(isRef(unrefComputedA)).toBe(false);
+    expect(isRef(computedA.value[0].c)).toBe(true);
+    expect(isRef(unrefComputedA[0].c)).toBe(false);
+    expect(computedA.value[0].c.value).toBe(1);
+    expect(unrefComputedA[0].c).toBe(1);
   });
 
 });
