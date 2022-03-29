@@ -1,4 +1,5 @@
 ## [Unreleased]
+  - 🌟 新增 `cloneDeep` 工具方法, 用于创建传入值的深拷贝
   - 💄 `deepUnref` 支持解包数组
 
 ## [v3.7.3]
