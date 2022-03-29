@@ -10,13 +10,13 @@ export function deepUnref<T>(maybeRef: T | Ref<T>): UnwrapNestedRefs<T> {
   const value = unref(maybeRef);
 
   if (Array.isArray(value))
-    return value.map(item => deepUnref(item)) as UnwrapNestedRefs<T>;
+    return value.map(item => deepUnref(item)) as any;
 
   if (isPlainObject(value)) {
     return Object.fromEntries(
       Object.entries(value).map(([k, v]) => [k, deepUnref(v)]),
-    ) as UnwrapNestedRefs<T>;
+    ) as any;
   }
 
-  return value as UnwrapNestedRefs<T>;
+  return value as any;
 }

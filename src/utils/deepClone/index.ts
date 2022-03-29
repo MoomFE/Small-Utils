@@ -6,12 +6,12 @@ import { isPlainObject } from '@/utils';
  */
 export function deepClone<T>(value: T): T {
   if (Array.isArray(value))
-    return value.map(item => deepClone(item)) as unknown as T;
+    return value.map(item => deepClone(item)) as any;
 
   if (isPlainObject(value)) {
     return Object.fromEntries(
       Object.entries(value).map(([k, v]) => [k, deepClone(v)]),
-    ) as unknown as T;
+    ) as any;
   }
 
   return value;
