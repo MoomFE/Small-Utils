@@ -1,11 +1,19 @@
-import { test } from 'vitest';
+import { describe, test } from 'vitest';
 import { testTypes } from '@@/test/shared';
 import { isNativePromise, isPromise } from '@/utils';
 
-test('isNativePromise: 基础测试', () => {
-  testTypes(isNativePromise, ['promise']);
+describe('isNativePromise', () => {
+
+  test('基础测试', () => {
+    testTypes(isNativePromise, ['promise']);
+  });
+
 });
 
-test('isPromise: 基础测试', () => {
-  testTypes(isPromise, ['promise', 'promiseLike']);
+describe('isPromise', () => {
+
+  test('基础测试', () => {
+    testTypes(isPromise, ['promise', 'promiseLike']);
+  });
+
 });
