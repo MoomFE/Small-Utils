@@ -229,4 +229,42 @@ describe('deepMerge', () => {
     expect(deepMerge([], targetArr, sourceArr)).toEqual([]);
   });
 
+  test('防御无限引用 ( 一 ) - 额外一些测试', () => {
+    // 普通对象
+    const target = { a: 1 };
+    const source = { b: 2, c: target, d: 2 };
+
+    expect(deepMerge(target, source)).toEqual({ a: 1, b: 2, d: 2 });
+
+    // 数组
+    const targetArr = [1] as any[];
+    const sourceArr = [2, targetArr, 3];
+
+    expect(deepMerge(targetArr, sourceArr)).toEqual([2, undefined, 3]);
+  });
+
+  test('防御无限引用 ( 二 ) - 额外一些测试', () => {
+    // 普通对象
+    const target = { b: 1 } as any;
+    const source = { c: 2 } as any;
+
+    target.a = source;
+    source.d = target;
+
+    expect(deepMerge({}, target)).toEqual({ b: 1 });
+    expect(deepMerge({}, source)).toEqual({ c: 2 });
+    expect(deepMerge({}, target, source)).toEqual({ b: 1, c: 2 });
+
+    // 数组
+    const targetArr = [undefined, 1] as any[];
+    const sourceArr = [2, undefined, 3] as any[];
+
+    targetArr[0] = sourceArr;
+    sourceArr[1] = targetArr;
+
+    expect(deepMerge([], targetArr)).toEqual([undefined, 1]);
+    expect(deepMerge([], sourceArr)).toEqual([2, undefined, 3]);
+    expect(deepMerge([], targetArr, sourceArr)).toEqual([2, 1, 3]);
+  });
+
 });

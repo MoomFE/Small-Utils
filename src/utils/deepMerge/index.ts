@@ -21,14 +21,16 @@ function deepMergeBase<T extends object = object, S extends object = T>(target: 
     // 无用的来源对象
     if (!isPlainObject(source) && !Array.isArray(source)) continue;
 
-    // 遍历来源对象的属性
-    for (const [key, value] of Object.entries(source)) {
-      let valueIsArray;
+    const sourceEntries = Object.entries(source);
 
+    // 遍历来源对象的属性
+    for (const [key, value] of sourceEntries) {
       // 单元测试 -> 防御无限引用 ( 一 )
       if (target === value) continue;
       // 单元测试 -> 防御无限引用 ( 二 )
       if (parent && parent === value) return;
+
+      let valueIsArray;
 
       // 属性值是普通对象和数组
       if (value && (isPlainObject(value) || (valueIsArray = Array.isArray(value)))) {
