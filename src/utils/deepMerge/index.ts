@@ -15,28 +15,34 @@ export function deepMerge<T extends object = object, S extends object = T>(targe
   return deepMergeBase(target, sources) as any;
 }
 
-function deepMergeBase<T extends object = object, S extends object = T>(target: T, sources: S[]): Merge<T, S> {
+function deepMergeBase<T extends object = object, S extends object = T>(target: T, sources: S[], parent?: any): Merge<T, S> | undefined {
+  // 遍历所有来源对象
   for (const source of sources) {
     // 无用的来源对象
     if (!isPlainObject(source) && !Array.isArray(source)) continue;
 
     // 遍历来源对象的属性
-    Object.entries(source).forEach(([key, value]) => {
+    for (const [key, value] of Object.entries(source)) {
       let valueIsArray;
+
+      // 单元测试 -> 防御无限引用 ( 一 )
+      if (target === value) continue;
+      // 单元测试 -> 防御无限引用 ( 二 )
+      if (parent && parent === value) return;
 
       // 属性值是普通对象和数组
       if (value && (isPlainObject(value) || (valueIsArray = Array.isArray(value)))) {
         let targetValue; // @ts-expect-error xxx
         const cloneValue = valueIsArray ? [] : isPlainObject(targetValue = target[key]) ? targetValue : {};
 
-        if (deepMergeBase(cloneValue, [value]) !== undefined) // @ts-expect-error xxx
+        if (deepMergeBase(cloneValue, [value], source) !== undefined) // @ts-expect-error xxx
           target[key] = cloneValue;
       }
       // 其他类型
       else if (value !== undefined) { // @ts-expect-error xxx
         target[key] = value;
       }
-    });
+    }
   }
 
   return target as any;
