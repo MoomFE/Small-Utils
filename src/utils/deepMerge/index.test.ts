@@ -144,6 +144,8 @@ describe('deepMerge', () => {
   });
 
   test('来源对象中其他对象将会直接继承', () => {
+    expect(/zw/).not.toBe(/zw/);
+
     // 普通对象
     const a = { aa: 1 };
     const b = { aa: /zw/ };
@@ -165,6 +167,28 @@ describe('deepMerge', () => {
     expect(arr3).toBe(arr1);
     expect(arr3).not.toBe(arr2);
     expect(arr1[0]).toBe(arr2[0]);
+  });
+
+  test('从数组合并到普通对象', () => {
+    const a = { aa: 1 };
+    const b = [2, 3, 4];
+    const c = deepMerge(a, b);
+
+    expect(a).toEqual({ aa: 1, 0: 2, 1: 3, 2: 4 });
+    expect(b).toEqual([2, 3, 4]);
+    expect(c).toBe(a);
+    expect(c).not.toBe(b);
+  });
+
+  test('从普通对象合并到数组', () => {
+    const a = [1, 2, 3];
+    const b = { 3: 4 };
+    const c = deepMerge(a, b);
+
+    expect(a).toEqual([1, 2, 3, 4]);
+    expect(b).toEqual({ 3: 4 });
+    expect(c).toBe(a);
+    expect(c).not.toBe(b);
   });
 
 });
