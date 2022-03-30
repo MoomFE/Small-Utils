@@ -1,7 +1,10 @@
 ## [Unreleased]
+
+## [v3.8.0]
+  - 📅 2022-03-31
   - 🌟 新增 `deepClone` 工具方法, 用于创建传入值的深拷贝
   - 🌟 新增 `deepMerge` 工具方法, 用于深拷贝合并一个或多个来源对象的属性到目标对象
-  - 💄 `deepUnref` 支持解包数组
+  - 💄 `deepUnref` 方法支持解包数组
 
 ## [v3.7.3]
   - 📅 2022-03-25
@@ -242,7 +245,8 @@ CHANGELOG 图标规范
 <hr>
 <br>
 
-[Unreleased]: https://github.com/it-moom/Tools/compare/v3.7.3...HEAD
+[Unreleased]: https://github.com/it-moom/Tools/compare/v3.8.0...HEAD
+[v3.8.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.8.0
 [v3.7.3]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.7.3
 [v3.7.2]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.7.2
 [v3.7.1]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.7.1
