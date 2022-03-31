@@ -114,7 +114,7 @@ fg.sync(['components/*/index.ts'], { cwd: srcPath }).forEach((path) => {
     outputFileSync(filePath, content);
   });
 
-  // 向 package.json 中添加组件相关信息
+  // 向 package.json 中写入组件相关信息
   {
     // 读取 package.json
     const packageJson = await readPackage({ cwd: rootPath, normalize: false });
