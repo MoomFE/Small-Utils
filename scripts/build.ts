@@ -1,7 +1,7 @@
-import { resolve } from 'path';
+import { dirname, resolve } from 'path';
 import { build } from 'vite';
 import { rollup } from 'rollup';
-import { emptyDirSync, outputFileSync, readFileSync } from 'fs-extra';
+import { emptyDirSync, outputFileSync, readFileSync, renameSync } from 'fs-extra';
 import { camelCase, upperFirst } from 'lodash-es';
 import { readPackage } from 'read-pkg';
 import { writePackage } from 'write-pkg';
@@ -25,7 +25,6 @@ const modules = [
 const rollupExternal = [
   'vue-demi',
   '@vueuse/core',
-  'overlayscrollbars/css/OverlayScrollbars.css',
   'axios',
   'css-render',
   ...modules.map(name => `@/${name}`),
@@ -87,7 +86,7 @@ fg.sync(['components/*/index.ts'], { cwd: srcPath }).forEach((path) => {
     // 打包声明文件
     await rollup({
       input: task.input,
-      external: rollupExternal,
+      external: rollupExternal.concat('overlayscrollbars/css/OverlayScrollbars.css'),
       plugins: [
         dts(),
       ],
@@ -142,4 +141,14 @@ fg.sync(['components/*/index.ts'], { cwd: srcPath }).forEach((path) => {
       { normalize: false, indent: '  ' },
     );
   }
+
+  // 将打包出的 css 文件更名
+  fg.sync(['components/**/style.css'], { cwd: rootPath }).forEach((path) => {
+    const filePath = resolve(rootPath, path);
+
+    renameSync(
+      filePath,
+      resolve(dirname(filePath), 'index.css'),
+    );
+  });
 })();
