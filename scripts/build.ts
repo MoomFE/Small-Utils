@@ -169,8 +169,9 @@ fs.readdirSync(resolve(srcPath, 'components')).forEach(async(name) => {
       modules.forEach((m) => {
         if (fileContent.includes(`@/${m}`)) {
           const aliasReg = new RegExp(`@/${m}`, 'g');
+          const moduleRelativePath = relative(moduleDir, resolve(rootPath, m)).replace(/\\/g, '/');
 
-          fileContent = fileContent.replace(aliasReg, `@moomfe/small-utils${m === 'utils' ? '' : m}`);
+          fileContent = fileContent.replace(aliasReg, moduleRelativePath);
         }
       });
 
