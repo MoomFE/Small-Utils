@@ -1,4 +1,5 @@
 import { CssRender } from 'css-render';
+import { isBrowser } from '@/utils/evn';
 
 const { c } = CssRender();
 const style = c('.s-responsive', {
@@ -14,4 +15,4 @@ const style = c('.s-responsive', {
   c('.s-responsive-content', { maxWidth: '100%', flex: '1 0 0px' }),
 ]);
 
-style.mount();
+isBrowser && style.mount();

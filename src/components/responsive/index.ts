@@ -1,8 +1,9 @@
 import { computed, defineComponent, h } from 'vue-demi';
+import { isBrowser } from '@/utils/evn';
 import './style';
 
 /** 当前浏览器是否支持纵横比属性 */
-const supportsAspectRatio = CSS.supports('aspect-ratio: 1');
+const supportsAspectRatio = isBrowser && CSS.supports('aspect-ratio: 1');
 
 const responsiveProps = {
   /** ( 宽度 / 高度 ) 计算的基本长宽比 */

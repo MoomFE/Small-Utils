@@ -1,5 +1,6 @@
 ## [Unreleased]
   - 🐞 修复在某些情况下, 使用 `@moomfe/small-utils/components/*` 的方式引用组件报错的问题
+  - 🐞 修复在 SSR 打包的情况下, 组件报错的问题
 
 ## [v3.8.1]
   - 📅 2022-03-31
