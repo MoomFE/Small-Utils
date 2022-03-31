@@ -3,6 +3,8 @@ import { build } from 'vite';
 import { rollup } from 'rollup';
 import { emptyDirSync, outputFileSync, readFileSync } from 'fs-extra';
 import { camelCase, upperFirst } from 'lodash-es';
+import { readPackage } from 'read-pkg';
+import { writePackage } from 'write-pkg';
 import fg from 'fast-glob';
 import dts from 'rollup-plugin-dts';
 
@@ -111,4 +113,33 @@ fg.sync(['components/*/index.ts'], { cwd: srcPath }).forEach((path) => {
 
     outputFileSync(filePath, content);
   });
+
+  // 向 package.json 中添加组件相关信息
+  {
+    // 读取 package.json
+    const packageJson = await readPackage({ cwd: rootPath, normalize: false });
+
+    // 移除上次写入的组件相关信息
+    Object.keys(packageJson.exports).forEach((key) => {
+      if (key.startsWith('./components/')) delete packageJson.exports[key];
+    });
+
+    // 写入最新的组件相关信息
+    fg.sync(['components/*/*'], { cwd: rootPath }).forEach((path) => {
+      const [components, name] = path.split('/');
+      const key = `./${components}/${name}`;
+      const info = packageJson.exports[key] || (packageJson.exports[key] = {});
+
+      if (path.endsWith('.mjs')) info.import = `./${path}`;
+      if (path.endsWith('.cjs')) info.require = `./${path}`;
+      if (path.endsWith('.ts')) info.types = `./${path}`;
+    });
+
+    // 写入 package.json
+    await writePackage(
+      resolve(rootPath, 'package.json'), // @ts-expect-error xxx
+      packageJson,
+      { normalize: false, indent: '  ' },
+    );
+  }
 })();

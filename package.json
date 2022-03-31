@@ -37,6 +37,21 @@
       "import": "./composables/index.mjs",
       "require": "./composables/index.cjs",
       "types": "./composables/index.d.ts"
+    },
+    "./components/SDelayRender": {
+      "require": "./components/SDelayRender/index.cjs",
+      "types": "./components/SDelayRender/index.d.ts",
+      "import": "./components/SDelayRender/index.mjs"
+    },
+    "./components/SResponsive": {
+      "require": "./components/SResponsive/index.cjs",
+      "types": "./components/SResponsive/index.d.ts",
+      "import": "./components/SResponsive/index.mjs"
+    },
+    "./components/SScrollbars": {
+      "require": "./components/SScrollbars/index.cjs",
+      "types": "./components/SScrollbars/index.d.ts",
+      "import": "./components/SScrollbars/index.mjs"
     }
   },
   "files": [
@@ -89,6 +104,7 @@
     "fs-extra": "^10.0.1",
     "jsdom": "^19.0.0",
     "lodash-es": "^4.17.21",
+    "read-pkg": "^7.1.0",
     "rollup": "^2.70.1",
     "rollup-plugin-dts": "^4.2.0",
     "rollup-plugin-esbuild": "^4.8.2",
@@ -97,6 +113,7 @@
     "typescript": "^4.6.3",
     "vite": "^2.8.6",
     "vitest": "0.8.0",
-    "vue": "^3.2.31"
+    "vue": "^3.2.31",
+    "write-pkg": "^5.1.0"
   }
 }
