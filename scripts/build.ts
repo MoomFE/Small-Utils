@@ -1,14 +1,17 @@
-import { relative, resolve } from 'path';
+import { resolve } from 'path';
 import { build } from 'vite';
 import { rollup } from 'rollup';
+import { emptyDirSync, outputFileSync, readFileSync } from 'fs-extra';
 import { camelCase, upperFirst } from 'lodash-es';
-import fs from 'fs-extra';
+import fg from 'fast-glob';
 import dts from 'rollup-plugin-dts';
 
+/** 项目根目录 */
 const rootPath = resolve(__dirname, '../');
+/** 代码根目录 */
 const srcPath = resolve(rootPath, 'src');
 
-const componentsModules = [];
+/** 所有需要打包的模块 */
 const modules = [
   'utils',
   'validator',
@@ -16,165 +19,96 @@ const modules = [
   'composables',
 ];
 
-const viteResolveConfig = {
-  alias: {
-    '@': srcPath,
-    '@@': rootPath,
-  },
-};
-const viteOptimizeDeps = {
-  exclude: ['vue-demi'],
-};
-
-const rollupDtsPlugin = dts();
+/** 外部依赖项 */
 const rollupExternal = [
   'vue-demi',
   '@vueuse/core',
   'overlayscrollbars/css/OverlayScrollbars.css',
   'axios',
   'css-render',
-  ...modules.map(m => `@/${m}`),
+  ...modules.map(name => `@/${name}`),
 ];
 
+/** 打包任务列表 */
 const taskList = [];
 
-// 工具方法， 验证器, 可组合式方法
-modules.filter(name => name !== 'components').forEach(async(name) => {
-  const input = resolve(srcPath, `${name}/index.ts`);
-
-  // 打包代码
-  taskList.push(() => build({
-    resolve: viteResolveConfig,
-    optimizeDeps: viteOptimizeDeps,
-    build: {
-      outDir: resolve(rootPath, name),
-      lib: {
-        entry: input,
-        formats: ['es', 'cjs'],
-        fileName: format => `index.${format === 'es' ? 'mjs' : format}`,
-      },
-      minify: false,
-      rollupOptions: {
-        external: rollupExternal.filter(e => e !== `@/${name}`),
-      },
-    },
-  }));
-  // 打包声明文件
-  taskList.push(() => rollup({
-    input,
-    plugins: [rollupDtsPlugin],
-    external: rollupExternal,
-  }).then((bundle) => {
-    bundle.write({
-      file: resolve(rootPath, `${name}/index.d.ts`),
-      format: 'es',
-    });
-  }));
+// 打包所有模块
+modules.forEach((name) => {
+  taskList.push({
+    name,
+    input: resolve(srcPath, name, 'index.ts'),
+    output: resolve(rootPath, name),
+  });
 });
 
-// 所有组件
-(async() => {
-  const input = resolve(srcPath, 'components/index.ts');
+// 打包所有单个组件
+fg.sync(['components/*/index.ts'], { cwd: srcPath }).forEach((path) => {
+  const [, name] = path.split('/');
 
-  // 打包代码
-  taskList.push(() => build({
-    resolve: viteResolveConfig,
-    optimizeDeps: viteOptimizeDeps,
-    build: {
-      outDir: resolve(rootPath, 'components'),
-      lib: {
-        entry: input,
-        formats: ['es', 'cjs'],
-        fileName: format => `index.${format === 'es' ? 'mjs' : format}`,
-      },
-      minify: false,
-      rollupOptions: {
-        external: rollupExternal,
-      },
-    },
-  }));
-  // 打包声明文件
-  taskList.push(() => rollup({
-    input,
-    plugins: [rollupDtsPlugin],
-    external: rollupExternal,
-  }).then((bundle) => {
-    bundle.write({
-      file: resolve(rootPath, 'components/index.d.ts'),
-      format: 'es',
-    });
-  }));
-})();
+  taskList.push({
+    name: 'components',
+    input: resolve(srcPath, path),
+    output: resolve(rootPath, 'components', `S${upperFirst(camelCase(name))}`),
+  });
+})
 
-// 单个组件
-fs.readdirSync(resolve(srcPath, 'components')).forEach(async(name) => {
-  const input = resolve(srcPath, 'components', name, 'index.ts');
+;(async() => {
+  // 清空输出目录
+  modules.forEach((name) => {
+    emptyDirSync(resolve(rootPath, name));
+  });
 
-  if (fs.pathExistsSync(input)) {
-    const dirName = `S${upperFirst(camelCase(name))}`;
-
-    // 保存组件名称
-    componentsModules.push(`components/${dirName}`);
+  // 挨个执行打包
+  for (const task of taskList) {
     // 打包代码
-    taskList.push(() => build({
-      resolve: viteResolveConfig,
-      optimizeDeps: viteOptimizeDeps,
+    await build({
+      resolve: {
+        alias: { '@': srcPath, '@@': rootPath },
+      },
+      optimizeDeps: {
+        exclude: ['vue-demi'],
+      },
       build: {
-        outDir: resolve(rootPath, 'components', dirName),
+        outDir: task.output,
         lib: {
-          entry: input,
+          entry: task.input,
           formats: ['es', 'cjs'],
           fileName: format => `index.${format === 'es' ? 'mjs' : format}`,
         },
         minify: false,
         rollupOptions: {
-          external: rollupExternal,
+          external: rollupExternal.filter(e => e !== `@/${task.name}`),
         },
       },
-    }));
+    });
+
     // 打包声明文件
-    taskList.push(() => rollup({
-      input,
-      plugins: [rollupDtsPlugin],
+    await rollup({
+      input: task.input,
       external: rollupExternal,
+      plugins: [
+        dts(),
+      ],
     }).then((bundle) => {
       bundle.write({
-        file: resolve(rootPath, `components/S${upperFirst(camelCase(name))}/index.d.ts`),
+        file: resolve(task.output, 'index.d.ts'),
         format: 'es',
       });
-    }));
+    });
   }
-});
-
-(async() => {
-  // 清空目录
-  modules.forEach((name) => {
-    fs.emptyDirSync(resolve(rootPath, name));
-  });
-
-  // 挨个执行打包
-  for (const task of taskList)
-    await task(); // eslint-disable-line no-await-in-loop
 
   // 重定向路径
-  modules.concat(componentsModules).forEach((name) => {
-    const moduleDir = resolve(rootPath, name);
+  fg.sync([`(${modules.join('|')})/**/index.{cjs,mjs}`], { cwd: rootPath }).forEach((path) => {
+    const filePath = resolve(rootPath, path);
+    const content = modules.reduce(
+      (content, name) => {
+        const aliasReg = new RegExp(`@/${name}`, 'g');
+        const aliasValue = `@moomfe/small-utils${name === 'utils' ? '' : `/${name}`}`;
+        return content.replace(aliasReg, aliasValue);
+      },
+      readFileSync(filePath, 'utf-8'),
+    );
 
-    fs.readdirSync(moduleDir).forEach((file) => {
-      if (!(file.endsWith('.mjs') || file.endsWith('.cjs'))) return;
-
-      const filePath = resolve(moduleDir, file);
-      let fileContent = fs.readFileSync(filePath, 'utf-8');
-
-      modules.forEach((m) => {
-        if (fileContent.includes(`@/${m}`)) {
-          const aliasReg = new RegExp(`@/${m}`, 'g');
-
-          fileContent = fileContent.replace(aliasReg, `@moomfe/small-utils${m === 'utils' ? '' : m}`);
-        }
-      });
-
-      fs.writeFileSync(filePath, fileContent);
-    });
+    outputFileSync(filePath, content);
   });
 })();
