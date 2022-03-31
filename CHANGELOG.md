@@ -1,4 +1,7 @@
 ## [Unreleased]
+
+## [v3.9.0]
+  - 📅 2022-04-01
   - 🐞 修复在某些情况下, 使用 `@moomfe/small-utils/components/*` 的方式引用组件报错的问题
   - 🐞 修复在 SSR 打包的情况下, 组件报错的问题
   - ⚠️ 将引用的外部 css 打包到本地, 之后需要手动引入 css 样式
@@ -252,7 +255,8 @@ CHANGELOG 图标规范
 <hr>
 <br>
 
-[Unreleased]: https://github.com/it-moom/Tools/compare/v3.8.0...HEAD
+[Unreleased]: https://github.com/it-moom/Tools/compare/v3.9.0...HEAD
+[v3.9.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.9.0
 [v3.8.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.8.0
 [v3.7.3]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.7.3
 [v3.7.2]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.7.2
