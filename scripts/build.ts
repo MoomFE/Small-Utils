@@ -88,7 +88,9 @@ fg.sync(['components/*/index.ts'], { cwd: srcPath }).forEach((path) => {
       input: task.input,
       external: rollupExternal.concat('overlayscrollbars/css/OverlayScrollbars.css'),
       plugins: [
-        dts(),
+        dts({
+          compilerOptions: { preserveSymlinks: false },
+        }),
       ],
     }).then((bundle) => {
       bundle.write({
