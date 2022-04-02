@@ -27,6 +27,8 @@ const rollupExternal = [
   '@vueuse/core',
   'axios',
   'css-render',
+  'fs',
+  'path',
   ...modules.map(name => `@/${name}`),
 ];
 
@@ -77,7 +79,7 @@ async function buildTask(task) {
     },
   });
   // 打包声明文件
-  await rollup({
+  task.nodts || await rollup({
     input: task.input,
     external: rollupExternal.concat('overlayscrollbars/css/OverlayScrollbars.css'),
     plugins: [
@@ -118,6 +120,7 @@ async function buildTask(task) {
     name: 'vite-config',
     input: resolve(srcPath, 'vite-config', 'index.ts'),
     output: resolve(rootPath, 'vite-config'),
+    nodts: true,
   });
 
   // 重定向路径
