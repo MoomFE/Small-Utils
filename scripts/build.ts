@@ -153,4 +153,19 @@ fg.sync(['components/*/index.ts'], { cwd: srcPath }).forEach((path) => {
       resolve(dirname(filePath), 'index.css'),
     );
   });
+
+  // 输出 vite 依赖预构建优化选项
+  {
+    const components = fg.sync(['components/*'], { cwd: rootPath, onlyDirectories: true });
+    const paths = components.map(path => `'@moomfe/small-utils/${path}'`);
+    const configPath = resolve(rootPath, 'vite-config/config.ts');
+    const configContent = `
+/** vite 依赖预构建优化选项 */
+export const optimizeDepsInclude = [
+  ${paths.join(',\n  ')},
+];
+`;
+
+    outputFileSync(configPath, configContent);
+  }
 })();
