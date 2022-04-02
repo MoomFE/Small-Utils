@@ -1,5 +1,9 @@
 ## [Unreleased]
 
+## [v3.9.2]
+  - 📅 2022-04-02
+  - 🌟 统一导出 `vite` 依赖预构建优化选项和组件按需加载方法
+
 ## [v3.9.1]
   - 📅 2022-04-02
   - 🌟 新增给 `unplugin-vue-components` 使用的组件按需加载方法
@@ -260,7 +264,8 @@ CHANGELOG 图标规范
 <hr>
 <br>
 
-[Unreleased]: https://github.com/it-moom/Tools/compare/v3.9.1...HEAD
+[Unreleased]: https://github.com/it-moom/Tools/compare/v3.9.2...HEAD
+[v3.9.2]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.9.2
 [v3.9.1]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.9.1
 [v3.9.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.9.0
 [v3.8.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.8.0
