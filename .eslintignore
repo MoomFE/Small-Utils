@@ -2,6 +2,7 @@
 /validator
 /components
 /composables
+/vite-config
 
 dist
 types

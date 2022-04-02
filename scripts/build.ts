@@ -51,54 +51,74 @@ fg.sync(['components/*/index.ts'], { cwd: srcPath }).forEach((path) => {
     input: resolve(srcPath, path),
     output: resolve(rootPath, 'components', `S${upperFirst(camelCase(name))}`),
   });
-})
+});
 
-;(async() => {
+/** 打包单个任务 */
+async function buildTask(task) {
+  // 打包代码
+  await build({
+    resolve: {
+      alias: { '@': srcPath, '@@': rootPath },
+    },
+    optimizeDeps: {
+      exclude: ['vue-demi'],
+    },
+    build: {
+      outDir: task.output,
+      lib: {
+        entry: task.input,
+        formats: ['es', 'cjs'],
+        fileName: format => `index.${format === 'es' ? 'mjs' : format}`,
+      },
+      minify: false,
+      rollupOptions: {
+        external: rollupExternal.filter(e => e !== `@/${task.name}`),
+      },
+    },
+  });
+  // 打包声明文件
+  await rollup({
+    input: task.input,
+    external: rollupExternal.concat('overlayscrollbars/css/OverlayScrollbars.css'),
+    plugins: [
+      dts({
+        compilerOptions: { preserveSymlinks: false },
+      }),
+    ],
+  }).then((bundle) => {
+    bundle.write({
+      file: resolve(task.output, 'index.d.ts'),
+      format: 'es',
+    });
+  });
+}
+
+(async() => {
   // 清空输出目录
   modules.forEach((name) => {
     emptyDirSync(resolve(rootPath, name));
   });
 
   // 挨个执行打包
-  for (const task of taskList) {
-    // 打包代码
-    await build({
-      resolve: {
-        alias: { '@': srcPath, '@@': rootPath },
-      },
-      optimizeDeps: {
-        exclude: ['vue-demi'],
-      },
-      build: {
-        outDir: task.output,
-        lib: {
-          entry: task.input,
-          formats: ['es', 'cjs'],
-          fileName: format => `index.${format === 'es' ? 'mjs' : format}`,
-        },
-        minify: false,
-        rollupOptions: {
-          external: rollupExternal.filter(e => e !== `@/${task.name}`),
-        },
-      },
-    });
+  for (const task of taskList)
+    await buildTask(task);
 
-    // 打包声明文件
-    await rollup({
-      input: task.input,
-      external: rollupExternal.concat('overlayscrollbars/css/OverlayScrollbars.css'),
-      plugins: [
-        dts({
-          compilerOptions: { preserveSymlinks: false },
-        }),
-      ],
-    }).then((bundle) => {
-      bundle.write({
-        file: resolve(task.output, 'index.d.ts'),
-        format: 'es',
-      });
-    });
+  // 根据打包后的组件目录, 输出 vite 依赖预构建优化选项
+  {
+    const components = fg.sync(['components/*'], { cwd: rootPath, onlyDirectories: true });
+    const paths = components.map(path => `'@moomfe/small-utils/${path}'`);
+    const configPath = resolve(srcPath, 'vite-config/config.ts');
+    const configContent = `\n/** vite 依赖预构建优化选项 */\nexport const optimizeDepsInclude = [\n  ${paths.join(',\n  ')},\n];\n`;
+
+    outputFileSync(configPath, configContent);
   }
+
+  // 打包 vite-config 相关
+  await buildTask({
+    name: 'vite-config',
+    input: resolve(srcPath, 'vite-config', 'index.ts'),
+    output: resolve(rootPath, 'vite-config'),
+  });
 
   // 重定向路径
   fg.sync([`(${modules.join('|')})/**/index.{cjs,mjs}`], { cwd: rootPath }).forEach((path) => {
@@ -153,19 +173,4 @@ fg.sync(['components/*/index.ts'], { cwd: srcPath }).forEach((path) => {
       resolve(dirname(filePath), 'index.css'),
     );
   });
-
-  // 输出 vite 依赖预构建优化选项
-  {
-    const components = fg.sync(['components/*'], { cwd: rootPath, onlyDirectories: true });
-    const paths = components.map(path => `'@moomfe/small-utils/${path}'`);
-    const configPath = resolve(rootPath, 'vite-config/config.ts');
-    const configContent = `
-/** vite 依赖预构建优化选项 */
-export const optimizeDepsInclude = [
-  ${paths.join(',\n  ')},
-];
-`;
-
-    outputFileSync(configPath, configContent);
-  }
 })();

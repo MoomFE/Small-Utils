@@ -38,6 +38,11 @@
       "require": "./composables/index.cjs",
       "types": "./composables/index.d.ts"
     },
+    "./vite-config": {
+      "import": "./vite-config/index.mjs",
+      "require": "./vite-config/index.cjs",
+      "types": "./vite-config/index.d.ts"
+    },
     "./components/SDelayRender": {
       "require": "./components/SDelayRender/index.cjs",
       "types": "./components/SDelayRender/index.d.ts",

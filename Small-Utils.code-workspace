@@ -18,6 +18,10 @@
     {
       "path": "src/composables",
       "name": "Composables"
+    },
+    {
+      "path": "src/vite-config",
+      "name": "ViteConfig"
     }
   ],
   "settings": {
@@ -40,6 +44,7 @@
       "src/composables": true,
       "src/utils": true,
       "src/validator": true,
+      "src/vite-config": true
     },
     "typescript.tsdk": "node_modules/typescript/lib",
     "prettier.enable": false,

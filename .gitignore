@@ -5,6 +5,7 @@ node_modules
 /validator
 /components
 /composables
+/vite-config
 
 dist
 types
