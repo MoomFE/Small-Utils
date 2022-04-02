@@ -58,7 +58,8 @@
     "utils",
     "validator",
     "components",
-    "composables"
+    "composables",
+    "vite-config"
   ],
   "bugs": {
     "url": "https://github.com/MoomFE/Small-Utils/issues"
