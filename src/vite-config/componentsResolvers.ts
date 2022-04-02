@@ -23,7 +23,7 @@ export function SmallUtilsComponentsResolver() {
         return {
           importName: name,
           path: `@moomfe/small-utils/components/${name}`,
-          sideEffects: hasCss ? [cssPath] : undefined,
+          sideEffects: hasCss ? [`@moomfe/small-utils/components/${name}/index.css`] : undefined,
         };
       }
     },
