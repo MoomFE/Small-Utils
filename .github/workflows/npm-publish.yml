@@ -11,8 +11,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          version: 6.32.3
 
       - uses: actions/setup-node@v2
         with:
