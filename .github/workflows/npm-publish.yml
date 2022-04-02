@@ -24,7 +24,9 @@ jobs:
           cache: 'pnpm'
 
       - name: Build
-        run: pnpm build
+        run: |
+          pnpm install
+          pnpm build
 
       - name: Publish
         run: npm publish
