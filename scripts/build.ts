@@ -79,7 +79,7 @@ async function buildTask(task) {
     },
   });
   // 打包声明文件
-  task.nodts || await rollup({
+  await rollup({
     input: task.input,
     external: rollupExternal.concat('overlayscrollbars/css/OverlayScrollbars.css'),
     plugins: [
@@ -97,7 +97,7 @@ async function buildTask(task) {
 
 (async() => {
   // 清空输出目录
-  modules.forEach((name) => {
+  modules.concat('vite-config').forEach((name) => {
     emptyDirSync(resolve(rootPath, name));
   });
 
@@ -120,7 +120,6 @@ async function buildTask(task) {
     name: 'vite-config',
     input: resolve(srcPath, 'vite-config', 'index.ts'),
     output: resolve(rootPath, 'vite-config'),
-    nodts: true,
   });
 
   // 重定向路径
