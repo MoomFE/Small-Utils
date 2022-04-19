@@ -5,8 +5,8 @@ import {
   watchEffect,
 } from 'vue-demi';
 import { templateRef } from '@vueuse/core';
-import 'overlayscrollbars/css/OverlayScrollbars.css';
 import 'overlayscrollbars/js/OverlayScrollbars.min';
+import './index.scss';
 
 const scrollbarsProps = {
   /** 传递给 overlayscrollbars 的 options */

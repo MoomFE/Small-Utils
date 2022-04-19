@@ -95,7 +95,6 @@
   "dependencies": {
     "@vueuse/core": "^8.2.6",
     "axios": "^0.26.1",
-    "css-render": "^0.15.9",
     "overlayscrollbars": "^1.13.1",
     "vue-demi": "^0.12.5"
   },

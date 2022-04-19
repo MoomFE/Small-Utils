@@ -1,6 +1,6 @@
 import { computed, defineComponent, h } from 'vue-demi';
 import { isBrowser } from '@/utils/evn';
-import './style';
+import './index.scss';
 
 /** 当前浏览器是否支持纵横比属性 */
 const supportsAspectRatio = isBrowser && CSS.supports('aspect-ratio: 1');

@@ -26,7 +26,6 @@ const rollupExternal = [
   'vue-demi',
   '@vueuse/core',
   'axios',
-  'css-render',
   'fs',
   'path',
   ...modules.map(name => `@/${name}`),
@@ -81,7 +80,7 @@ async function buildTask(task) {
   // 打包声明文件
   await rollup({
     input: task.input,
-    external: rollupExternal.concat('overlayscrollbars/css/OverlayScrollbars.css'),
+    external: rollupExternal.concat('./index.scss'),
     plugins: [
       dts({
         compilerOptions: { preserveSymlinks: false },
@@ -144,7 +143,8 @@ async function buildTask(task) {
 
     // 移除上次写入的组件相关信息
     Object.keys(packageJson.exports).forEach((key) => {
-      if (key.startsWith('./components/')) delete packageJson.exports[key];
+      if (key.startsWith('./components/'))
+        delete packageJson.exports[key];
     });
 
     // 写入最新的组件相关信息
@@ -153,9 +153,12 @@ async function buildTask(task) {
       const key = `./${components}/${name}`;
       const info = packageJson.exports[key] || (packageJson.exports[key] = {});
 
-      if (path.endsWith('.mjs')) info.import = `./${path}`;
-      if (path.endsWith('.cjs')) info.require = `./${path}`;
-      if (path.endsWith('.ts')) info.types = `./${path}`;
+      if (path.endsWith('.mjs'))
+        info.import = `./${path}`;
+      else if (path.endsWith('.cjs'))
+        info.require = `./${path}`;
+      else if (path.endsWith('.ts'))
+        info.types = `./${path}`;
     });
 
     // 写入 package.json
