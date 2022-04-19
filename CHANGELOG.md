@@ -1,4 +1,7 @@
 ## [Unreleased]
+
+## [v3.9.7]
+  - 📅 2022-04-19
   - 💄 统一组件 css 定义, 不再使用 css-render
 
 ## [v3.9.6]
@@ -281,10 +284,16 @@ CHANGELOG 图标规范
 <hr>
 <br>
 
-[Unreleased]: https://github.com/it-moom/Tools/compare/v3.9.2...HEAD
+[Unreleased]: https://github.com/it-moom/Tools/compare/v3.9.7...HEAD
+[v3.9.7]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.9.7
+[v3.9.6]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.9.6
+[v3.9.5]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.9.5
+[v3.9.4]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.9.4
+[v3.9.3]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.9.3
 [v3.9.2]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.9.2
 [v3.9.1]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.9.1
 [v3.9.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.9.0
+[v3.8.1]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.8.1
 [v3.8.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.8.0
 [v3.7.3]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.7.3
 [v3.7.2]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.7.2
