@@ -53,3 +53,42 @@ export function randomLetter(uppercase = false) {
     uppercase ? randomNatural(65, 90) : randomNatural(97, 122),
   );
 }
+
+interface RandomStringOptions {
+  /** 是否包含小写字母 ( default: true ) */
+  lowercase?: boolean
+  /** 是否包含大写字母 ( default: false ) */
+  uppercase?: boolean
+  /** 是否包含数字 ( default: false ) */
+  number?: boolean
+}
+
+/**
+ * 生成一个随机的字符串
+ * @param length 字符串的长度
+ * @param options 生成字符串的选项
+ */
+export function randomString(length = 12, options: RandomStringOptions = {}) {
+  const { lowercase = true, uppercase = false, number = false } = options;
+  const types = [];
+  let typesLength: number;
+
+  if (lowercase) types.push('l');
+  if (uppercase) types.push('u');
+  if (number) types.push('n');
+
+  if (!(typesLength = types.length)) throw new Error('???');
+
+  let result = '';
+
+  while (length-- > 0) {
+    const typeIndex = typesLength > 1 ? randomNatural(0, typesLength - 1) : 0;
+    const type = types[typeIndex];
+
+    if (type === 'l') result += randomLetter();
+    else if (type === 'u') result += randomLetter(true);
+    else if (type === 'n') result += randomNatural(0, 9);
+  }
+
+  return result;
+}
