@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest';
-import { random, randomLetter, randomNatural, randomString } from '@/utils';
+import { random, randomBoolean, randomLetter, randomNatural, randomString } from '@/utils';
 
 describe('randomNatural', () => {
 
@@ -290,6 +290,21 @@ describe('randomString', () => {
         number: false,
       });
     }).toThrow('???');
+  });
+
+});
+
+describe('randomBoolean', () => {
+
+  test('生成一个随机的 boolean 值', () => {
+    const bools = new Set();
+
+    for (let i = 0; i < 36; i++)
+      bools.add(randomBoolean());
+
+    expect(
+      Array.from(bools).sort(),
+    ).toEqual([false, true]);
   });
 
 });

@@ -1,5 +1,6 @@
 ## [Unreleased]
   - 🌟 新增 `randomString` 工具方法, 用于生成一个随机的字符串, 可配置生成字符串的选项
+  - 🌟 新增 `randomBoolean` 工具方法, 用于生成一个随机的 boolean 值
 
 ## [v3.9.7]
   - 📅 2022-04-19
