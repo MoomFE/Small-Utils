@@ -1,4 +1,7 @@
 ## [Unreleased]
+
+## [v3.10.0]
+  - 📅 2022-04-22
   - 🌟 新增 `randomString` 工具方法, 用于生成一个随机的字符串, 可配置生成字符串的选项
   - 🌟 新增 `randomBoolean` 工具方法, 用于生成一个随机的 boolean 值
 
@@ -286,7 +289,8 @@ CHANGELOG 图标规范
 <hr>
 <br>
 
-[Unreleased]: https://github.com/it-moom/Tools/compare/v3.9.7...HEAD
+[Unreleased]: https://github.com/it-moom/Tools/compare/v3.10.0...HEAD
+[v3.10.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.10.0
 [v3.9.7]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.9.7
 [v3.9.6]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.9.6
 [v3.9.5]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.9.5
