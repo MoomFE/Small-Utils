@@ -15,6 +15,7 @@ export * from './defineArgs';
 export * from './random';
 export * from './deepClone';
 export * from './deepMerge';
+export * from './uniqueKey';
 
 export * from './deepUnref';
 
