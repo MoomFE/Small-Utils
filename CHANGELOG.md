@@ -1,4 +1,7 @@
 ## [Unreleased]
+
+## [v3.11.0]
+  - 📅 2022-04-25
   - 🌟 新增 `uniqueKey` 工具方法, 用于为数组中对象的某个字段生成一个唯一的 key
 
 ## [v3.10.0]
@@ -290,7 +293,8 @@ CHANGELOG 图标规范
 <hr>
 <br>
 
-[Unreleased]: https://github.com/it-moom/Tools/compare/v3.10.0...HEAD
+[Unreleased]: https://github.com/it-moom/Tools/compare/v3.11.0...HEAD
+[v3.11.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.11.0
 [v3.10.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.10.0
 [v3.9.7]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.9.7
 [v3.9.6]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.9.6
