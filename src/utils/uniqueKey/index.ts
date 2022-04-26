@@ -16,7 +16,7 @@ export function uniqueKeyCustomizer() {
  * @returns
  */
 export function uniqueKey<T = string>(
-  arr: Record<PropertyKey, unknown>[],
+  arr: any[],
   key: PropertyKey = 'id', // @ts-expect-error ???
   customizer: () => T = uniqueKeyCustomizer,
 ) {
