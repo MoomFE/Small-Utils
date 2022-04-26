@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest';
-import { random, randomBoolean, randomLetter, randomNatural, randomString } from '@/utils';
+import { random, randomBoolean, randomLetter, randomLowercaseLetter, randomNatural, randomString, randomUppercaseLetter } from '@/utils';
 
 describe('randomNatural', () => {
 
@@ -132,6 +132,42 @@ describe('random', () => {
     expect(
       Array.from(nums).sort(),
     ).toEqual([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  });
+
+});
+
+describe('randomLowercaseLetter', () => {
+
+  test('随机一个小写英文字母', () => {
+    const nums = new Set();
+
+    for (let i = 0; i < 10000; i++) {
+      nums.add(
+        randomLowercaseLetter(),
+      );
+    }
+
+    expect(
+      Array.from(nums).sort(),
+    ).toEqual(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']);
+  });
+
+});
+
+describe('randomUppercaseLetter', () => {
+
+  test('随机一个大写英文字母', () => {
+    const nums = new Set();
+
+    for (let i = 0; i < 10000; i++) {
+      nums.add(
+        randomUppercaseLetter(),
+      );
+    }
+
+    expect(
+      Array.from(nums).sort(),
+    ).toEqual(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']);
   });
 
 });

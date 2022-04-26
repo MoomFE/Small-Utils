@@ -41,6 +41,26 @@ export function random(...args: number[]) {
 }
 
 /**
+ * 随机一个小写英文字母
+ * @example
+ *
+ * randomLowercaseLetter(); // -> a ~ z
+ */
+export function randomLowercaseLetter() {
+  return String.fromCharCode(randomNatural(97, 122));
+}
+
+/**
+ * 随机一个大写英文字母
+ * @example
+ *
+ * randomUppercaseLetter(); // -> A ~ Z
+ */
+export function randomUppercaseLetter() {
+  return String.fromCharCode(randomNatural(65, 90));
+}
+
+/**
  * 随机一个英文字母
  * @param uppercase 是否大写 ( default: false )
  * @example
@@ -85,8 +105,8 @@ export function randomString(length = 12, options: RandomStringOptions = {}) {
     const typeIndex = typesLength > 1 ? randomNatural(0, typesLength - 1) : 0;
     const type = types[typeIndex];
 
-    if (type === 'l') result += randomLetter();
-    else if (type === 'u') result += randomLetter(true);
+    if (type === 'l') result += randomLowercaseLetter();
+    else if (type === 'u') result += randomUppercaseLetter();
     else if (type === 'n') result += randomNatural(0, 9);
   }
 
