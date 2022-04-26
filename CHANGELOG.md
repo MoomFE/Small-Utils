@@ -2,9 +2,9 @@
 
 ## [v3.12.0]
   - 📅 2022-04-26
-  - 💄 优化 `uniqueKey` 工具方法类型定义
   - 🌟 新增 `randomLowercaseLetter` 工具方法, 用于生成一个随机一个小写英文字母
   - 🌟 新增 `randomUppercaseLetter` 工具方法, 用于生成一个随机一个大写英文字母
+  - 💄 优化 `uniqueKey` 工具方法类型定义
 
 ## [v3.11.0]
   - 📅 2022-04-25
