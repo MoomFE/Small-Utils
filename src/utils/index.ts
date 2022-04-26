@@ -19,4 +19,4 @@ export * from './uniqueKey';
 
 export * from './deepUnref';
 
-export * from './evn';
+export * from './env';
