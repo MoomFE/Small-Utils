@@ -8,5 +8,7 @@
  * isESModule(await import('https://cdn.jsdelivr.net/npm/vue')); // -> true
  */
 export function isESModule(value: any): value is { default: any } {
-  return value.__esModule || value[Symbol.toStringTag] === 'Module';
+  if (value)
+    return value.__esModule || value[Symbol.toStringTag] === 'Module';
+  return false;
 }
