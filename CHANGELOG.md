@@ -1,4 +1,7 @@
 ## [Unreleased]
+
+## [v3.12.0]
+  - 📅 2022-04-26
   - 💄 优化 `uniqueKey` 工具方法类型定义
   - 🌟 新增 `randomLowercaseLetter` 工具方法, 用于生成一个随机一个小写英文字母
   - 🌟 新增 `randomUppercaseLetter` 工具方法, 用于生成一个随机一个大写英文字母
@@ -296,7 +299,8 @@ CHANGELOG 图标规范
 <hr>
 <br>
 
-[Unreleased]: https://github.com/it-moom/Tools/compare/v3.11.0...HEAD
+[Unreleased]: https://github.com/it-moom/Tools/compare/v3.12.0...HEAD
+[v3.12.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.12.0
 [v3.11.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.11.0
 [v3.10.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.10.0
 [v3.9.7]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.9.7
