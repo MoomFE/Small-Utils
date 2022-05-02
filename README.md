@@ -8,7 +8,7 @@
 ## 快速开始
 
 ### 文档
-访问 [small-utils.moomfe.com](https://small-utils.moomfe.com/) 网站查看更详细的文档
+访问 ~~[small-utils.moomfe.com](https://small-utils.moomfe.com/)~~ (太久没更新了) -- 网站查看更详细的文档
 
 ### 安装
 ```bash
