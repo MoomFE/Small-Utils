@@ -1,5 +1,5 @@
 import { computed, defineComponent, h } from 'vue-demi';
-import { isBrowser } from '@/utils/evn';
+import { isBrowser } from '@/utils/env';
 import './index.scss';
 
 /** 当前浏览器是否支持纵横比属性 */
