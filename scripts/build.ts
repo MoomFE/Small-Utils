@@ -11,7 +11,7 @@ import dts from 'rollup-plugin-dts';
 /** 项目根目录 */
 const rootPath = resolve(__dirname, '../');
 /** 代码根目录 */
-const srcPath = resolve(rootPath, 'src');
+const srcPath = resolve(rootPath, 'packages');
 
 /** 所有需要打包的模块 */
 const modules = [

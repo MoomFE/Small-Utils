@@ -7,7 +7,7 @@ export default defineConfig(({ mode }) => {
   return {
     resolve: {
       alias: {
-        '@': resolve(__dirname, mode === 'test-build' ? './' : './src'),
+        '@': resolve(__dirname, mode === 'test-build' ? './' : './packages'),
         '@@': __dirname,
       },
     },

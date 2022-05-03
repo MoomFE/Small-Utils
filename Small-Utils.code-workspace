@@ -4,23 +4,23 @@
       "path": "."
     },
     {
-      "path": "src/utils",
+      "path": "packages/utils",
       "name": "Utils"
     },
     {
-      "path": "src/validator",
+      "path": "packages/validator",
       "name": "Validator"
     },
     {
-      "path": "src/components",
+      "path": "packages/components",
       "name": "Components"
     },
     {
-      "path": "src/composables",
+      "path": "packages/composables",
       "name": "Composables"
     },
     {
-      "path": "src/vite-config",
+      "path": "packages/vite-config",
       "name": "ViteConfig"
     }
   ],
@@ -40,11 +40,11 @@
     "files.exclude": {
       "*.code-workspace": true,
       "node_modules": true,
-      "src/components": true,
-      "src/composables": true,
-      "src/utils": true,
-      "src/validator": true,
-      "src/vite-config": true
+      "packages/components": true,
+      "packages/composables": true,
+      "packages/utils": true,
+      "packages/validator": true,
+      "packages/vite-config": true
     },
     "typescript.tsdk": "node_modules/typescript/lib",
     "prettier.enable": false,

@@ -76,7 +76,7 @@
     "test:ui": "vitest --ui",
     "test-build": "npm run build && vitest --mode test-build",
     "test-build:ui": "npm run build && vitest --mode test-build --ui",
-    "lint": "eslint ./src --fix"
+    "lint": "eslint . --fix"
   },
   "peerDependencies": {
     "@vue/composition-api": ">=1.1.0",
