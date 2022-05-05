@@ -85,8 +85,14 @@ interface RandomStringOptions {
 
 /**
  * 生成一个随机的字符串
- * @param length 字符串的长度
+ * @param length 字符串的长度 ( default: 12 )
  * @param options 生成字符串的选项
+ * @example
+ *
+ * randomString(); // -> 默认生成 12 位的仅有小写字母的字符串
+ * randomString(18, { uppercase: true }) // -> 生成 18 位的包含小写字母和大写字母的字符串
+ * randomString(18, { uppercase: true, number: true }) // -> 生成 18 位的包含小写字母、大写字母和数字的字符串
+ * randomString(18, { uppercase: true, number: true, lowercase: false }) // -> 生成 18 位的包含大写字母和数字的字符串
  */
 export function randomString(length = 12, options: RandomStringOptions = {}) {
   const { lowercase = true, uppercase = false, number = false } = options;
@@ -115,6 +121,9 @@ export function randomString(length = 12, options: RandomStringOptions = {}) {
 
 /**
  * 生成一个随机的 boolean 值
+ * @example
+ *
+ * randomBoolean(); // -> true or false
  */
 export function randomBoolean() {
   return Math.random() < 0.5;
