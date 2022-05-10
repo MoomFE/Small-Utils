@@ -315,7 +315,11 @@ CHANGELOG 图标规范
 <hr>
 <br>
 
-[Unreleased]: https://github.com/MoomFE/Small-Utils/compare/v3.12.0...HEAD
+[Unreleased]: https://github.com/MoomFE/Small-Utils/compare/v3.13.1...HEAD
+[v3.13.1]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.13.1
+[v3.13.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.13.0
+[v3.12.2]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.12.2
+[v3.12.1]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.12.1
 [v3.12.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.12.0
 [v3.11.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.11.0
 [v3.10.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.10.0
