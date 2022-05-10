@@ -1,4 +1,5 @@
 ## [Unreleased]
+  - 💄 更新 `SmallUtilsComponentsResolver` 为最新的定义方式
 
 ## [v3.13.0]
   - 📅 2022-05-05
