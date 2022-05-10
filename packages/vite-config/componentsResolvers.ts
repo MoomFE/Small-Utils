@@ -2,12 +2,13 @@
 
 import { resolve } from 'path';
 import { accessSync, constants } from 'fs';
+import { type ComponentResolver } from 'unplugin-vue-components/index';
 
 /**
  * 组件按需加载 ( unplugin-vue-components )
  * @returns
  */
-export function SmallUtilsComponentsResolver() {
+export function SmallUtilsComponentsResolver(): ComponentResolver {
   return {
     type: 'component',
     resolve: (name: string) => {
@@ -21,8 +22,8 @@ export function SmallUtilsComponentsResolver() {
         } catch (error) {}
 
         return {
-          importName: name,
-          path: `@moomfe/small-utils/components/${name}`,
+          name,
+          from: `@moomfe/small-utils/components/${name}`,
           sideEffects: hasCss ? [`@moomfe/small-utils/components/${name}/index.css`] : undefined,
         };
       }
