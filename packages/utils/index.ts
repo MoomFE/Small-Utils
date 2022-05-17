@@ -11,6 +11,7 @@ export * from './isESModule';
 
 export * from './delay';
 export * from './leastRun';
+export * from './onceRun';
 export * from './defineArgs';
 export * from './random';
 export * from './deepClone';
