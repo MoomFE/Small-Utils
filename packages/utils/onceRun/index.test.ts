@@ -18,6 +18,24 @@ describe('onceRun', () => {
     expect(wrapFn()).toBeInstanceOf(Promise);
   });
 
+  test('传入的函数未执行完成时, 重复执行时返回的 Promise 和首次一致', () => {
+    const list: number[] = [];
+    let index = 0;
+
+    const fn = async() => {
+      await delay(100);
+      list.push(index++);
+    };
+    const wrapFn = onceRun(fn);
+
+    const res = wrapFn();
+    const res2 = wrapFn();
+    const res3 = wrapFn();
+
+    expect(res).toBe(res2);
+    expect(res2).toBe(res3);
+  });
+
   test('传入的函数未执行完成时, 重复执行无效果', async() => {
     const list: number[] = [];
     let index = 0;

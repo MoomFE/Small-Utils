@@ -5,28 +5,30 @@ import { isPromise } from '@/utils';
  * @param fn 要运行的函数
  */
 export function onceRun(fn: Function) {
-  let lock = false;
+  let cache: any;
   let result;
 
-  return async() => {
-    if (lock) return;
-
-    lock = true;
+  async function wrap(...args: any[]) {
+    if (cache) return;
 
     try {
-      result = fn();
+      result = fn(...args);
 
       // 如果函数是异步函数, 那么等待函数执行完毕
       if (isPromise(result))
         result = await result;
 
-      lock = false;
+      cache = null;
     }
     catch (error) {
-      lock = false;
+      cache = null;
       throw error;
     }
 
     return result;
+  }
+
+  return (...args: any[]) => {
+    return cache || (cache = wrap(...args));
   };
 }
