@@ -109,7 +109,7 @@ async function buildTask(task) {
     const components = fg.sync(['components/*'], { cwd: rootPath, onlyDirectories: true });
     const paths = components.map(path => `'@moomfe/small-utils/${path}'`);
     const configPath = resolve(srcPath, 'vite-config/config.ts');
-    const configContent = `\n/** vite 依赖预构建优化选项 */\nexport const optimizeDepsInclude = [\n  ${paths.join(',\n  ')},\n];\n`;
+    const configContent = `/** vite 依赖预构建优化选项 */\nexport const optimizeDepsInclude = [\n  ${paths.join(',\n  ')},\n];\n`;
 
     outputFileSync(configPath, configContent);
   }
