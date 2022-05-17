@@ -1,4 +1,7 @@
 ## [Unreleased]
+
+## [v3.14.0]
+  - 📅 2022-05-17
   - 🌟 新增 `onceRun` 工具方法, 创建一个调用 `fn` 的函数, 执行 `fn` 的过程中, 如果函数再次被执行, 将会被忽略
 
 ## [v3.13.1]
@@ -316,7 +319,8 @@ CHANGELOG 图标规范
 <hr>
 <br>
 
-[Unreleased]: https://github.com/MoomFE/Small-Utils/compare/v3.13.1...HEAD
+[Unreleased]: https://github.com/MoomFE/Small-Utils/compare/v3.14.0...HEAD
+[v3.14.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.14.0
 [v3.13.1]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.13.1
 [v3.13.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.13.0
 [v3.12.2]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.12.2
