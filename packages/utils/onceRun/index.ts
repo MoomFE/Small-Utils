@@ -5,7 +5,7 @@ import { isPromise } from '@/utils';
  * @param fn 要运行的函数
  */
 export function onceRun(fn: Function) {
-  let cache: any;
+  let cache: Promise<any> | undefined;
   let result;
 
   async function wrap(...args: any[]) {
@@ -18,10 +18,10 @@ export function onceRun(fn: Function) {
       if (isPromise(result))
         result = await result;
 
-      cache = null;
+      cache = undefined;
     }
     catch (error) {
-      cache = null;
+      cache = undefined;
       throw error;
     }
 
