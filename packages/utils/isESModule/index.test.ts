@@ -3,7 +3,7 @@ import { isESModule } from '@/utils';
 
 describe('isESModule', () => {
 
-  test('基础测试', async() => {
+  test('基础测试', async () => {
     expect(isESModule(null)).toBe(false);
     expect(isESModule(undefined)).toBe(false);
     expect(isESModule({})).toBe(false);

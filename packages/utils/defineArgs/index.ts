@@ -19,7 +19,7 @@ export function defineArgs<T>(
   func: (...args: any[]) => T,
   oArgs: OArgs,
 ) {
-  return function(...userArgs: any[]) {
+  return function (...userArgs: any[]) {
     const args: any[] = [];
     const maxOArgsIndex = Math.max(...Object.keys(oArgs).filter(isNumeric).map(Number));
 

@@ -94,7 +94,7 @@ async function buildTask(task) {
   });
 }
 
-(async() => {
+(async () => {
   // 清空输出目录
   modules.concat('vite-config').forEach((name) => {
     emptyDirSync(resolve(rootPath, name));

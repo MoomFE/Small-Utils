@@ -7,7 +7,7 @@ import { computed, ref, shallowRef, unref } from 'vue-demi';
 import { createEventHook, tryOnUnmounted } from '@vueuse/core';
 import { deepUnref } from '@/utils';
 
-export interface UseAxiosConfig{
+export interface UseAxiosConfig {
   /**
    * 使用的 Axios 实例
    */
@@ -212,7 +212,7 @@ function baseUseAxios<
   return shell;
 }
 
-export interface UseAxios<InitAxiosConfig = AxiosRequestConfig>{
+export interface UseAxios<InitAxiosConfig = AxiosRequestConfig> {
   /** 使用 axios 发起请求 */
   <Data = any, UserAxiosConfig = AxiosRequestConfig<Data>>(url: MaybeRef<string>, config?: MaybeRef<UserAxiosConfig>, useAxiosConfig?: UseAxiosConfig): UseAxiosReturn<Data, Merge<InitAxiosConfig, UserAxiosConfig>>
   /** 使用 axios 发起 GET 请求 */

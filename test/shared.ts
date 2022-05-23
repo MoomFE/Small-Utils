@@ -51,9 +51,9 @@ export const types = {
   // Function
   function: [
     function Zw() {},
-    function() {},
+    function () {},
     () => {},
-    async function() {}, // eslint-disable-line no-empty-function
+    async function () {}, // eslint-disable-line no-empty-function
     function* () {}, // eslint-disable-line no-empty-function
     async function* () {}, // eslint-disable-line no-empty-function
   ],

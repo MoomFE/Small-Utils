@@ -22,7 +22,7 @@ describe('onceRun', () => {
     const list: number[] = [];
     let index = 0;
 
-    const fn = async() => {
+    const fn = async () => {
       await delay(100);
       list.push(index++);
     };
@@ -36,11 +36,11 @@ describe('onceRun', () => {
     expect(res2).toBe(res3);
   });
 
-  test('传入的函数未执行完成时, 重复执行无效果', async() => {
+  test('传入的函数未执行完成时, 重复执行无效果', async () => {
     const list: number[] = [];
     let index = 0;
 
-    const fn = async() => {
+    const fn = async () => {
       await delay(100);
       list.push(index++);
     };
@@ -55,11 +55,11 @@ describe('onceRun', () => {
     expect(list).toEqual([0]);
   });
 
-  test('传入的函数运行过程中报错, 不会影响下次运行', async() => {
+  test('传入的函数运行过程中报错, 不会影响下次运行', async () => {
     const list: number[] = [];
     let index = 0;
 
-    const fn = async() => {
+    const fn = async () => {
       await delay(100);
 
       if (index === 1) {
