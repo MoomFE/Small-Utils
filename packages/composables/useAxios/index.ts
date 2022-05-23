@@ -45,6 +45,8 @@ export interface UseAxiosReturn<Data = any, AxiosConfig = AxiosRequestConfig<Dat
   isLoading: Ref<boolean>
   /** 是否已请求完成 */
   isFinished: Ref<boolean>
+  /** 是否已请求成功 */
+  isSuccess: Ref<boolean>
   /** 是否已取消请求 */
   isAborted: Ref<boolean>
   /** 是否可以取消当前请求 */
@@ -101,6 +103,8 @@ function baseUseAxios<
   const isLoading = ref(false);
   /** 是否已请求完成 */
   const isFinished = ref(false);
+  /** 是否已请求成功 */
+  const isSuccess = ref(false);
   /** 是否已取消请求 */
   const isAborted = ref(false);
 
@@ -117,6 +121,7 @@ function baseUseAxios<
     isAborted.value = true;
     isLoading.value = false;
     isFinished.value = false;
+    isSuccess.value = false;
   }
   /** 执行 Ajax 请求的方法 */
   function execute(): Promise<AxiosResponse<Data, AxiosConfig>> {
@@ -129,6 +134,7 @@ function baseUseAxios<
     isLoading.value = true;
     // 重置状态
     isFinished.value = false;
+    isSuccess.value = false;
     isAborted.value = false;
     // 重置变量
     if (useAxiosConfig?.resetDataOnExecute !== false) {
@@ -158,6 +164,7 @@ function baseUseAxios<
 
           isLoading.value = false;
           isFinished.value = true;
+          isSuccess.value = true;
           successEvent.trigger(res);
           resolve(res);
         })
@@ -189,6 +196,7 @@ function baseUseAxios<
     isExecuted,
     isLoading,
     isFinished,
+    isSuccess,
     isAborted,
     canAbort,
 

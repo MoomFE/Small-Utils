@@ -1,4 +1,5 @@
 ## [Unreleased]
+  - 💄 组合式方法 `useAxios` 新增 `isSuccess` 用于判断是否已请求成功
 
 ## [v3.14.2]
   - 📅 2022-05-17
