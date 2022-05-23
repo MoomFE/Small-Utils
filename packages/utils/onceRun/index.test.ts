@@ -86,4 +86,24 @@ describe('onceRun', () => {
 
   });
 
+  test('执行完成会返回传入函数的返回值', async () => {
+    let index = 0;
+
+    const wrapFn = onceRun(() => index++);
+    const wrapFn2 = onceRun(async () => {
+      await delay(100);
+      return index++;
+    });
+
+    const res = wrapFn();
+    const res2 = wrapFn();
+    const res3 = wrapFn2();
+    const res4 = wrapFn2();
+
+    expect(await res).toBe(0);
+    expect(await res2).toBe(0);
+    expect(await res3).toBe(1);
+    expect(await res4).toBe(1);
+  });
+
 });
