@@ -1,4 +1,7 @@
 ## [Unreleased]
+
+## [v3.14.4]
+  - 📅 2022-05-28
   - 💄 优化 `onceRun` 工具方法类型定义
 
 ## [v3.14.3]
@@ -333,7 +336,8 @@ CHANGELOG 图标规范
 <hr>
 <br>
 
-[Unreleased]: https://github.com/MoomFE/Small-Utils/compare/v3.14.3...HEAD
+[Unreleased]: https://github.com/MoomFE/Small-Utils/compare/v3.14.4...HEAD
+[v3.14.4]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.14.4
 [v3.14.3]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.14.3
 [v3.14.2]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.14.2
 [v3.14.1]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.14.1
