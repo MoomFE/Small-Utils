@@ -7,8 +7,9 @@ import { isPromise } from '@/utils';
  */
 export function onceRun<
   F extends ((...args: any[]) => any) | ((...args: any[]) => Promise<any>),
+  A extends Parameters<F>,
   R extends AsyncReturnType<F>,
->(fn: F): () => Promise<R> {
+>(fn: F): (...args: A) => Promise<R> {
   let cache: Promise<R> | undefined;
   let result;
 
