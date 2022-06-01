@@ -1,4 +1,5 @@
 ## [Unreleased]
+  - 将 `type-fest` 类库移至 `dependencies`
 
 ## [v3.14.4]
   - 📅 2022-05-28

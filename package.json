@@ -98,6 +98,7 @@
     "@vueuse/core": "^8.5.0",
     "axios": "^0.26.1",
     "overlayscrollbars": "^1.13.1",
+    "type-fest": "^2.13.0",
     "vue-demi": "^0.12.5"
   },
   "devDependencies": {
@@ -120,7 +121,6 @@
     "rollup-plugin-dts": "^4.2.1",
     "rollup-plugin-esbuild": "^4.9.1",
     "sass": "^1.52.1",
-    "type-fest": "^2.12.2",
     "typescript": "^4.6.4",
     "unplugin-vue-components": "^0.19.5",
     "vite": "^2.9.9",

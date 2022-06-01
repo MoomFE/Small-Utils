@@ -23,7 +23,7 @@ specifiers:
   rollup-plugin-dts: ^4.2.1
   rollup-plugin-esbuild: ^4.9.1
   sass: ^1.52.1
-  type-fest: ^2.12.2
+  type-fest: ^2.13.0
   typescript: ^4.6.4
   unplugin-vue-components: ^0.19.5
   vite: ^2.9.9
@@ -37,6 +37,7 @@ dependencies:
   '@vueuse/core': 8.5.0_vue@3.2.36
   axios: 0.26.1
   overlayscrollbars: 1.13.1
+  type-fest: 2.13.0
   vue-demi: 0.12.5_vue@3.2.36
 
 devDependencies:
@@ -59,7 +60,6 @@ devDependencies:
   rollup-plugin-dts: 4.2.1_lq4dy2bb4fhoyaf2vwyb4geyfa
   rollup-plugin-esbuild: 4.9.1_3pm4nepjd6vnmqn35npt5y2clm
   sass: 1.52.1
-  type-fest: 2.12.2
   typescript: 4.6.4
   unplugin-vue-components: 0.19.5_ccgikbw2v4lxwwwdfrhkci6yrm
   vite: 2.9.9_sass@1.52.1
@@ -3273,7 +3273,7 @@ packages:
       '@types/normalize-package-data': 2.4.1
       normalize-package-data: 3.0.3
       parse-json: 5.2.0
-      type-fest: 2.12.2
+      type-fest: 2.13.0
     dev: true
 
   /readdirp/3.6.0:
@@ -3704,10 +3704,9 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /type-fest/2.12.2:
-    resolution: {integrity: sha512-qt6ylCGpLjZ7AaODxbpyBZSs9fCI9SkL3Z9q2oxMBQhs/uyY+VD8jHA8ULCGmWQJlBgqvO3EJeAngOHD8zQCrQ==}
+  /type-fest/2.13.0:
+    resolution: {integrity: sha512-lPfAm42MxE4/456+QyIaaVBAwgpJb6xZ8PRu09utnhPdWwcyj9vgy6Sq0Z5yNbJ21EdxB5dRU/Qg8bsyAMtlcw==}
     engines: {node: '>=12.20'}
-    dev: true
 
   /typedarray-to-buffer/3.1.5:
     resolution: {integrity: sha512-zdu8XMNEDepKKR+XYOXAVPtWui0ly0NtohUscw+UmaHiAWT8hrV1rr//H6V+0DvJ3OQ19S979M0laLfX8rm82Q==}
@@ -4054,7 +4053,7 @@ packages:
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dependencies:
       sort-keys: 5.0.0
-      type-fest: 2.12.2
+      type-fest: 2.13.0
       write-json-file: 5.0.0
     dev: true
 
