@@ -341,7 +341,8 @@ CHANGELOG 图标规范
 <hr>
 <br>
 
-[Unreleased]: https://github.com/MoomFE/Small-Utils/compare/v3.14.4...HEAD
+[Unreleased]: https://github.com/MoomFE/Small-Utils/compare/v3.14.5...HEAD
+[v3.14.5]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.14.5
 [v3.14.4]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.14.4
 [v3.14.3]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.14.3
 [v3.14.2]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.14.2
