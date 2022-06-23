@@ -2,63 +2,67 @@
   "name": "@moomfe/small-utils",
   "version": "3.14.5",
   "description": "前端工具合集",
-  "license": "MIT",
   "author": "Wei Zhang <https://github.com/Zhang-Wei-666>",
+  "license": "MIT",
+  "homepage": "https://github.com/MoomFE/Small-Utils#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MoomFE/Small-Utils.git"
   },
-  "main": "./utils/index.cjs",
-  "module": "./utils/index.mjs",
-  "types": "./utils/index.d.ts",
+  "bugs": {
+    "url": "https://github.com/MoomFE/Small-Utils/issues"
+  },
   "exports": {
     ".": {
-      "import": "./utils/index.mjs",
+      "types": "./utils/index.d.ts",
       "require": "./utils/index.cjs",
-      "types": "./utils/index.d.ts"
+      "import": "./utils/index.mjs"
     },
     "./*": "./*",
     "./utils": {
-      "import": "./utils/index.mjs",
+      "types": "./utils/index.d.ts",
       "require": "./utils/index.cjs",
-      "types": "./utils/index.d.ts"
+      "import": "./utils/index.mjs"
     },
     "./validator": {
-      "import": "./validator/index.mjs",
+      "types": "./validator/index.d.ts",
       "require": "./validator/index.cjs",
-      "types": "./validator/index.d.ts"
+      "import": "./validator/index.mjs"
     },
     "./components": {
-      "import": "./components/index.mjs",
+      "types": "./components/index.d.ts",
       "require": "./components/index.cjs",
-      "types": "./components/index.d.ts"
+      "import": "./components/index.mjs"
     },
     "./composables": {
-      "import": "./composables/index.mjs",
+      "types": "./composables/index.d.ts",
       "require": "./composables/index.cjs",
-      "types": "./composables/index.d.ts"
+      "import": "./composables/index.mjs"
     },
     "./vite-config": {
-      "import": "./vite-config/index.mjs",
+      "types": "./vite-config/index.d.ts",
       "require": "./vite-config/index.cjs",
-      "types": "./vite-config/index.d.ts"
+      "import": "./vite-config/index.mjs"
     },
     "./components/SDelayRender": {
-      "require": "./components/SDelayRender/index.cjs",
       "types": "./components/SDelayRender/index.d.ts",
+      "require": "./components/SDelayRender/index.cjs",
       "import": "./components/SDelayRender/index.mjs"
     },
     "./components/SResponsive": {
-      "require": "./components/SResponsive/index.cjs",
       "types": "./components/SResponsive/index.d.ts",
+      "require": "./components/SResponsive/index.cjs",
       "import": "./components/SResponsive/index.mjs"
     },
     "./components/SScrollbars": {
-      "require": "./components/SScrollbars/index.cjs",
       "types": "./components/SScrollbars/index.d.ts",
+      "require": "./components/SScrollbars/index.cjs",
       "import": "./components/SScrollbars/index.mjs"
     }
   },
+  "main": "./utils/index.cjs",
+  "module": "./utils/index.mjs",
+  "types": "./utils/index.d.ts",
   "files": [
     "utils",
     "validator",
@@ -66,10 +70,6 @@
     "composables",
     "vite-config"
   ],
-  "bugs": {
-    "url": "https://github.com/MoomFE/Small-Utils/issues"
-  },
-  "homepage": "https://github.com/MoomFE/Small-Utils#readme",
   "scripts": {
     "build": "esno scripts/build.ts",
     "docs:dev": "vitepress dev packages",
