@@ -14,61 +14,62 @@
   },
   "exports": {
     ".": {
-      "types": "./utils/index.d.ts",
-      "require": "./utils/index.cjs",
-      "import": "./utils/index.mjs"
+      "types": "./dist/utils/index.d.ts",
+      "require": "./dist/utils/index.cjs",
+      "import": "./dist/utils/index.mjs"
     },
     "./*": "./*",
     "./utils": {
-      "types": "./utils/index.d.ts",
-      "require": "./utils/index.cjs",
-      "import": "./utils/index.mjs"
+      "types": "./dist/utils/index.d.ts",
+      "require": "./dist/utils/index.cjs",
+      "import": "./dist/utils/index.mjs"
+    },
+    "./vue-utils": {
+      "types": "./dist/vue-utils/index.d.ts",
+      "require": "./dist/vue-utils/index.cjs",
+      "import": "./dist/vue-utils/index.mjs"
     },
     "./validator": {
-      "types": "./validator/index.d.ts",
-      "require": "./validator/index.cjs",
-      "import": "./validator/index.mjs"
+      "types": "./dist/validator/index.d.ts",
+      "require": "./dist/validator/index.cjs",
+      "import": "./dist/validator/index.mjs"
     },
     "./components": {
-      "types": "./components/index.d.ts",
-      "require": "./components/index.cjs",
-      "import": "./components/index.mjs"
+      "types": "./dist/components/index.d.ts",
+      "require": "./dist/components/index.cjs",
+      "import": "./dist/components/index.mjs"
     },
     "./composables": {
-      "types": "./composables/index.d.ts",
-      "require": "./composables/index.cjs",
-      "import": "./composables/index.mjs"
+      "types": "./dist/composables/index.d.ts",
+      "require": "./dist/composables/index.cjs",
+      "import": "./dist/composables/index.mjs"
     },
     "./vite-config": {
-      "types": "./vite-config/index.d.ts",
-      "require": "./vite-config/index.cjs",
-      "import": "./vite-config/index.mjs"
+      "types": "./dist/vite-config/index.d.ts",
+      "require": "./dist/vite-config/index.cjs",
+      "import": "./dist/vite-config/index.mjs"
     },
     "./components/SDelayRender": {
-      "require": "./components/SDelayRender/index.cjs",
-      "types": "./components/SDelayRender/index.d.ts",
-      "import": "./components/SDelayRender/index.mjs"
+      "require": "./dist/components/SDelayRender/index.cjs",
+      "types": "./dist/components/SDelayRender/index.d.ts",
+      "import": "./dist/components/SDelayRender/index.mjs"
     },
     "./components/SResponsive": {
-      "require": "./components/SResponsive/index.cjs",
-      "types": "./components/SResponsive/index.d.ts",
-      "import": "./components/SResponsive/index.mjs"
+      "require": "./dist/components/SResponsive/index.cjs",
+      "types": "./dist/components/SResponsive/index.d.ts",
+      "import": "./dist/components/SResponsive/index.mjs"
     },
     "./components/SScrollbars": {
-      "require": "./components/SScrollbars/index.cjs",
-      "types": "./components/SScrollbars/index.d.ts",
-      "import": "./components/SScrollbars/index.mjs"
+      "require": "./dist/components/SScrollbars/index.cjs",
+      "types": "./dist/components/SScrollbars/index.d.ts",
+      "import": "./dist/components/SScrollbars/index.mjs"
     }
   },
-  "main": "./utils/index.cjs",
-  "module": "./utils/index.mjs",
-  "types": "./utils/index.d.ts",
+  "main": "./dist/utils/index.cjs",
+  "module": "./dist/utils/index.mjs",
+  "types": "./dist/utils/index.d.ts",
   "files": [
-    "utils",
-    "validator",
-    "components",
-    "composables",
-    "vite-config"
+    "dist"
   ],
   "scripts": {
     "build": "esno scripts/build.ts",

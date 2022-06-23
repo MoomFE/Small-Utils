@@ -7,7 +7,8 @@ export default defineConfig(({ mode }) => {
   return {
     resolve: {
       alias: {
-        '@': resolve(__dirname, mode === 'test-build' ? './' : './packages'),
+        '@moomfe/small-utils': resolve(__dirname, mode === 'test-build' ? './' : './packages'),
+        '@': resolve(__dirname, mode === 'test-build' ? './dist' : './packages'),
         '@@': __dirname,
       },
     },
