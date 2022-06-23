@@ -5,7 +5,7 @@ import type { Get, Merge } from 'type-fest';
 import axios from 'axios';
 import { computed, ref, shallowRef, unref } from 'vue-demi';
 import { createEventHook, tryOnUnmounted } from '@vueuse/core';
-import { deepUnref } from '@/utils';
+import { deepUnref } from '@/vue-utils';
 
 export interface UseAxiosConfig {
   /**

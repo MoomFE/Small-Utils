@@ -16,6 +16,7 @@ const srcPath = resolve(rootPath, 'packages');
 /** 所有需要打包的模块 */
 const modules = [
   'utils',
+  'vue-utils',
   'validator',
   'components',
   'composables',

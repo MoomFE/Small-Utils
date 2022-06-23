@@ -8,6 +8,10 @@
       "name": "Utils"
     },
     {
+      "path": "packages/vue-utils",
+      "name": "VueUtils"
+    },
+    {
       "path": "packages/validator",
       "name": "Validator"
     },

@@ -1,7 +1,7 @@
 import { describe, expect, test } from 'vitest';
 import { computed, isRef, ref, unref } from 'vue';
 import { types } from '@@/test/shared';
-import { deepUnref } from '@/utils';
+import { deepUnref } from '@/vue-utils';
 
 describe('deepUnref', () => {
 

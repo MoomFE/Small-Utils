@@ -19,6 +19,4 @@ export * from './deepMerge';
 export * from './uniqueKey';
 export * from './toArray';
 
-export * from './deepUnref';
-
 export * from './env';
