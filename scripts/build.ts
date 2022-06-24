@@ -33,7 +33,7 @@ const rollupExternal = [
 ];
 
 /** 打包任务列表 */
-const taskList = [];
+const taskList: any[] = [];
 
 // 打包所有模块
 modules.forEach((name) => {
@@ -143,16 +143,16 @@ async function buildTask(task) {
     const packageJson = await readPackage({ cwd: rootPath, normalize: false });
 
     // 移除上次写入的组件相关信息
-    Object.keys(packageJson.exports).forEach((key) => {
+    Object.keys(packageJson.exports!).forEach((key) => {
       if (key.startsWith('./components/'))
-        delete packageJson.exports[key];
+        delete packageJson.exports![key];
     });
 
     // 写入最新的组件相关信息
     fg.sync(['components/*/*'], { cwd: rootPath }).forEach((path) => {
       const [components, name] = path.split('/');
       const key = `./${components}/${name}`;
-      const info = packageJson.exports[key] || (packageJson.exports[key] = {});
+      const info = packageJson.exports![key] || (packageJson.exports![key] = {});
 
       if (path.endsWith('.mjs'))
         info.import = `./${path}`;

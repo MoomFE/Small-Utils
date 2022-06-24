@@ -43,12 +43,19 @@
     "breadcrumbs.enabled": false,
     "files.exclude": {
       "*.code-workspace": true,
+      "components": true,
+      "composables": true,
       "node_modules": true,
       "packages/components": true,
       "packages/composables": true,
       "packages/utils": true,
       "packages/validator": true,
-      "packages/vite-config": true
+      "packages/vite-config": true,
+      "packages/vue-utils": true,
+      "utils": true,
+      "validator": true,
+      "vite-config": true,
+      "vue-utils": true
     },
     "typescript.tsdk": "node_modules/typescript/lib",
     "prettier.enable": false,
