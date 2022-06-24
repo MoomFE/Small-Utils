@@ -12,8 +12,6 @@ import dts from 'rollup-plugin-dts';
 const rootPath = resolve(__dirname, '../');
 /** 代码根目录 */
 const srcPath = resolve(rootPath, 'packages');
-/** 代码打包输出目录 */
-const outputPath = resolve(rootPath, 'dist');
 
 /** 所有需要打包的模块 */
 const modules = [
@@ -35,14 +33,14 @@ const rollupExternal = [
 ];
 
 /** 打包任务列表 */
-const taskList: any[] = [];
+const taskList = [];
 
 // 打包所有模块
 modules.forEach((name) => {
   taskList.push({
     name,
     input: resolve(srcPath, name, 'index.ts'),
-    output: resolve(outputPath, name),
+    output: resolve(rootPath, name),
   });
 });
 
@@ -53,7 +51,7 @@ fg.sync(['components/*/index.ts'], { cwd: srcPath }).forEach((path) => {
   taskList.push({
     name: 'components',
     input: resolve(srcPath, path),
-    output: resolve(outputPath, 'components', `S${upperFirst(camelCase(name))}`),
+    output: resolve(rootPath, 'components', `S${upperFirst(camelCase(name))}`),
   });
 });
 
@@ -99,7 +97,9 @@ async function buildTask(task) {
 
 (async () => {
   // 清空输出目录
-  emptyDirSync(outputPath);
+  modules.concat('vite-config').forEach((name) => {
+    emptyDirSync(resolve(rootPath, name));
+  });
 
   // 挨个执行打包
   for (const task of taskList)
@@ -107,7 +107,7 @@ async function buildTask(task) {
 
   // 根据打包后的组件目录, 输出 vite 依赖预构建优化选项
   {
-    const components = fg.sync(['components/*'], { cwd: outputPath, onlyDirectories: true });
+    const components = fg.sync(['components/*'], { cwd: rootPath, onlyDirectories: true });
     const paths = components.map(path => `'@moomfe/small-utils/${path}'`);
     const configPath = resolve(srcPath, 'vite-config/config.ts');
     const configContent = `/** vite 依赖预构建优化选项 */\nexport const optimizeDepsInclude = [\n  ${paths.join(',\n  ')},\n];\n`;
@@ -119,12 +119,12 @@ async function buildTask(task) {
   await buildTask({
     name: 'vite-config',
     input: resolve(srcPath, 'vite-config', 'index.ts'),
-    output: resolve(outputPath, 'vite-config'),
+    output: resolve(rootPath, 'vite-config'),
   });
 
   // 重定向路径
-  fg.sync([`(${modules.join('|')})/**/index.{cjs,mjs}`], { cwd: outputPath }).forEach((path) => {
-    const filePath = resolve(outputPath, path);
+  fg.sync([`(${modules.join('|')})/**/index.{cjs,mjs}`], { cwd: rootPath }).forEach((path) => {
+    const filePath = resolve(rootPath, path);
     const content = modules.reduce(
       (content, name) => {
         const aliasReg = new RegExp(`@/${name}`, 'g');
@@ -143,23 +143,23 @@ async function buildTask(task) {
     const packageJson = await readPackage({ cwd: rootPath, normalize: false });
 
     // 移除上次写入的组件相关信息
-    Object.keys(packageJson.exports!).forEach((key) => {
+    Object.keys(packageJson.exports).forEach((key) => {
       if (key.startsWith('./components/'))
-        delete packageJson.exports![key];
+        delete packageJson.exports[key];
     });
 
     // 写入最新的组件相关信息
-    fg.sync(['components/*/*'], { cwd: outputPath }).forEach((path) => {
+    fg.sync(['components/*/*'], { cwd: rootPath }).forEach((path) => {
       const [components, name] = path.split('/');
       const key = `./${components}/${name}`;
-      const info = packageJson.exports![key] || (packageJson.exports![key] = {});
+      const info = packageJson.exports[key] || (packageJson.exports[key] = {});
 
       if (path.endsWith('.mjs'))
-        info.import = `./dist/${path}`;
+        info.import = `./${path}`;
       else if (path.endsWith('.cjs'))
-        info.require = `./dist/${path}`;
+        info.require = `./${path}`;
       else if (path.endsWith('.ts'))
-        info.types = `./dist/${path}`;
+        info.types = `./${path}`;
     });
 
     // 写入 package.json
@@ -171,8 +171,8 @@ async function buildTask(task) {
   }
 
   // 将打包出的 css 文件更名
-  fg.sync(['components/**/style.css'], { cwd: outputPath }).forEach((path) => {
-    const filePath = resolve(outputPath, path);
+  fg.sync(['components/**/style.css'], { cwd: rootPath }).forEach((path) => {
+    const filePath = resolve(rootPath, path);
 
     renameSync(
       filePath,
