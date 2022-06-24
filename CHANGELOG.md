@@ -1,4 +1,7 @@
 ## [Unreleased]
+
+## [v5.0.0]
+  - 📅 2022-06-24
   - 🌟 新增 `vue-utils` 目录, 存放和 `vue` 相关的工具方法
   - ⚠️ `deepUnref` 工具方法移至 `vue-utils` 目录
 
@@ -343,7 +346,8 @@ CHANGELOG 图标规范
 <hr>
 <br>
 
-[Unreleased]: https://github.com/MoomFE/Small-Utils/compare/v3.14.5...HEAD
+[Unreleased]: https://github.com/MoomFE/Small-Utils/compare/v5.0.0...HEAD
+[v5.0.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v5.0.0
 [v3.14.5]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.14.5
 [v3.14.4]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.14.4
 [v3.14.3]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.14.3
