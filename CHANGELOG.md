@@ -1,4 +1,7 @@
 ## [Unreleased]
+
+## [v5.1.0]
+  - 📅 2022-06-24
   - 🌟 新增 `wheneverEffectScope` 工具方法, 属于 `vue-utils` 类别, 用于监听传入值为 truthy 时, 创建一个 effect 作用域
 
 ## [v5.0.0]
@@ -347,7 +350,8 @@ CHANGELOG 图标规范
 <hr>
 <br>
 
-[Unreleased]: https://github.com/MoomFE/Small-Utils/compare/v5.0.0...HEAD
+[Unreleased]: https://github.com/MoomFE/Small-Utils/compare/v5.1.0...HEAD
+[v5.1.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v5.1.0
 [v5.0.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v5.0.0
 [v3.14.5]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.14.5
 [v3.14.4]: https://github.com/MoomFE/Small-Utils/releases/tag/v3.14.4
