@@ -1,3 +1,4 @@
+import type { AsyncReturnType } from 'type-fest';
 import { delay, isPromise } from '@/utils';
 
 /**
@@ -5,14 +6,23 @@ import { delay, isPromise } from '@/utils';
  * @param ms 最少执行的 ms 时间
  * @param fn 要运行的函数
  */
-export async function leastRun(ms: number, fn: Function): Promise<any>;
+export async function leastRun<
+  F extends ((...args: any[]) => any) | ((...args: any[]) => Promise<any>),
+  R extends AsyncReturnType<F>,
+>(ms: number, fn: F): Promise<R>;
 /**
  * 运行函数并且保证最少执行 1000ms 的时间
  * @param fn 要运行的函数
  */
-export async function leastRun(fn: Function): Promise<any>;
+export async function leastRun<
+  F extends ((...args: any[]) => any) | ((...args: any[]) => Promise<any>),
+  R extends AsyncReturnType<F>,
+>(fn: F): Promise<R>;
 
-export async function leastRun(msOrFn: number | Function, maybeFn?: Function) {
+export async function leastRun<
+  F extends ((...args: any[]) => any) | ((...args: any[]) => Promise<any>),
+  R extends AsyncReturnType<F>,
+>(msOrFn: number | F, maybeFn?: F): Promise<R> {
   const start = Date.now();
   let ms = msOrFn as number;
   let fn = maybeFn || (() => {});
