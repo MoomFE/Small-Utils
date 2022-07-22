@@ -1,4 +1,8 @@
 # Small-Utils
+
+[![npm](https://img.shields.io/npm/v/@moomfe/small-utils.svg)](https://www.npmjs.com/package/@moomfe/small-utils)
+[![Downloads](https://img.shields.io/npm/dm/@moomfe/small-utils.svg)](https://www.npmjs.com/package/@moomfe/small-utils)
+
 前端工具合集
 
 
