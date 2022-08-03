@@ -19,7 +19,7 @@ describe('delay', () => {
 
     for (const time of times) {
       const start = Date.now();
-      await delay(time); // eslint-disable-line no-await-in-loop
+      await delay(time);
       const end = Date.now();
       expect(end - start).toBeGreaterThanOrEqual(time);
     }

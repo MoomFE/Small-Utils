@@ -53,9 +53,9 @@ export const types = {
     function Zw() {},
     function () {},
     () => {},
-    async function () {}, // eslint-disable-line no-empty-function
-    function* () {}, // eslint-disable-line no-empty-function
-    async function* () {}, // eslint-disable-line no-empty-function
+    async function () {},
+    function* () {},
+    async function* () {},
   ],
 
   // RegExp

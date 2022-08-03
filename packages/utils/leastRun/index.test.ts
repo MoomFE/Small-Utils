@@ -19,7 +19,7 @@ describe('leastRun', () => {
 
     for (const time of times) {
       const start = Date.now();
-      await leastRun(time, () => {}); // eslint-disable-line no-await-in-loop
+      await leastRun(time, () => {});
       const end = Date.now();
       expect(end - start).toBeGreaterThanOrEqual(time);
     }
