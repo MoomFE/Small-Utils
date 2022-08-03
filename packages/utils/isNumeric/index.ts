@@ -10,7 +10,7 @@ import { isNumber, isString } from '@/utils';
  * isNumeric('666'); // -> true
  * isNumeric(NaN); // -> false
  */
-export function isNumeric(value: unknown) {
-  // @ts-expect-error xxx
-  return isNumber(value) || (isString(value) && !isNaN(value - parseFloat(value))); // eslint-disable-line no-restricted-globals
+export function isNumeric(value: unknown): value is number {
+  // @ts-expect-error
+  return isNumber(value) || (isString(value) && !isNaN(value - parseFloat(value)));
 }
