@@ -1,4 +1,7 @@
 ## [Unreleased]
+
+## [v5.1.3]
+  - 📅 2022-08-09
   - 💄 将打包时使用的 `esno` 类库改为使用 `tsx`
   - 🐞 修复在 `"type": "module"` 时, 使用 `componentsResolvers()` 方法时 `__dirname` 报错的问题
 
@@ -360,7 +363,9 @@ CHANGELOG 图标规范
 <hr>
 <br>
 
-[Unreleased]: https://github.com/MoomFE/Small-Utils/compare/v5.1.1...HEAD
+[Unreleased]: https://github.com/MoomFE/Small-Utils/compare/v5.1.3...HEAD
+[v5.1.3]: https://github.com/MoomFE/Small-Utils/releases/tag/v5.1.3
+[v5.1.2]: https://github.com/MoomFE/Small-Utils/releases/tag/v5.1.2
 [v5.1.1]: https://github.com/MoomFE/Small-Utils/releases/tag/v5.1.1
 [v5.1.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v5.1.0
 [v5.0.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v5.0.0
