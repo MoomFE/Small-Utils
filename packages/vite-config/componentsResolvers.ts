@@ -1,7 +1,4 @@
-/* eslint-disable @typescript-eslint/brace-style */
-
-import { resolve } from 'path';
-import { accessSync, constants } from 'fs';
+import { resolveModule } from 'local-pkg';
 import { type ComponentResolver } from 'unplugin-vue-components/index';
 
 /**
@@ -13,18 +10,13 @@ export function SmallUtilsComponentsResolver(): ComponentResolver {
     type: 'component',
     resolve: (name: string) => {
       if (name.match(/^S[A-Z]/)) {
-        const cssPath = resolve(__dirname, `../components/${name}/index.css`);
-        let hasCss = false;
-
-        try {
-          accessSync(cssPath, constants.F_OK);
-          hasCss = true;
-        } catch (error) {}
+        const cssPath = `@moomfe/small-utils/components/${name}/index.css`;
+        const hasCss = resolveModule(cssPath);
 
         return {
           name,
           from: `@moomfe/small-utils/components/${name}`,
-          sideEffects: hasCss ? [`@moomfe/small-utils/components/${name}/index.css`] : undefined,
+          sideEffects: hasCss ? [cssPath] : undefined,
         };
       }
     },

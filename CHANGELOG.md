@@ -1,4 +1,5 @@
 ## [Unreleased]
+  - 🐞 修复在 `"type": "module"` 时, 使用 `componentsResolvers()` 方法时 `__dirname` 报错的问题
 
 ## [v5.1.2]
   - 📅 2022-07-20

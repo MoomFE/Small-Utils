@@ -27,8 +27,7 @@ const rollupExternal = [
   'vue-demi',
   '@vueuse/core',
   'axios',
-  'fs',
-  'path',
+  'local-pkg',
   ...modules.map(name => `@/${name}`),
 ];
 
