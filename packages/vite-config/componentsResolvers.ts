@@ -3,7 +3,6 @@ import { type ComponentResolver } from 'unplugin-vue-components/index';
 
 /**
  * 组件按需加载 ( unplugin-vue-components )
- * @returns
  */
 export function SmallUtilsComponentsResolver(): ComponentResolver {
   return {
