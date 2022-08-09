@@ -9,7 +9,6 @@ specifiers:
   '@vueuse/core': ^9.0.2
   axios: ^0.27.2
   eslint: ^8.21.0
-  esno: ^0.16.3
   fast-glob: ^3.2.11
   fs-extra: ^10.1.0
   jsdom: ^20.0.0
@@ -23,6 +22,7 @@ specifiers:
   rollup-plugin-dts: ^4.2.2
   rollup-plugin-esbuild: ^4.9.1
   sass: ^1.54.1
+  tsx: ^3.8.1
   type-fest: ^2.18.0
   typescript: ^4.7.4
   unplugin-vue-components: ^0.21.2
@@ -48,7 +48,6 @@ devDependencies:
   '@types/react': 18.0.15
   '@vitest/ui': 0.20.3
   eslint: 8.21.0
-  esno: 0.16.3
   fast-glob: 3.2.11
   fs-extra: 10.1.0
   jsdom: 20.0.0
@@ -60,6 +59,7 @@ devDependencies:
   rollup-plugin-dts: 4.2.2_oo3i3f3qmqiztdz5qgxrrjmd5e
   rollup-plugin-esbuild: 4.9.1_rollup@2.77.2
   sass: 1.54.1
+  tsx: 3.8.1
   typescript: 4.7.4
   unplugin-vue-components: 0.21.2_t6vv62h5jee3sc5tmhqnozb26u
   vite: 3.0.4_sass@1.54.1
@@ -362,8 +362,8 @@ packages:
       - '@algolia/client-search'
     dev: true
 
-  /@esbuild-kit/cjs-loader/2.3.2:
-    resolution: {integrity: sha512-3UIFKrGfq2d2R2A/SpJaeHTP5z3nrOnVMxE+cNpOuuW+Lotm0Sfbc9lVHCjcxaxgcx0MKI7g2FvxvWlylzDRKg==}
+  /@esbuild-kit/cjs-loader/2.3.3:
+    resolution: {integrity: sha512-Rt4O1mXlPEDVxvjsHLgbtHVdUXYK9C1/6ThpQnt7FaXIjUOsI6qhHYMgALhNnlIMZffag44lXd6Dqgx3xALbpQ==}
     dependencies:
       '@esbuild-kit/core-utils': 2.1.0
       get-tsconfig: 4.2.0
@@ -1960,13 +1960,6 @@ packages:
       v8-compile-cache: 2.3.0
     transitivePeerDependencies:
       - supports-color
-    dev: true
-
-  /esno/0.16.3:
-    resolution: {integrity: sha512-6slSBEV1lMKcX13DBifvnDFpNno5WXhw4j/ff7RI0y51BZiDqEe5dNhhjhIQ3iCOQuzsm2MbVzmwqbN78BBhPg==}
-    hasBin: true
-    dependencies:
-      tsx: 3.8.0
     dev: true
 
   /espree/9.3.3:
@@ -3577,11 +3570,11 @@ packages:
       typescript: 4.7.4
     dev: true
 
-  /tsx/3.8.0:
-    resolution: {integrity: sha512-PcvTwRXTm6hDWfPihA4n5WW/9SmgFNxKaDKqvLLG+FKNEPA4crsipChzC7PVozPtdOaMfR5QctDlkC/hKoIsxw==}
+  /tsx/3.8.1:
+    resolution: {integrity: sha512-YA2fDf1V9j/6qX/QSnapMmzulbqlx7FeVL6d9ySHDJoECkslAlZO38UuyFCiNPjam74hbyHbJfUF+n2ZT14KDA==}
     hasBin: true
     dependencies:
-      '@esbuild-kit/cjs-loader': 2.3.2
+      '@esbuild-kit/cjs-loader': 2.3.3
       '@esbuild-kit/core-utils': 2.1.0
       '@esbuild-kit/esm-loader': 2.4.2
     optionalDependencies:
