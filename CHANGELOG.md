@@ -1,4 +1,7 @@
 ## [Unreleased]
+
+## [v5.2.0]
+  - 📅 2022-08-10
   - 🌟 新增 `node-utils` 类别, 存放和 `Node.js` 相关的工具方法
   - 🌟 新增 `dirname` 工具方法, 属于 `node-utils` 类别, 用于在 Node.js 的 ES Modules 环境中获取 `__dirname`
   - 🌟 新增 `filename` 工具方法, 属于 `node-utils` 类别, 用于在 Node.js 的 ES Modules 环境中获取 `__filename`
@@ -366,7 +369,8 @@ CHANGELOG 图标规范
 <hr>
 <br>
 
-[Unreleased]: https://github.com/MoomFE/Small-Utils/compare/v5.1.3...HEAD
+[Unreleased]: https://github.com/MoomFE/Small-Utils/compare/v5.2.0...HEAD
+[v5.2.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v5.2.0
 [v5.1.3]: https://github.com/MoomFE/Small-Utils/releases/tag/v5.1.3
 [v5.1.2]: https://github.com/MoomFE/Small-Utils/releases/tag/v5.1.2
 [v5.1.1]: https://github.com/MoomFE/Small-Utils/releases/tag/v5.1.1
