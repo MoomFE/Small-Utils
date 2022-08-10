@@ -1,6 +1,7 @@
 ## [Unreleased]
   - 🌟 新增 `node-utils` 类别, 存放和 `Node.js` 相关的工具方法
   - 🌟 新增 `dirname` 工具方法, 属于 `node-utils` 类别, 用于在 Node.js 的 ES Modules 环境中获取 `__dirname`
+  - 🌟 新增 `filename` 工具方法, 属于 `node-utils` 类别, 用于在 Node.js 的 ES Modules 环境中获取 `__filename`
 
 ## [v5.1.3]
   - 📅 2022-08-09
