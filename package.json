@@ -29,6 +29,11 @@
       "require": "./vue-utils/index.cjs",
       "import": "./vue-utils/index.mjs"
     },
+    "./node-utils": {
+      "types": "./node-utils/index.d.ts",
+      "require": "./node-utils/index.cjs",
+      "import": "./node-utils/index.mjs"
+    },
     "./validator": {
       "types": "./validator/index.d.ts",
       "require": "./validator/index.cjs",
@@ -50,18 +55,18 @@
       "import": "./vite-config/index.mjs"
     },
     "./components/SDelayRender": {
-      "types": "./components/SDelayRender/index.d.ts",
       "require": "./components/SDelayRender/index.cjs",
+      "types": "./components/SDelayRender/index.d.ts",
       "import": "./components/SDelayRender/index.mjs"
     },
     "./components/SResponsive": {
-      "types": "./components/SResponsive/index.d.ts",
       "require": "./components/SResponsive/index.cjs",
+      "types": "./components/SResponsive/index.d.ts",
       "import": "./components/SResponsive/index.mjs"
     },
     "./components/SScrollbars": {
-      "types": "./components/SScrollbars/index.d.ts",
       "require": "./components/SScrollbars/index.cjs",
+      "types": "./components/SScrollbars/index.d.ts",
       "import": "./components/SScrollbars/index.mjs"
     }
   },
@@ -71,6 +76,7 @@
   "files": [
     "utils",
     "vue-utils",
+    "node-utils",
     "validator",
     "components",
     "composables",

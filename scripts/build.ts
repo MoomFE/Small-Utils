@@ -17,6 +17,7 @@ const srcPath = resolve(rootPath, 'packages');
 const modules = [
   'utils',
   'vue-utils',
+  'node-utils',
   'validator',
   'components',
   'composables',
@@ -28,6 +29,8 @@ const rollupExternal = [
   '@vueuse/core',
   'axios',
   'local-pkg',
+  'url',
+  'path',
   ...modules.map(name => `@/${name}`),
 ];
 

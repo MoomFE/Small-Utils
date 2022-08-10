@@ -9,7 +9,11 @@
     },
     {
       "path": "packages/vue-utils",
-      "name": "VueUtils"
+      "name": "Vue Utils"
+    },
+    {
+      "path": "packages/node-utils",
+      "name": "Node Utils"
     },
     {
       "path": "packages/validator",
@@ -25,7 +29,7 @@
     },
     {
       "path": "packages/vite-config",
-      "name": "ViteConfig"
+      "name": "Vite Config"
     }
   ],
   "settings": {
@@ -46,8 +50,10 @@
       "components": true,
       "composables": true,
       "node_modules": true,
+      "node-utils": true,
       "packages/components": true,
       "packages/composables": true,
+      "packages/node-utils": true,
       "packages/utils": true,
       "packages/validator": true,
       "packages/vite-config": true,
