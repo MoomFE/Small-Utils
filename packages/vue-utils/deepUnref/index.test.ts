@@ -56,8 +56,8 @@ describe('deepUnref', () => {
         const refValue = ref(value);
         const computedValue = computed(() => value);
 
-        expect(deepUnref(refValue)).equals(value);
-        expect(deepUnref(computedValue)).equals(value);
+        expect(deepUnref(refValue)).toBe(value);
+        expect(deepUnref(computedValue)).toBe(value);
       });
     });
   });
