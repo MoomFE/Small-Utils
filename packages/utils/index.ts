@@ -6,6 +6,7 @@ export * from './isNumeric';
 export * from './isObject';
 export * from './isReference';
 export * from './isPrimitive';
+export * from './isEmptyObject';
 
 export * from './isESModule';
 
