@@ -1,4 +1,7 @@
 ## [Unreleased]
+
+## [v5.3.0]
+  - 📅 2022-08-10
   - 🌟 新增 `isEmptyObject` 工具方法, 判断传入参数是否是一个空对象
 
 ## [v5.2.0]
@@ -370,7 +373,8 @@ CHANGELOG 图标规范
 <hr>
 <br>
 
-[Unreleased]: https://github.com/MoomFE/Small-Utils/compare/v5.2.0...HEAD
+[Unreleased]: https://github.com/MoomFE/Small-Utils/compare/v5.3.0...HEAD
+[v5.3.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v5.3.0
 [v5.2.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v5.2.0
 [v5.1.3]: https://github.com/MoomFE/Small-Utils/releases/tag/v5.1.3
 [v5.1.2]: https://github.com/MoomFE/Small-Utils/releases/tag/v5.1.2
