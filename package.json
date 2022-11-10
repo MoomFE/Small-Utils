@@ -1,6 +1,6 @@
 {
   "name": "@moomfe/small-utils",
-  "version": "5.3.0",
+  "version": "5.3.1",
   "description": "前端工具合集",
   "author": "Wei Zhang <https://github.com/Zhang-Wei-666>",
   "license": "MIT",
@@ -55,18 +55,18 @@
       "import": "./vite-config/index.mjs"
     },
     "./components/SDelayRender": {
-      "types": "./components/SDelayRender/index.d.ts",
       "require": "./components/SDelayRender/index.cjs",
+      "types": "./components/SDelayRender/index.d.ts",
       "import": "./components/SDelayRender/index.mjs"
     },
     "./components/SResponsive": {
-      "types": "./components/SResponsive/index.d.ts",
       "require": "./components/SResponsive/index.cjs",
+      "types": "./components/SResponsive/index.d.ts",
       "import": "./components/SResponsive/index.mjs"
     },
     "./components/SScrollbars": {
-      "types": "./components/SScrollbars/index.d.ts",
       "require": "./components/SScrollbars/index.cjs",
+      "types": "./components/SScrollbars/index.d.ts",
       "import": "./components/SScrollbars/index.mjs"
     }
   },

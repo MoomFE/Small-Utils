@@ -1,8 +1,11 @@
 ## [Unreleased]
+
+## [v5.3.1]
+  - 📅 2022-11-10
   - 💄 优化 `onceRun` 工具方法, 执行包装的函数时, `this` 会被继承
 
 ## [v5.3.0]
-  - 📅 2022-08-10
+  - 📅 2022-11-09
   - 🌟 新增 `isEmptyObject` 工具方法, 判断传入参数是否是一个空对象
 
 ## [v5.2.0]
@@ -374,7 +377,8 @@ CHANGELOG 图标规范
 <hr>
 <br>
 
-[Unreleased]: https://github.com/MoomFE/Small-Utils/compare/v5.3.0...HEAD
+[Unreleased]: https://github.com/MoomFE/Small-Utils/compare/v5.3.1...HEAD
+[v5.3.1]: https://github.com/MoomFE/Small-Utils/releases/tag/v5.3.1
 [v5.3.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v5.3.0
 [v5.2.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v5.2.0
 [v5.1.3]: https://github.com/MoomFE/Small-Utils/releases/tag/v5.1.3
