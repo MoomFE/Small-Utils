@@ -13,11 +13,11 @@ export function onceRun<
   let cache: Promise<R> | undefined;
   let result;
 
-  async function wrap(...args: any[]) {
+  async function wrap(this: any, ...args: any[]) {
     if (cache) return;
 
     try {
-      result = fn(...args);
+      result = fn.call(this, ...args);
 
       // 如果函数是异步函数, 那么等待函数执行完毕
       if (isPromise(result))
@@ -33,7 +33,7 @@ export function onceRun<
     return result;
   }
 
-  return (...args: any[]) => {
-    return cache || (cache = wrap(...args));
+  return function (this: any, ...args: any[]) {
+    return cache || (cache = wrap.call(this, ...args));
   };
 }

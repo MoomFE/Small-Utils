@@ -106,4 +106,19 @@ describe('onceRun', () => {
     expect(await res4).toBe(1);
   });
 
+  test('传入的函数执行时的 this 应该被继承', async () => {
+    const that = 6;
+    let res;
+
+    const wrapFn = onceRun(function () {
+      // @ts-expect-error
+      // eslint-disable-next-line @typescript-eslint/no-this-alias
+      res = this;
+    });
+
+    await wrapFn.call(that);
+
+    expect(res).toBe(that);
+  });
+
 });
