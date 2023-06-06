@@ -1,4 +1,7 @@
 ## [Unreleased]
+
+## [v5.3.2]
+  - 📅 2023-06-06
   - 💄 优化 `wheneverEffectScope` 工具方法类型定义
 
 ## [v5.3.1]
@@ -378,7 +381,8 @@ CHANGELOG 图标规范
 <hr>
 <br>
 
-[Unreleased]: https://github.com/MoomFE/Small-Utils/compare/v5.3.1...HEAD
+[Unreleased]: https://github.com/MoomFE/Small-Utils/compare/v5.3.2...HEAD
+[v5.3.2]: https://github.com/MoomFE/Small-Utils/releases/tag/v5.3.2
 [v5.3.1]: https://github.com/MoomFE/Small-Utils/releases/tag/v5.3.1
 [v5.3.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v5.3.0
 [v5.2.0]: https://github.com/MoomFE/Small-Utils/releases/tag/v5.2.0
