@@ -5,6 +5,7 @@
 
 前端工具合集
 
+### 该工具库已废弃, 继任者 [mixte](https://github.com/MoomFE/mixte), 包含当前工具库的大部分功能, 将持续更新
 
 <br>
 
